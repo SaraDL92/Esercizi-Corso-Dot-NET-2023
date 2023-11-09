@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\bin\Debug\net5.0\ClassesRefactoring.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\refint\ClassesRefactoring.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ClassesRefactoring.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\ClassesRefactoring\obj\Debug\net5.0\ref\ClassesRefactoring.dll
