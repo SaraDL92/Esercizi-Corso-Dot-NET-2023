@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\RelazioniOrizzontali.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\refint\RelazioniOrizzontali.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\RelazioniOrizzontali.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\ref\RelazioniOrizzontali.dll
