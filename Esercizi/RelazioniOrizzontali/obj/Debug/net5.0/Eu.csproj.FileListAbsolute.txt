@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\Eu.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\refint\Eu.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\Eu.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\ref\Eu.dll

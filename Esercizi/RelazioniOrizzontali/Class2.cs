@@ -1,49 +1,53 @@
-﻿using System;
+﻿using RelazioniOrizzontali;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
-namespace RelazioniOrizzontali
+namespace InternationalPublicManagement
 {
-    internal class CityHall : Territory
+    internal class Province:GeographicalArea,IUEpublicAdministration
     {
-        string _name;
-        City _belongsToCity;
-       
-        List<Citizen> _citizenList;
+        public string name;
+        public CityHall cityhall;
 
+        public Province(string _name) { name = _name; }
 
-
-        public CityHall(string name)
-        {
-            _name = name;
-
-        }
-        public string Name { get { return _name; } set { _name = value; } }
-        public City BelongsToCity { get { return _belongsToCity; } set { _belongsToCity = value; } }
-       
-        public List<Citizen> CitizenList { get { return _citizenList; } set { _citizenList = value; } }
-
-        
-
-        public void AddCitizenToCityHall()
-        {
-
-
-            //aggiungere cittadino nella lista cittadini quando faremo le liste
-        }
-        public void RemoveCitizenFromCityHall()
-        {
-            //rimuovere da lista quando faremo le liste
+       public void AddCityHall(string nam) {
+            cityhall.Name = nam;
         }
 
-
-        public override string ToString()
+        public void EducationalSystem()
         {
-            return Name;
+            throw new NotImplementedException();
         }
 
+        public void HNS()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void LawSystem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveCityHall(string nam)
+        {
+            cityhall.Name = null;
+        }
+        public string TellMeTheCityHall() { return $"The province {name} has these cityhall {cityhall}"; }
+
+        public void TerritoryManagement(State Claimer, State Dest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Welfare()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

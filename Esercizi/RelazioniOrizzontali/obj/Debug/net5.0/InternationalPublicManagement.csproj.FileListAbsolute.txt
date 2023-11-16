@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\bin\Debug\net5.0\InternationalPublicManagement.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\refint\InternationalPublicManagement.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\InternationalPublicManagement.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\RelazioniOrizzontali\obj\Debug\net5.0\ref\InternationalPublicManagement.dll

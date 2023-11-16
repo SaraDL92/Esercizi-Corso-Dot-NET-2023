@@ -1,16 +1,18 @@
-﻿using System;
+﻿using InternationalPublicManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace RelazioniOrizzontali
 {
-    internal class Region : Territory
+    internal class Region : GeographicalArea, IUEpublicAdministration
     {
         string _name;
         State _state;
-        List<Province> _provinces;
+        public Province province;
 
 
        
@@ -24,30 +26,47 @@ namespace RelazioniOrizzontali
         
         public string Name { get { return _name; } set { _name = value; } }
         public State State { get { return _state; } set { _state=value; } }
-        public List<Province> Province { get { return _provinces; }
-            set { _provinces = value; } }
-        
 
-      public void AddProvinceToRegion()
+
+
+        public void AddProvince(string nam)
         {
-            //aggiungere Provincia alla lista province
+            province.name = nam;
         }
 
-        public void RemoveProvinceFromRegion()
+        public void RemoveProvince(string nam)
         {
-            //rimuovere provincia dalla lista
+            province.name = null;
+        }
+        public string TellMeTheProvince() { return $"The region {Name} has these provinces {province}"; }
+
+        public void TerritoryManagement(State Claimer, State Dest)
+        {
+            throw new NotImplementedException();
         }
 
-        public string TellMeTheState() { return $"The region {Name} is part of the State {State}"; }
-
-        public override string ToString()
+        public void Welfare()
         {
-            return Name;
+            throw new NotImplementedException();
         }
 
+        public void HNS()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void LawSystem()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void EducationalSystem()
+        {
+            throw new NotImplementedException();
+        }
     }
+
+}
       
     }
    

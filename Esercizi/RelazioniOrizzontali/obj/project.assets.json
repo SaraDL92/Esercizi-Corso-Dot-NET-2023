@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\RelazioniOrizzontali\\RelazioniOrizzontali.csproj",
-      "projectName": "RelazioniOrizzontali",
-      "projectPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\RelazioniOrizzontali\\RelazioniOrizzontali.csproj",
+      "projectUniqueName": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\RelazioniOrizzontali\\InternationalPublicManagement.csproj",
+      "projectName": "InternationalPublicManagement",
+      "projectPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\RelazioniOrizzontali\\InternationalPublicManagement.csproj",
       "packagesPath": "C:\\Users\\sarad\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\RelazioniOrizzontali\\obj\\",
       "projectStyle": "PackageReference",

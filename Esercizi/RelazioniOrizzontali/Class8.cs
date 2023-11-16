@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RelazioniOrizzontali
+namespace InternationalPublicManagement
 {
-    internal class DeathPunishmentState:State,IDeathPunishmentState
+    internal class EUID
     {
-        string _typeOfState;
-        public DeathPunishmentState(string Name, string Flag) : base(Name, Flag, "I'm a Death Punishment State!") {
-          
-        
-        }
+        public string Name;
+        public string Surname;
+        public string Bithday;
+        public string BithPlace;
+        public string Id;
     }
 }

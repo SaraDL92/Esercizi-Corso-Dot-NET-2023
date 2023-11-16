@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace RelazioniOrizzontali
 {
-    internal class Territory : IAdministrativeEntity
+    internal class GeographicalArea 
     {
-
+        protected decimal _longitude;
+        protected decimal _latitude;
+        protected decimal _area;
 
 
 
