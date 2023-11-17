@@ -10,11 +10,17 @@ namespace RelazioniOrizzontali
     internal class CityHall : GeographicalArea, IEUCitizen, IUEpublicAdministration
     {
         string _name;
-       
-       
-       
+
+        EUID[]_citizenInCityHall=new EUID[0];
+        
+        public int maxAbitanti;
+        public Region _region;
 
 
+        public void SetRegion(Region region)
+        {
+            _region = region; // Metodo per impostare la regione
+        }
 
         public CityHall(string name)
         {
@@ -22,7 +28,7 @@ namespace RelazioniOrizzontali
 
         }
         public string Name { get { return _name; } set { _name = value; } }
-       
+       public EUID[] CitizenInCityHall { get { return _citizenInCityHall; } set { _citizenInCityHall = value; } }
       
 
 
@@ -37,11 +43,33 @@ namespace RelazioniOrizzontali
             citizenID.Surname = surname;
             citizenID.Bithday = birthday;
             citizenID.Id = id;
-            return "Il documento"+" "+id + " " + name + " " + surname + " " + birthplace + " " + birthday+" "+"è rilasciato dal"+" "+this.Name;
+            maxAbitanti = 3;
 
+            if (CitizenInCityHall.Length < maxAbitanti) 
+{
+    CitizenInCityHall = CitizenInCityHall.Concat(new[] { citizenID }).ToArray();
+    return "Il documento " + id + " " + name + " " + surname + " " + birthplace + " " + birthday + " è rilasciato dal " + this.Name+"maxpopulationpercityhall:"+maxAbitanti;
+}
+else 
+{
+    return "Capacità massima raggiunta!";
+}
 
 
         }
+
+        public void ShowCitizenInCityHall()
+        {
+            Console.WriteLine($"La lista dei cittadini del {this.Name} è:");
+
+            foreach (var citizen in CitizenInCityHall)
+            {if(citizen != null) { Console.WriteLine($"{citizen.Name} {citizen.Surname}");}
+                
+            }
+
+        }
+
+        
         public override string ToString() { return Name; }
 
         public void Citizen_Education(EUID eUID)

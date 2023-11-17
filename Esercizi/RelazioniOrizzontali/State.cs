@@ -15,7 +15,7 @@ namespace RelazioniOrizzontali
         string constitution;
         string borders;
         string typeofstate;
-        Region region;
+        public Region [] regionList = new Region[10];
 
 
         public State(string Name, string Flag, string TypeOfState, int Army, string Constitution, string Borders)
@@ -28,16 +28,48 @@ namespace RelazioniOrizzontali
         public string Constitution { get { return constitution; } set { constitution = value; } }
         public string Borders { get { return borders; } set { borders = value; } }
         public string TypeofState { get { return typeofstate; } set { typeofstate = value; } }
-        public Region Region
+
+        public void BuildRegion(string name)
         {
-            get { return region; }
-            set { region = value; }
+            Region region = new Region(name);
+            Console.WriteLine($"Lo stato {this.name} ha creatola regione {region.Name}");
+
+
+            int index = Array.FindIndex(regionList, name => name == null);
+
+            if (index != -1)
+            {
+
+               regionList[index] = region;
+            }
+            else
+            {
+                Console.WriteLine("Limite di regioni raggiunto");
+            }
         }
 
-        public void AddRegion(string nam)
+
+        public void ShowMeRegionList()
         {
-            region.Name = nam;
+            Console.WriteLine($"Lo stato {this.name} ha queste regioni:");
+            foreach (var region in regionList)
+            {
+                if (region != null)
+                {
+                    Console.WriteLine(region.Name);
+                }
+            }
+
         }
+        public void  BuildProvince(Region region,string name)
+        {
+            region.BuildProvince(name);
+        }
+        public void BuildCityHall(Province province, string name)
+        {
+            province.BuildCityHall (name);
+        }
+
 
         public void EducationalSystem()
         {
@@ -54,11 +86,8 @@ namespace RelazioniOrizzontali
             throw new NotImplementedException();
         }
 
-        public void RemoveRegion(string nam)
-        {
-            region.Name = null;
-        }
-        public string TellMeTheRegion() { return $"The state {name} has these cityhall {region}"; }
+       
+       
 
         public void TerritoryManagement(State Claimer, State Dest)
         {
@@ -74,7 +103,14 @@ namespace RelazioniOrizzontali
         {
             throw new NotImplementedException();
         }
-    }
+
+       
+
+    
+
+
+
+}
 }
   
  

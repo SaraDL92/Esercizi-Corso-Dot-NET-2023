@@ -11,6 +11,7 @@ namespace RelazioniOrizzontali
         protected decimal _longitude;
         protected decimal _latitude;
         protected decimal _area;
+        protected int _numeroabitanti;
 
 
 
