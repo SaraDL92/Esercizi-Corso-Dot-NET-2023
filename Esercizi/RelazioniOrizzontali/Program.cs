@@ -13,9 +13,9 @@ namespace RelazioniOrizzontali
     {
         static void Main(string[] args)
         {
-            EUState eustate = new("Francia","blue-white-red",200,"Costituzione Francese","Italia");
+           // EUState eustate = new("Francia","blue-white-red",200,"Costituzione Francese","Italia");
             State state = new("Itlaia", "verde-bianca-rossa", "I'm a state", 1000, "Costituzione italiana", "confini tot");
-            Region region = new("Calabria");
+           /* Region region = new("Calabria");
             Province province = new("Cosenza");
            
             CityHall cityhall = new("Comune di Tortora");
@@ -39,6 +39,7 @@ namespace RelazioniOrizzontali
             Console.WriteLine(eustate);
 
 
+            cityhall.SetTheRegion(region);
 
            
 
@@ -52,23 +53,37 @@ namespace RelazioniOrizzontali
             Console.WriteLine(eustate.UseEUCommission(leg));
             Console.WriteLine(parl.ApprovesLegislation(leg));
             Console.WriteLine(parl.RefuseLegislation(leg));
-            Console.WriteLine(cityhall.BuildCitizenID("Sara","Maratea","Di Luca","11-07-92","100df"));
-         
-            Console.WriteLine(CITIZEN.RequestIDCard(cityhall)); cityhall.ShowCitizenInCityHall();
-            province.BuildCityHall("Comune di Marano");
-            province.BuildCityHall("Comune di Pesaro");
-          
-            Console.WriteLine(province);
-            province.ShowMeCityHall();  
-            region.BuildProvince("PESCARA");
-            region.BuildProvince("BARI");
-            region.ShowMeProvinces(); 
+ Console.WriteLine("-------");
+            Console.WriteLine("-------");
+            Console.WriteLine("-------");*/
+
+            Console.WriteLine("CREAZIONE STATO,REGIONE,PROVINCIA,COMUNE CON AUMENTO E DIMUNUZIONE CAPACITA' MASSIMA DI ABITANTI (ESERCITAZIONE CON ARRAY):");
+           
             state.BuildRegion("Calabria");
-            state.BuildRegion("Lazio");
+            state.BuildRegion("Campania");
             state.ShowMeRegionList();
-            Console.WriteLine(cityhall.BuildCitizenID("Lara", "Maratea", "Baia", "11-07-92", "23hdghdf"));
-            cityhall.ShowCitizenInCityHall();
+            state.regionList[0].BuildProvince("Cosenza");
+            state.regionList[1].BuildProvince("Napoli");
+            state.regionList[0].BuildProvince("Catanzaro");
+            state.regionList[0].BuildProvince("Crotone"); 
+            state.regionList[0].BuildProvince("Vibo Valentia"); 
+            state.regionList[0].BuildProvince("Reggio Calabria");
+            state.regionList[0].ShowMeProvinces();
+            state.regionList[1].ShowMeProvinces();
+            state.regionList[0]._provinces[0].BuildCityHall("Comune Di Tortora Marina");
+            state.regionList[1]._provinces[0].BuildCityHall("Comune Di Pompei");
+
+
+            state.regionList[0]._provinces[0].CityHallList[0].ShowmetheRegion();
+            state.regionList[1]._provinces[0].CityHallList[0].ShowmetheRegion();
+
             Console.Read();
+
+
+
+
+
+
         }
     }
 }

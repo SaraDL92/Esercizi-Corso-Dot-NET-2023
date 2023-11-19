@@ -32,7 +32,7 @@ namespace RelazioniOrizzontali
         public void BuildRegion(string name)
         {
             Region region = new Region(name);
-            Console.WriteLine($"Lo stato {this.name} ha creatola regione {region.Name}");
+            Console.WriteLine($"Lo stato {this.name} ha creato la regione {region.Name}");
 
 
             int index = Array.FindIndex(regionList, name => name == null);

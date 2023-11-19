@@ -1,81 +1,81 @@
 ﻿using InternationalPublicManagement;
-using System;
-using System.Collections.Generic;
+using RelazioniOrizzontali;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using System;
 
-namespace RelazioniOrizzontali
+internal class Region : GeographicalArea, IUEpublicAdministration
 {
-    internal class Region : GeographicalArea, IUEpublicAdministration
+    private string _name;
+    private State _state;
+   public Province[] _provinces = new Province[0];
+    private int _maxPopulation = 1000;
+
+    public Region(string name)
     {
-        string _name;
-        State _state;
-        public Province [] province=new Province[0];
-        public int MaxPopulationPerCityHallWhen10Provinces = 100;
-        public int MaxPopulationPerCityHallWhen5Provinces = 500;
+        _name = name;
+    }
 
-        public int MaxPopulationPerCityHall
+    public int CountProvinces()
+    {
+        return _provinces.Count(p => p != null);
+    }
+
+    public void BuildProvince(string name)
+    {
+        
+        
+
+        Province prov = new Province(name, this); 
+        Console.WriteLine($"La regione {_name} ha creato la provincia {prov.Name}");
+        Console.WriteLine($"Capacità massima della regione: {_maxPopulation} abitanti");
+
+        int index = Array.FindIndex(_provinces, p => p == null);
+
+        if (index != -1)
         {
-            get
-            {
-                if (province.Count(p => p != null) == 10)
-                {
-                    return MaxPopulationPerCityHallWhen10Provinces;
-                }
-                else if (province.Count(p => p != null) == 5)
-                {
-                    return MaxPopulationPerCityHallWhen5Provinces;
-                }
-                else
-                {
-                   
-                    return 100;
-                }
-            }
+            _provinces[index] = prov;
+            _maxPopulation = _maxPopulation+200; 
+            
+            
         }
-        public void BuildProvince(string name)
+        else
         {
-            Province prov = new Province(name);
-            Console.WriteLine($"La regione {this.Name} ha creato la provincia {prov}");
+            // Se l'array è completamente popolato, crea un nuovo array più grande
+            Province[] newArray = new Province[_provinces.Length + 1];
+            Array.Copy(_provinces, newArray, _provinces.Length);
+            newArray[_provinces.Length] = prov;
+            _provinces = newArray;
 
+            _maxPopulation =_maxPopulation +200;
 
-            int index = Array.FindIndex(province, name => name == null);
-
-            if (index != -1)
-            {
-
-                province[index] = prov;
-            }
-            else
-            {
-                Console.WriteLine("Limite di comuni raggiunto");
-            }
-        }
-
-
-        public void ShowMeProvinces()
-        {
-            Console.WriteLine($"La regione {this.Name} ha queste province:");
-            foreach (var prov in province)
-            {
-                if (prov != null)
-                {
-                    Console.WriteLine(prov);
-                }
-            }
 
         }
-        public void BuildCityHall(Province province, string name)
+    }
+
+
+
+   
+  
+    public void ShowMeProvinces()
+    {
+        Console.WriteLine($"La regione {_name} ha queste province:");
+
+        foreach (var prov in _provinces.Where(p => p != null))
+        {
+            Console.WriteLine(prov.Name);
+        }
+
+        if (_provinces.All(p => p == null))
+        {
+            Console.WriteLine($"La regione {_name} non ha province.");
+        }
+    }
+
+    public void BuildCityHall(Province province, string name)
         {
             province.BuildCityHall(name);
         }
-        public Region(string name)
-        {
-            _name = name;
-           
-        }
+       
 
         
         public string Name { get { return _name; } set { _name = value; } }
@@ -112,7 +112,6 @@ namespace RelazioniOrizzontali
         }
     }
 
-}
+
       
     
-   

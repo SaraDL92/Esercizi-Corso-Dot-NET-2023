@@ -11,49 +11,63 @@ namespace InternationalPublicManagement
 {
     internal class Province : GeographicalArea, IUEpublicAdministration
     {
-        public string name;
-       public  CityHall[] cityHallList = new CityHall[10];
+        public Region _region;
+        public string Name { get; } 
+        public CityHall[] CityHallList { get; } = new CityHall[10];
 
-        public Province(string _name) { name = _name; }
+        public Province(string name)
+        {
+            Name = name;
+        }
+        public Province(string name, Region region) : this(name)
+        {
+            _region = region;
+        }
 
+       
 
         public void BuildCityHall(string name)
         {
             CityHall cityHall = new CityHall(name);
-            Console.WriteLine($"La provincia {this.name} ha creato il {cityHall}");
+            cityHall.SetRegion(this._region);
+            cityHall.SetMaxAbitanti();
+            Console.WriteLine($"La provincia {this.Name} ha creato il {cityHall} con capacità massima:{cityHall.maxAbitanti}");
 
-           
-            int index = Array.FindIndex(cityHallList, ch => ch == null);
+            int index = Array.FindIndex(CityHallList, ch => ch == null);
 
             if (index != -1)
             {
-               
-                cityHallList[index] = cityHall;
+                cityHall.SetRegion(this._region);
+                cityHall.SetMaxAbitanti();
+                CityHallList[index] = cityHall;
             }
             else
             {
                 Console.WriteLine("Limite di comuni raggiunto");
             }
         }
+        
+
 
 
         public void ShowMeCityHall()
-        { Console.WriteLine($"La provincia {this.name} ha questi comuni:");
-            foreach (var cityHall in cityHallList)
+        {
+            Console.WriteLine($"La provincia {this.Name} ha questi comuni:");
+            foreach (var cityHall in CityHallList)
             {
                 if (cityHall != null)
                 {
                     Console.WriteLine(cityHall.Name);
                 }
             }
-           
         }
 
-        public override string ToString()
+        public void TerritoryManagement(State Claimer, State Dest)
         {
-            return name;
+            throw new NotImplementedException();
         }
-        public void EducationalSystem()
+
+        public void Welfare()
         {
             throw new NotImplementedException();
         }
@@ -68,16 +82,13 @@ namespace InternationalPublicManagement
             throw new NotImplementedException();
         }
 
-      
-       
-        public void TerritoryManagement(State Claimer, State Dest)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Welfare()
+        public void EducationalSystem()
         {
             throw new NotImplementedException();
         }
     }
+
+        
+
+       
 }
