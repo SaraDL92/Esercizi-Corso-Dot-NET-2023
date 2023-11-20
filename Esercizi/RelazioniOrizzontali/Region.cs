@@ -7,9 +7,11 @@ internal class Region : GeographicalArea, IUEpublicAdministration
 {
     private string _name;
     private State _state;
-   public Province[] _provinces = new Province[0];
+    private Province[] _provinces = new Province[0];
     private int _maxPopulation = 1000;
 
+
+    public Province[] Provinces { get { return _provinces; }set { _provinces = value; } }
     public Region(string name)
     {
         _name = name;
@@ -50,6 +52,8 @@ internal class Region : GeographicalArea, IUEpublicAdministration
 
 
         }
+
+
     }
 
 

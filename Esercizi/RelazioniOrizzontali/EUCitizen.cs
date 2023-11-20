@@ -9,24 +9,33 @@ namespace RelazioniOrizzontali
 {
     internal class Citizen
     {
-        public string Name;
-        public string BithPlace;
-        public string Surname;
-        public string Bithday;
+        string _name;
+        string _birthPlace;
+       string _surname;
+       string _birthday;
 
         public Citizen(string _Name, string _BithPlace, string _Surname, string _Birthday) {
 
-            Name = _Name;
-            BithPlace = _BithPlace;
-            Surname = _Surname;
-            Bithday = _Birthday;
+            _name = _Name;
+            _birthPlace = _BithPlace;
+            _surname = _Surname;
+            _birthday = _Birthday;
 
         }
 
-       public string RequestIDCard(CityHall cityhall)
+        public string Name { get { return _name; }set { _name = value; } }
+        public string BirthPlace { get { return _birthPlace; } set { _birthPlace = value; } }
+        public string Surname { get { return _surname; }set { _surname = value; } }
+
+        public string Birthday { get { return _birthday; }set { _birthday = value; } }
+
+
+
+
+        public string RequestIDCard(CityHall cityhall)
         {
             string id = "1865" + Name + "kjf";
-            return cityhall.BuildCitizenID(this.Name, this.BithPlace, this.Surname, this.Bithday, id);
+            return cityhall.BuildCitizenID(this.Name, this.BirthPlace, this.Surname, this.Birthday, id);
 
         }
     }

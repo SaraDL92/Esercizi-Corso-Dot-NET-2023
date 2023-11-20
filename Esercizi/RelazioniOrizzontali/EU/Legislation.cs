@@ -8,13 +8,13 @@ namespace InternationalPublicManagement.EU
 {
     internal class Legislation
     {
-        public string name;
+        string name;
 
         public Legislation(string name)
         {
             this.name = name;
         }
-
+        public string Name { get { return name; } set { name = value; } }
         public override string ToString() { return name; }
     }
 }

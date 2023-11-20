@@ -70,12 +70,12 @@ namespace RelazioniOrizzontali
             state.regionList[0].BuildProvince("Reggio Calabria");
             state.regionList[0].ShowMeProvinces();
             state.regionList[1].ShowMeProvinces();
-            state.regionList[0]._provinces[0].BuildCityHall("Comune Di Tortora Marina");
-            state.regionList[1]._provinces[0].BuildCityHall("Comune Di Pompei");
+            state.regionList[0].Provinces[0].BuildCityHall("Comune Di Tortora Marina");
+            state.regionList[1].Provinces[0].BuildCityHall("Comune Di Pompei");
 
 
-            state.regionList[0]._provinces[0].CityHallList[0].ShowmetheRegion();
-            state.regionList[1]._provinces[0].CityHallList[0].ShowmetheRegion();
+            state.regionList[0].Provinces[0].CityHallList[0].ShowmetheRegion();
+            state.regionList[1].Provinces[0].CityHallList[0].ShowmetheRegion();
 
             Console.Read();
 

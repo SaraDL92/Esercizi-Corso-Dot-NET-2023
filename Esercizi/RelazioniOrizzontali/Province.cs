@@ -11,9 +11,9 @@ namespace InternationalPublicManagement
 {
     internal class Province : GeographicalArea, IUEpublicAdministration
     {
-        public Region _region;
-        public string Name { get; } 
-        public CityHall[] CityHallList { get; } = new CityHall[10];
+        Region _region;
+        string _name;
+        CityHall[] _cityHallList  = new CityHall[10];
 
         public Province(string name)
         {
@@ -24,7 +24,11 @@ namespace InternationalPublicManagement
             _region = region;
         }
 
-       
+       public Region Region { get { return _region; } set { _region = value; } }
+       public string Name { get { return _name; } set { _name = value; } }
+
+       public CityHall[] CityHallList { get { return _cityHallList; }set{ _cityHallList = value; } }
+
 
         public void BuildCityHall(string name)
         {

@@ -96,7 +96,7 @@ namespace RelazioniOrizzontali
         public void SetMaxAbitanti()
         {
             if (_region != null) 
-            { if (_region._provinces.Length < 5) { this.maxAbitanti = 1000; } else { this.maxAbitanti = 500; } }
+            { if (_region.Provinces.Length < 5) { this.maxAbitanti = 1000; } else { this.maxAbitanti = 500; } }
             
             
             
