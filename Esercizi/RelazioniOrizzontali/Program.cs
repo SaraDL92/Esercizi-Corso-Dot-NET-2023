@@ -71,11 +71,15 @@ namespace RelazioniOrizzontali
             state.regionList[0].ShowMeProvinces();
             state.regionList[1].ShowMeProvinces();
             state.regionList[0].Provinces[0].BuildCityHall("Comune Di Tortora Marina");
-            state.regionList[1].Provinces[0].BuildCityHall("Comune Di Pompei");
-
-
+            state.regionList[1].Provinces[0].BuildCityHall("Comune Di Pompei"); 
             state.regionList[0].Provinces[0].CityHallList[0].ShowmetheRegion();
             state.regionList[1].Provinces[0].CityHallList[0].ShowmetheRegion();
+            Console.WriteLine(state.regionList[0].Provinces[0].CityHallList[0].BuildCitizenID("Sara", "Maratea", "Di Luca", "1-07-1992", "ca27089bc"));
+            Console.WriteLine(state.regionList[0].Provinces[0].CityHallList[0].BuildCitizenID("Daniel", "Maratea", "Daddario", "11-09-1990", "cf56789bc"));
+            state.regionList[0].Provinces[0].CityHallList[0].ShowCitizenInCityHall();
+
+
+          
 
             Console.Read();
 
