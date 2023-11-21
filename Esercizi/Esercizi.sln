@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Classes", "Classes\Classes.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternationalPublicManagement", "RelazioniOrizzontali\InternationalPublicManagement.csproj", "{1EF76B51-1F32-4A6B-AE5F-248D4F019FD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify", "Spotify\Spotify.csproj", "{1AEB32C9-0344-4977-9793-23C2BAAF0F96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1EF76B51-1F32-4A6B-AE5F-248D4F019FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EF76B51-1F32-4A6B-AE5F-248D4F019FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EF76B51-1F32-4A6B-AE5F-248D4F019FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AEB32C9-0344-4977-9793-23C2BAAF0F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AEB32C9-0344-4977-9793-23C2BAAF0F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AEB32C9-0344-4977-9793-23C2BAAF0F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AEB32C9-0344-4977-9793-23C2BAAF0F96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
