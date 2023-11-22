@@ -16,7 +16,7 @@ namespace Spotify.Entities
         bool _liveVersion;
         List <Song> _trackList;
 
-        public Album(string title, string releaseDate, string numbOfTracks, Artist artist, Group group, bool liveVersion, List<Song> trackList)
+        public Album(string title, string releaseDate, string numbOfTracks, Artist artist, Group group, bool liveVersion)
         {
             _title = title;
             _releaseDate = releaseDate;
@@ -24,7 +24,7 @@ namespace Spotify.Entities
             _artist = artist;
             _group = group;
             _liveVersion = liveVersion;
-            _trackList = trackList;
+            _trackList = new List<Song>();
         }
 
         public string Title { get => _title; set => _title = value; }

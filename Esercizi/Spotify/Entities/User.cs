@@ -37,5 +37,7 @@ namespace Spotify.Entities
         public List<Radio> FavRadio { get { return _favRadio; } set { _favRadio = value; } }
 
         public bool IsArtist { get => _isArtist; set => _isArtist = value; }
+        public string UserName { get => _userName; set => _userName = value; }
+        public string Password { get => _password; set => _password = value; }
     }
 }

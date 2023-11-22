@@ -15,23 +15,24 @@ namespace Spotify.Entities
         List<Album> _albums;
         List<Song> _songs;
         string _bio;
-        Group _group;
+        List <Group> _groups;
 
-        public Artist(string Name, string Surname, string Birthday, string artistName, List<Album> albums, List<Song> songs, string bio, Group group) : base(Name, Surname, Birthday)
+        public Artist(string Name, string Surname, string Birthday, string artistName, string bio) : base(Name, Surname, Birthday)
         {
             _artistName = artistName;
-            _albums = albums;
-            _songs = songs;
+            _albums = new List<Album>();
+            
             _bio = bio;
-            _group = group;  Songs = new List<Song>();
+            _groups = new List<Group>();  _songs = new List<Song>();
 
         }
       
         public string ArtistName { get => _artistName; set => _artistName = value; }
         public string Bio { get => _bio; set => _bio = value; }
-        public Group Group { get => _group; set => _group = value; }
+      
         internal List<Album> Albums { get => _albums; set => _albums = value; }
         internal List<Song> Songs { get => _songs; set => _songs = value; }
+        internal List<Group> Group1 { get => _groups; set => _groups = value; }
 
         public void CreateNewSong(string genre, string title, int duration, string releaseDate, Album album)
         {
@@ -49,7 +50,7 @@ namespace Spotify.Entities
 
         public void CreateNewAlbum(string title, string releaseDate, string numboftracks, Artist artist, Group group, bool liveVersion, List<Song> tracklist)
         {
-            Album album = new(title, releaseDate, numboftracks, artist, group, liveVersion, tracklist);
+            Album album = new(title, releaseDate, numboftracks, artist, group, liveVersion);
         }
 
         public void RemoveAlbum(Album album) {
