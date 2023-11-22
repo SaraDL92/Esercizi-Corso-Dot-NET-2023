@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Spotify.Entities
@@ -54,20 +55,23 @@ namespace Spotify.Entities
                 for (int i = CurrentSecond; i < song.Duration; i++)
                 {
                     CurrentSecond = i;
-
+                    Thread.Sleep(1000);
                     Console.WriteLine($"Seconds scrolling bar: {CurrentSecond} s");
+                    
                 }
             }
             else { IsPlaying = true;
+                  
             Console.WriteLine($"Playing the song {song.Title}");
             for (int i = 0; i < song.Duration; i++) {
                 CurrentSecond = i;
-                
+                 Thread.Sleep(1000);
                 Console.WriteLine($"Seconds scrolling bar: {CurrentSecond} s"); } }
+               
 
 
 
-           
+
 
 
 

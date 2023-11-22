@@ -78,6 +78,7 @@ namespace Spotify.Entities
             
            
         }
+        
 
         public override string ToString()
         {

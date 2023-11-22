@@ -63,7 +63,7 @@ namespace Spotify.Entities
         }
         public override string ToString()
         {
-            return $"Title:{Title}-Artist:{Artist}-Duration:{Duration}";
+            return $"Title:{Title}-Artist:{Artist}-Genre:{Genre}-Release Date:{ReleaseDate}-Duration:{Duration}";
         }
         public string Genre { get => _genre; set => _genre = value; }
         public string Title { get => _title; set => _title = value; }

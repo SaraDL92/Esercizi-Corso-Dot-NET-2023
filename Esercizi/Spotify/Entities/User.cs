@@ -13,19 +13,19 @@ namespace Spotify.Entities
         string _userName;
         string _password;
         List<Song> _favSongs;
-       
+        bool _isArtist;
         List<Radio> _favRadio;
         Setting setting;
         
 
-        public User(string Name, string Surname, string Birthday,List<PlayList> playlist, string username, string password, List<Song> favsong, List<Radio> favradio):base(Name,Surname,Birthday)
+        public User(string Name, string Surname, string Birthday,List<PlayList> playlist, string username, string password, List<Song> favsong, List<Radio> favradio, bool isArtist):base(Name,Surname,Birthday)
         {
 
             _playList = playlist;
             _userName = username;
             _password = password;
             _favSongs = favsong;
-           
+           _isArtist = isArtist;
             _favRadio = favradio;
            
 
@@ -36,9 +36,6 @@ namespace Spotify.Entities
 
         public List<Radio> FavRadio { get { return _favRadio; } set { _favRadio = value; } }
 
-
-
-
-
+        public bool IsArtist { get => _isArtist; set => _isArtist = value; }
     }
 }
