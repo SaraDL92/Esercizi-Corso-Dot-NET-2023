@@ -47,7 +47,9 @@ namespace Spotify.Entities
                     if (!isPaused)
                     {
                         currentSecond++;
-                        Console.WriteLine($"Seconds scrolling bar: {currentSecond} s");
+                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                        Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title} - " +
+                            $"Seconds scrolling bar: {currentSecond} s");
                     }
 
                     WaitForSecond();
@@ -64,7 +66,7 @@ namespace Spotify.Entities
                                 break;
                             case 'n':
                                 Console.WriteLine("Hai premuto 'n'. Passando alla canzone successiva.");
-
+                                currentSecond = 0;
                                 currentSongIndex++;
                                 if (currentSongIndex >= playlist.Count)
                                 {
@@ -75,7 +77,7 @@ namespace Spotify.Entities
                                 break;
                             case 'b':
                                 Console.WriteLine("Hai premuto 'b'. Passando alla canzone precedente.");
-
+                                currentSecond = 0;
                                 currentSongIndex--;
                                 if (currentSongIndex < 0)
                                 {

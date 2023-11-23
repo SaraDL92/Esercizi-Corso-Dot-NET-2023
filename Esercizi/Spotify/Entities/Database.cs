@@ -46,9 +46,11 @@ namespace Spotify.Entities
         {
             if (Artists != null)
             {
+                int i = 0;
                 foreach (Artist artist in Artists)
                 {
-                    Console.WriteLine(artist.ArtistName);
+                    i++;
+                    Console.WriteLine(i+"-"+artist.ArtistName);
 
                 }
 
@@ -58,18 +60,54 @@ namespace Spotify.Entities
         }
         public void ShowMeAlbums()
         {
+            int i = 0;
             if (Albums != null)
             {
                 foreach (Album album in Albums)
                 {
-                    Console.WriteLine(album.Title);
+                    i++;
+                    Console.WriteLine(i+"-"+album.Title);
 
                 }
 
 
             }
             else { Console.WriteLine("No list of artists"); }
-        } 
+        }
+        public void ShowMeOneAlbum(Album album)
+        {
+            int i = 0;
+            List<Song> songs = album.TrackList;
+           foreach(Song s in songs)
+            {
+                i++;
+                Console.WriteLine(i+""+s.Title);
+            }
+
+
+
+        }
+        public void ShowMeOneArtist(Artist artist)
+        {
+            Console.WriteLine("Albums by " + artist.Name + ":");
+            for (int i = 0; i < artist.Albums.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {artist.Albums[i].Title}");
+            }
+        }
+        public void ShowMeOnePlaylist(PlayList playlist)
+        {
+            int i = 0;
+            List<Song> songs = playlist.Songs;
+            foreach (Song s in songs)
+            {
+                i++;
+                Console.WriteLine(i + "" + s.Title);
+            }
+
+
+
+        }
         public void ShowMeSongs()
         {int i = 0;
             if (Songs != null)
@@ -91,9 +129,10 @@ namespace Spotify.Entities
         {
             if (Playlists != null)
             {
+                int i = 0;
                 foreach (PlayList playlist in Playlists)
-                {
-                    Console.WriteLine(playlist.Name);
+                {i++;
+                    Console.WriteLine(i+" "+playlist.Name);
 
                 }
 

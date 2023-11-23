@@ -49,7 +49,11 @@ namespace Spotify.Entities
                 Console.WriteLine("Error!");
             }
         }
-
+        public void AddSongToPlaylist(Song song,PlayList playlist1)
+        {
+            if (PlayList != null) { playlist1.AddSong(song); } else { Console.WriteLine("Error!"); }
+           
+        }
         public void ShowAllThePlaylists()
         {
             if (_playList != null)
@@ -64,7 +68,19 @@ namespace Spotify.Entities
                 Console.WriteLine("No playlists for this User!");
             }
         }
+         public void ShowMeOnePlaylist(PlayList playlist)
+        {
+            int i = 0;
+            List<Song> songs = playlist.Songs;
+            foreach (Song s in songs)
+            {
+                i++;
+                Console.WriteLine(i + "" + s.Title);
+            }
 
+
+
+        }
         public List <PlayList> PlayLists { get { return _playList; } set { _playList = value; } }
         public List<Song> FavSongs { get { return _favSongs; } set { _favSongs = value; } }
 
@@ -73,5 +89,6 @@ namespace Spotify.Entities
         public bool IsArtist { get => _isArtist; set => _isArtist = value; }
         public string UserName { get => _userName; set => _userName = value; }
         public string Password { get => _password; set => _password = value; }
+        internal List<PlayList> PlayList { get => _playList; set => _playList = value; }
     }
 }

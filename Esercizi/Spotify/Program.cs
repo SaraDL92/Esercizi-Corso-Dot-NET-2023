@@ -9,10 +9,12 @@ using System.Xml.Linq;
 namespace Spotify
 {
     internal class Program
-    {private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
+    {
+        private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
         static void Main(string[] args)
-        { Database database = new Database(); User utente1 = new("", "", "");
-          MediaComponent mediaplayer=new MediaComponent();
+        {
+            Database database = new Database(); User utente1 = new("", "", "");
+            MediaComponent mediaplayer = new MediaComponent();
             Artist MichaelJackson = new("Michael", "Jackson", "29-08-1958", "Michael Jackson", "The gratest star of all times!");
             Artist MachineGunKelly = new("Colson", "Baker", "22-04-1990", "Machine Gun Kelly", "Colson Baker (born April 22, 1990), known professionally as Machine Gun Kelly (MGK), is an American rapper, singer, songwriter, musician, and actor. ");
             Artist Yungblud = new("Dominic", "Richard", "05-08-1997", "Yungblud", "Yungblud, pseudonym of Dominic Richard Harrison, is a British singer-songwriter.");
@@ -23,9 +25,17 @@ namespace Spotify
             Song fakelove = new("Punk", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
             Song iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);
             User user2 = new("Selene", "Rubius", "12-05-1990");
-            PlayList playlist1 = new(user2,"heartstone");
-           
+            PlayList playlist1 = new(user2, "heartstone");
+            Dangerous.TrackList.Add(healtheworld);
+            Century.TrackList.Add(iloveyou);
+            Mainstream.TrackList.Add(fakelove);
+            MichaelJackson.Albums.Add(Dangerous);
+            MachineGunKelly.Albums.Add(Mainstream);
+            Yungblud.Albums.Add(Century);
+
             database.Playlists.Add(playlist1);
+            playlist1.Songs.Add(healtheworld);
+            playlist1.Songs.Add(fakelove);
 
 
 
@@ -45,10 +55,10 @@ namespace Spotify
 
 
             static Artist ConvertToArtist(User user, string artistname, string bio)
-                        {
+            {
 
-                            return new Artist(user.Name, user.Surname, user.Birthday, artistname, "NuovaInfoArtista");
-                        }
+                return new Artist(user.Name, user.Surname, user.Birthday, artistname, "NuovaInfoArtista");
+            }
 
 
 
@@ -67,7 +77,7 @@ namespace Spotify
             Console.ForegroundColor = originalColor;
             bool artist = false;
             bool islogged = false;
-           
+
 
             while (islogged == false)
             {
@@ -158,111 +168,230 @@ namespace Spotify
 
                 }
             }
-
-            while (true)
+            if (artist)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Enter M for Music and P for Profile:");
+                // Artist-specific logic
                 Console.ForegroundColor = originalColor;
-                string inputText = Console.ReadLine();
-                if (inputText == "m" || inputText == "M")
-                {
-                    if (artist == true) {
-                        Console.WriteLine("So you are an artist, before to go on give me your artist name:");
-                        string artistname = Console.ReadLine();
-                        Console.WriteLine("And now enter your bio");
-                        string bio = Console.ReadLine();
+                Console.WriteLine("So you are an artist, before going on, give me your artist name:");
+                string artistname = Console.ReadLine();
+                Console.WriteLine("And now enter your bio");
+                string bio = Console.ReadLine();
 
-                        convertedArtist.ArtistName
-                            = artistname;
-                        convertedArtist.Bio = bio;
-                        
-                        Console.ForegroundColor = ConsoleColor.Magenta; Console.WriteLine("Enter A for Artists, AL for Albums,S for Songs, PL for Playlists,C for Create (avaiable only because you are an artist):");
+                // Additional artist logic
+                convertedArtist.ArtistName = artistname;
+                convertedArtist.Bio = bio;
+
+                while (true)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Enter M for Music and P for Profile:");
+                    Console.ForegroundColor = originalColor;
+                    string inputText = Console.ReadLine();
+
+                    if (inputText == "m" || inputText == "M")
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.Magenta; Console.WriteLine("Enter A for Artists, AL for Albums, S for Songs, PL for Playlists, C for Create (available only because you are an artist):");
 
                         string input = Console.ReadLine();
-                        if (input == "a" || input == "A")
+                        if (input.Equals("a", StringComparison.OrdinalIgnoreCase))
                         {
                             Console.ForegroundColor = originalColor;
                             Console.WriteLine("This is the list of artists:");
                             database.ShowMeArtists();
-                        }
-                        if (input == "al" || input == "AL")
-                        {
-                            Console.ForegroundColor = originalColor;
-                            Console.WriteLine("This is the list of albums:");
-                            database.ShowMeAlbums();
-                        }
-                        if ((input == "S" || input == "s"))
-                        {
-                            Console.ForegroundColor = originalColor;
-                            Console.WriteLine("This is the list of songs:");
-                            database.ShowMeSongs();
-                            Console.WriteLine("If you want to play a song enter the number linked on it?");
+                            Console.WriteLine("If you want to select an artist, enter the number linked to it:");
+
                             string inputNumber = Console.ReadLine();
 
-                            // Verifica se l'input è un numero valido
-                            if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Songs.Count)
+                            if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Artists.Count)
                             {
-                                
-                               
-                                mediaplayer.Play(database.Songs, number);
-                                
+                                Artist selectedArtist = database.Artists[number - 1];
+                                database.ShowMeOneArtist(selectedArtist);
+                                Console.WriteLine("If you want to select an album, enter the number linked to it:");
+
+                                string inputNumber1 = Console.ReadLine();
+
+                                if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= selectedArtist.Albums.Count)
+                                {
+                                    Console.WriteLine("If you want to play the album, enter PLAY:");
+                                    string inn = Console.ReadLine();
+
+                                    if (inn.Equals("play", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                                        mediaplayer.Play(selectedArtist.Albums[number1 - 1].TrackList, 0);
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                                }
                             }
                             else
                             {
                                 Console.WriteLine("Invalid input. Please enter a valid number.");
                             }
-                           
-                            
-
-
                         }
-                        if (input == "PL" || input == "pl")
+
+                        // Additional artist logic
+                        else if (input == "al" || input == "AL")
+                        {
+                            Console.ForegroundColor = originalColor;
+                            Console.WriteLine("This is the list of albums:");
+                            database.ShowMeAlbums();
+                            Console.WriteLine("If you want to select an album, enter the number linked to it:");
+
+                            string inputNumber = Console.ReadLine();
+
+                            if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Albums.Count)
+                            {
+                                database.ShowMeOneAlbum(database.Albums[number - 1]);
+                                Console.WriteLine("If you want to play a song, select the number linked to it:");
+                                string inputNumber1 = Console.ReadLine();
+
+                                if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Albums[number - 1].TrackList.Count)
+                                {
+                                    Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                                    mediaplayer.Play(database.Albums[number - 1].TrackList, number1 - 1);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Please enter a valid number.");
+                            }
+                        }
+                        // Additional artist logic
+                        else if ((input == "S" || input == "s"))
+                        {
+                            Console.ForegroundColor = originalColor;
+                            Console.WriteLine("This is the list of songs:");
+                            database.ShowMeSongs();
+                            Console.WriteLine("If you want to play a song, enter the number linked to it?");
+                            string inputNumber = Console.ReadLine();
+
+                            if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Songs.Count)
+                            {
+                                Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                                mediaplayer.Play(database.Songs, number-1);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Please enter a valid number.");
+                            }
+                        }
+                        // Additional artist logic
+                        else if (input == "PL" || input == "pl")
                         {
                             Console.ForegroundColor = originalColor;
                             Console.WriteLine("This is the general list of playlists:");
                             database.ShowMePlaylists();
+                            Console.WriteLine("If you want to select a playlist, enter the number linked to it, if you want to go in your personal playlist enter a letter:");
+
+                            string inputNumber = Console.ReadLine();
+
+                            if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Playlists.Count)
+                            {
+                                database.ShowMeOnePlaylist(database.Playlists[number - 1]);
+                                Console.WriteLine("If you want to play a song, select the number linked to it:");
+                                string inputNumber1 = Console.ReadLine();
+
+                                if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Playlists[number - 1].Songs.Count)
+                                {
+                                    Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                                    mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Please enter a valid number.");
+                            }
+                     Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("If you want to create your playlist, enter PP. If you want to see only your personal playlists, enter MY?");
+                        Console.ForegroundColor = originalColor;
+                        input = Console.ReadLine();
+
+                        if (input == "pp" || input == "PP")
+                        {
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("If you want to create your playlist enter PP, if you want to see only your personal playlists enter MY?");
+                            Console.WriteLine("Enter the NAME you want for your playlist!");
                             Console.ForegroundColor = originalColor;
-                            input = Console.ReadLine();
+                            string inputt = Console.ReadLine();
+                            PlayList playlist = new PlayList(utente1, inputt);
+                            database.AddPlaylistsToDB(playlist);
+                            if (playlist != null) { utente1.PlayLists.Add(playlist); } else { Console.WriteLine("No playlist created."); }
 
-                            if (input == "pp" || input == "PP")
-                            {
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("Enter the NAME you want for your playlist!");
-                                Console.ForegroundColor = originalColor;
-                                string inputt = Console.ReadLine();
-                                PlayList playlist = new(utente1, inputt);
-                                database.AddPlaylistsToDB(playlist);
-                                if(playlist != null) {utente1.PlayLists.Add(playlist); } else { Console.WriteLine("nessuna playlist");}
-                                
-
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($"Your playlist named {inputt} is now in your playlists! ");
-
-                                Console.ForegroundColor = originalColor;
-                                utente1.ShowAllThePlaylists();
-                            }
-                            if (input == "MY" || input == "my")
-                            {
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Console.WriteLine("This is your list of playlists:");
-                                Console.ForegroundColor = originalColor;
-                                utente1.ShowAllThePlaylists();
-                            }
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"Your playlist named {inputt} is now in your playlists! ");
+                            Console.ForegroundColor = originalColor;
+                            utente1.ShowAllThePlaylists();
                         }
-                        if (input == "C" || input == "c")
+                        // Additional artist logic
+                        else if (input == "MY" || input == "my")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("This is your list of playlists:");
+                            Console.ForegroundColor = originalColor;
+                            utente1.ShowAllThePlaylists();
+                            Console.WriteLine("If you want to select a playlist, enter the number linked to it:");
+
+                            string inputNumbers = Console.ReadLine();
+
+                            if (int.TryParse(inputNumbers, out int numbers) && numbers > 0 && numbers <= utente1.PlayLists.Count)
+                            {
+                                utente1.ShowMeOnePlaylist(utente1.PlayLists[numbers - 1]);
+                                Console.WriteLine("If you want to play a song, select the number linked to it or if you want to add a song, enter ADD:");
+                                string inputNumber1 = Console.ReadLine();
+
+                                if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= utente1.PlayList[number1 - 1].Songs.Count)
+                                {
+                                    Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                                    mediaplayer.Play(utente1.PlayList[numbers - 1].Songs, number1 - 1);
+                                }
+                                if (inputNumber1 == "add" || inputNumber1 == "ADD")
+                                {
+                                    database.ShowMeSongs();
+                                    Console.WriteLine("Enter the number you want to add to your playlist!");
+                                    if (int.TryParse(Console.ReadLine(), out int songIndex) && songIndex > 0 && songIndex <= database.Songs.Count)
+                                    {
+                                        utente1.AddSongToPlaylist(database.Songs[songIndex - 1], utente1.PlayLists[numbers - 1]);
+                                        Console.WriteLine("Song added to the playlist!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid input. Please enter a valid number for the song.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input. Please enter a valid number.");
+                            }
+                        }    }
+                        // Additional artist logic
+                       
+                        // Additional artist logic
+                        else if (input == "C" || input == "c")
                         {
                             Console.WriteLine("Create song");
-                          
-                           
-                            Console.WriteLine("If you want to create a Song enter SONG, if you want to create an Album enter ALBUM,if you want to see your CREATED SONGS enter SEE");
-                            string input10=Console.ReadLine();
-                            if (input10 == "song" || input10 == "SONG") {
+                            Console.WriteLine("If you want to create a Song, enter SONG. If you want to see your CREATED SONGS, enter SEE");
+                            string input10 = Console.ReadLine();
 
+                            if (input10 == "song" || input10 == "SONG")
+                            {
                                 Console.WriteLine("Enter the genre:");
-                                string genre=Console.ReadLine();
+                                string genre = Console.ReadLine();
                                 Console.WriteLine("Enter the title:");
                                 string title = Console.ReadLine();
                                 Console.WriteLine("Enter the duration:");
@@ -270,60 +399,70 @@ namespace Spotify
                                 Console.WriteLine("Enter the release date:");
                                 string releaseDate = Console.ReadLine();
 
-                                convertedArtist.CreateNewSong(genre, title,duration, releaseDate);
-                                Console.WriteLine($"{title}was created with success! ");
-                               
-
-                            }if(input10=="see"||input10=="SEE")
+                                convertedArtist.CreateNewSong(genre, title, duration, releaseDate);
+                                foreach(Song s in convertedArtist.Songs)
+                                {
+                                    database.Songs.Add(s);
+                                }
+                                Console.WriteLine($"{title} was created successfully! ");
+                            }
+                            else if (input10 == "see" || input10 == "SEE")
                             {
                                 convertedArtist.ShowMeSongList();
                             }
-
-                                
-                            
-
-
-
-
-                           
                         }
                     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    else { Console.ForegroundColor = ConsoleColor.Magenta; Console.WriteLine("Enter A for Artists, AL for Albums, PL for Playlists:"); }
+
+
+
+
+                    if (inputText == "p" || inputText == "P")
+                    {
+                        Console.WriteLine("You are in PROFILE now");
                     }
-
-                
-
+                    else { Console.WriteLine($""); }
 
 
-            
-
-                
-                else { Console.ForegroundColor = ConsoleColor.Magenta; Console.WriteLine("Enter A for Artists, AL for Albums, PL for Playlists:"); } 
-                   
-                   
-                    
-                
-                if (inputText == "p" || inputText == "P")
-                {
-                    Console.WriteLine("You are in PROFILE now");
                 }
-                else { Console.WriteLine($""); }
-                
-                
-                }  
             }
-         
+
         }
 
-          
-            //Console.WriteLine(MichaelJackson);
-            
-            //MichaelJackson.CreateNewSong("Pop", "Heal the World", 110, "01-10-1991", null);
-            //MichaelJackson.CreateNewSong("Pop", "Dangerous", 120, "01-10-1991", null);
-            //MediaComponent mediacomponent = new();
-            
-            //MichaelJackson.ShowMeSongList();
-            //mediacomponent.play(MichaelJackson.Songs[0]);
 
-            
-        }
+        //Console.WriteLine(MichaelJackson);
+
+        //MichaelJackson.CreateNewSong("Pop", "Heal the World", 110, "01-10-1991", null);
+        //MichaelJackson.CreateNewSong("Pop", "Dangerous", 120, "01-10-1991", null);
+        //MediaComponent mediacomponent = new();
+
+        //MichaelJackson.ShowMeSongList();
+        //mediacomponent.play(MichaelJackson.Songs[0]);
+
+
+    }
+}
+
     
