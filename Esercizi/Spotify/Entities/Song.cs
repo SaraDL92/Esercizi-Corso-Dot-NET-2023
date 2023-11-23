@@ -61,6 +61,17 @@ namespace Spotify.Entities
             _artist = artist;
 
         }
+        public Song(string genre, string title, int duration, string releaseDate,  Artist artist)
+        {
+            _genre = genre;
+            _title = title;
+            _duration = duration;
+            _releaseDate = releaseDate;
+           
+
+            _artist = artist;
+
+        }
         public override string ToString()
         {
             return $"Title:{Title}-Artist:{Artist}-Genre:{Genre}-Release Date:{ReleaseDate}-Duration:{Duration}";

@@ -13,7 +13,7 @@ namespace Spotify.Entities
     {
         string _artistName;
         List<Album> _albums;
-        List<Song> _songs;
+        List<Song> _songs=new List<Song>();
         string _bio;
         List <Group> _groups;
 
@@ -23,7 +23,7 @@ namespace Spotify.Entities
             _albums = new List<Album>();
             
             _bio = bio;
-            _groups = new List<Group>();  _songs = new List<Song>();
+            _groups = new List<Group>();  
 
         }
       
@@ -34,9 +34,9 @@ namespace Spotify.Entities
         internal List<Song> Songs { get => _songs; set => _songs = value; }
         internal List<Group> Group1 { get => _groups; set => _groups = value; }
 
-        public void CreateNewSong(string genre, string title, int duration, string releaseDate, Album album)
+        public void CreateNewSong(string genre, string title, int duration, string releaseDate)
         {
-            Song song = new(genre, title, duration, releaseDate, album,this);
+            Song song = new(genre, title, duration, releaseDate, this);
            
             Songs.Add(song);
         }
@@ -79,9 +79,9 @@ namespace Spotify.Entities
             
            
         }
-        
+       
 
-        public override string ToString()
+    public override string ToString()
         {
             return $"The artist {ArtistName} was created! ";
         }

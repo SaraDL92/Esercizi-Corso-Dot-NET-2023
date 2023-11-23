@@ -8,108 +8,120 @@ using System.Threading.Tasks;
 
 namespace Spotify.Entities
 {
-    internal class MediaComponent : IMedia
+    internal class MediaComponent
     {
-        List<Song> _songlist;
-        int _currentIndex;
-        bool _isPlaying = false;
-        bool _isPaused = false;
-        int _currentSecond=0;
+        private List<Song> playlist;
+        private static bool isPlaying = false;
+        private static bool isPaused = false;
+        private static int currentSongIndex = 0;
+        private static int currentSecond = 0;
+        bool isPausedByUser;
 
-        public MediaComponent(List<Song> songlist, int currentIndex,bool ispaying, int currentSecond, bool isPaused)
+        internal List<Song> Playlist { get => playlist; set => playlist = value; }
+
+
+        public static bool IsPlaying1 { get => isPlaying; set => isPlaying = value; }
+        public static bool IsPaused1 { get => isPaused; set => isPaused = value; }
+        public static int CurrentSongIndex { get => currentSongIndex; set => currentSongIndex = value; }
+        public static int CurrentSecond { get => currentSecond; set => currentSecond = value; }
+
+        public MediaComponent()
         {
-            _songlist = songlist;
-            _currentIndex = currentIndex;
-            _isPlaying = ispaying;
-            _currentSecond = currentSecond;
-            _isPaused = isPaused;
-        }
-        public MediaComponent() { }
-        public int CurrentIndex { get => _currentIndex; set => _currentIndex = value; }
-        internal List<Song> Songlist { get => _songlist; set => _songlist = value; }
-        public bool IsPlaying { get => _isPlaying; set => _isPlaying = value; }
-        public int CurrentSecond { get => _currentSecond; set => _currentSecond = value; }
-        public bool IsPaused { get => _isPaused; set => _isPaused = value; }
-
-        public void next()
-        {
-            if (Songlist.Count==0)
-            {
-                Console.WriteLine("There aren't disponible songs ");
-
-            }
-            if (CurrentIndex > Songlist.Count-1) 
-            { CurrentIndex = 0; }
-            
-            CurrentIndex++;
-
-            Console.WriteLine("Playing the next song" + Songlist[CurrentIndex]);
 
         }
-        public void play(Song song)
-        {if (IsPaused)
+        private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
+
+        public void Play(List<Song> playlist, int startIndex)
+        {
+            if (startIndex >= 0 && startIndex < playlist.Count)
             {
-                IsPaused = false;
-                IsPlaying = true;
-                Console.WriteLine($"Playing the song {song.Title} from the second {CurrentSecond} you left off! ");
-                for (int i = CurrentSecond; i < song.Duration; i++)
+                isPlaying = true;
+                isPaused = false;
+                isPausedByUser = false; // Nuova variabile per gestire la pausa causata dall'utente
+                currentSongIndex = startIndex;
+
+                Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+
+                while (isPlaying && currentSecond < playlist[currentSongIndex].Duration)
                 {
-                    CurrentSecond = i;
-                    Thread.Sleep(1000);
-                    Console.WriteLine($"Seconds scrolling bar: {CurrentSecond} s");
-                    
+                    if (!isPaused)
+                    {
+                        currentSecond++;
+                        Console.WriteLine($"Seconds scrolling bar: {currentSecond} s");
+                    }
+
+                    WaitForSecond();
+
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey(false);
+
+                        switch (key.KeyChar)
+                        {
+                            case 'q':
+                                Console.WriteLine("Hai premuto 'q'. Uscita dal ciclo.");
+                                isPlaying = false;
+                                break;
+                            case 'n':
+                                Console.WriteLine("Hai premuto 'n'. Passando alla canzone successiva.");
+
+                                currentSongIndex++;
+                                if (currentSongIndex >= playlist.Count)
+                                {
+                                    currentSongIndex = 0;
+                                }
+
+                                Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                break;
+                            case 'b':
+                                Console.WriteLine("Hai premuto 'b'. Passando alla canzone precedente.");
+
+                                currentSongIndex--;
+                                if (currentSongIndex < 0)
+                                {
+                                    currentSongIndex = playlist.Count - 1;
+                                }
+
+                                Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                break;
+                            case 'p':
+                                Console.WriteLine("Hai premuto 'p'. Mettendo in pausa il ciclo.");
+                                isPaused = true;
+                                isPausedByUser = true; // Segnala che la pausa è stata causata dall'utente
+                                break;
+                            case 't':
+                                Console.WriteLine("Hai premuto 't'. Riprendendo il ciclo.");
+
+                                isPaused = false;
+                                if (isPausedByUser)
+                                {
+                                    // Se la pausa è stata causata dall'utente, riprendiamo da dove eravamo rimasti
+                                    Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                    isPausedByUser = false; // Ripristina il flag
+                                }
+                                break;
+                        }
+                    }
+
+                    pauseEvent.Wait(); // Attendiamo l'evento di pausa
                 }
+
+                isPlaying = false;
+                isPaused = false;
+                isPausedByUser = false;
             }
-            else { IsPlaying = true;
-                  
-            Console.WriteLine($"Playing the song {song.Title}");
-            for (int i = 0; i < song.Duration; i++) {
-                CurrentSecond = i;
-                 Thread.Sleep(1000);
-                Console.WriteLine($"Seconds scrolling bar: {CurrentSecond} s"); } }
-               
-
-
-
-
-
-
-
-        }
-
-        public void pause(Song song)
-        {
-            if (IsPlaying){
-                IsPlaying = false;
-                IsPaused = true;
-                Console.WriteLine($"Song stopped at the second {CurrentSecond}");
-            }
-            else { Console.WriteLine("No songs playing"); }
-            
-        }
-
-        
-        public void play(Album album)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void play(PlayList playlist)
-        {
-            for (int i = 0; i< playlist.Songs.Count; i++)
+            else
             {
-                Console.WriteLine(playlist.Songs[i]);
+                Console.WriteLine("Invalid start index. Please provide a valid index.");
             }
         }
 
-        public void previous(Song song)
+
+        public static void WaitForSecond()
         {
-            throw new NotImplementedException();
+            Thread.Sleep(1000); // Implementa la tua logica per aspettare un secondo
         }
 
-        public void stop(Song song)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

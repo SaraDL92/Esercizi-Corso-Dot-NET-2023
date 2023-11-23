@@ -9,7 +9,7 @@ namespace Spotify.Entities
 {
     internal class User:Person
     {
-        List <PlayList> _playList;
+        List <PlayList> _playList=new List<PlayList>();
         string _userName;
         string _password;
         List<Song> _favSongs;
@@ -17,18 +17,52 @@ namespace Spotify.Entities
         List<Radio> _favRadio;
         Setting setting;
         
+        
 
-        public User(string Name, string Surname, string Birthday,List<PlayList> playlist, string username, string password, List<Song> favsong, List<Radio> favradio, bool isArtist):base(Name,Surname,Birthday)
+        public User(string Name, string Surname, string Birthday,string username, string password,bool isArtist):base(Name,Surname,Birthday)
         {
 
-            _playList = playlist;
+        
+             
+            
             _userName = username;
             _password = password;
-            _favSongs = favsong;
-           _isArtist = isArtist;
-            _favRadio = favradio;
+            _favSongs = new List<Song> ();
+            _isArtist = isArtist;
+            _favRadio = new List<Radio> ();
            
 
+        }
+        public User(string Name, string Surname, string Birthday):base(Name,Surname,Birthday) { }
+
+        public void AddPlaylist(PlayList playlist)
+        {
+           
+
+            if (_playList != null)
+            {
+                _playList.Add(playlist);
+                
+            }
+            else
+            {
+                Console.WriteLine("Error!");
+            }
+        }
+
+        public void ShowAllThePlaylists()
+        {
+            if (_playList != null)
+            {
+                foreach (PlayList play in _playList)
+                {
+                    Console.WriteLine(play.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No playlists for this User!");
+            }
         }
 
         public List <PlayList> PlayLists { get { return _playList; } set { _playList = value; } }

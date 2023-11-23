@@ -13,6 +13,7 @@ namespace Spotify.Entities
         List <Artist> _artists;
         List<Song> _songs;
         List<User> _users;
+        List<PlayList> _playlists;
         bool islogged=false;
 
         public Database()
@@ -21,6 +22,7 @@ namespace Spotify.Entities
             _artists= new List<Artist>();   
             _songs= new List<Song>();
             _albums= new List<Album>();
+            _playlists= new List<PlayList>();
         }
 
         internal List<Album> Albums { get => _albums; set => _albums = value; }
@@ -28,12 +30,12 @@ namespace Spotify.Entities
         internal List<Song> Songs { get => _songs; set => _songs = value; }
         internal List<User> Users { get => _users; set => _users = value; }
         public bool Islogged { get => islogged; set => islogged = value; }
+        internal List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
 
-      
-        public void Register(string Name,string Surname,string Birthday,List <PlayList> Playlist,string Username,string Password,List<Song>Favsongs,bool isArtist,List <Radio>FavRadio)
+        public void Register(User utente)
         {
-            User user = new(Name,Surname,Birthday,Playlist,Username,Password,Favsongs,FavRadio,isArtist);
-            Users.Add(user);
+            
+            Users.Add(utente);
             
         }
        public void ShowMeUsers() {
@@ -67,14 +69,16 @@ namespace Spotify.Entities
 
             }
             else { Console.WriteLine("No list of artists"); }
-        }
+        } 
         public void ShowMeSongs()
-        {
+        {int i = 0;
             if (Songs != null)
             {
                 foreach (Song song in Songs)
                 {
-                    Console.WriteLine(song.Title);
+                   
+                    i++;
+                    Console.WriteLine(i+"-"+song.Title);
 
                 }
 
@@ -82,10 +86,33 @@ namespace Spotify.Entities
             }
             else { Console.WriteLine("No list of artists"); }
         }
+
+        public void ShowMePlaylists()
+        {
+            if (Playlists != null)
+            {
+                foreach (PlayList playlist in Playlists)
+                {
+                    Console.WriteLine(playlist.Name);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of artists"); }
+        }
+
+
         public void AddArtistToDB(Artist artist)
         {
-            if (Artists != null) { Artists.Add(artist);}
+            if (Artists != null) { Artists.Add(artist); }
             else { Console.WriteLine("No one in list"); }
+
+        }
+        public void AddPlaylistsToDB(PlayList playlist)
+        {
+            if (Playlists != null) { Playlists.Add(playlist);}
+            else{ Console.WriteLine("No one playlist in Spotify!"); }
             
         }
         public void AddAlbumToDB(Album album)

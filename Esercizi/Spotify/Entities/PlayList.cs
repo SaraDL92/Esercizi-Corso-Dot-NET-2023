@@ -13,10 +13,10 @@ namespace Spotify.Entities
         List<Song> _songs;
         string _name;
 
-        public PlayList(User user, List<Song> songs, string name)
+        public PlayList(User user,  string name)
         {
             _user = user;
-            _songs = songs;
+            _songs = new List<Song>();
             _name = name;
         }
 
@@ -36,10 +36,7 @@ namespace Spotify.Entities
             _songs.Remove(song);
         }
 
-        public void CreatePlayList()
-        {
-            List<PlayList> playlist = new();
-        }
+        
 
 
 
