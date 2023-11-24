@@ -312,24 +312,24 @@ namespace Spotify
 
                     else if (input == "PL" || input == "pl")
                     {
-                         Console.ForegroundColor = ConsoleColor.Green; 
-                        Console.WriteLine("This is the general list of playlists:");Console.ForegroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("This is the general list of playlists:"); Console.ForegroundColor = ConsoleColor.White;
                         database.ShowMePlaylists();
                         Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("If you want to select a playlist, enter the number linked to it, if you want to go in your personal playlist enter a letter:");
- Console.ForegroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.White;
                         string inputNumber = Console.ReadLine();
 
                         if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Playlists.Count)
                         {
                             database.ShowMeOnePlaylist(database.Playlists[number - 1]);
-                            Console.ForegroundColor = ConsoleColor.Green; 
-                            Console.WriteLine("If you want to play a song, select the number linked to it:");Console.ForegroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("If you want to play a song, select the number linked to it:"); Console.ForegroundColor = ConsoleColor.White;
                             string inputNumber1 = Console.ReadLine();
 
                             if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Playlists[number - 1].Songs.Count)
                             {
-                                Console.ForegroundColor = ConsoleColor.Green; 
-                                Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");Console.ForegroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next"); Console.ForegroundColor = ConsoleColor.White;
                                 mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1);
                             }
                             else
@@ -340,7 +340,7 @@ namespace Spotify
                         }
                         else
                         {
-                           
+
                             Console.WriteLine(""); Console.ForegroundColor = ConsoleColor.White;
                         }
                         Console.ForegroundColor = ConsoleColor.Magenta;
@@ -371,9 +371,9 @@ namespace Spotify
                             Console.WriteLine("This is your list of playlists:");
                             Console.ForegroundColor = originalColor;
                             utente1.ShowAllThePlaylists();
-                            Console.ForegroundColor = ConsoleColor.Green; 
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("If you want to select a playlist, enter the number linked to it:");
-Console.ForegroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.White;
                             string inputNumbers = Console.ReadLine();
 
                             if (int.TryParse(inputNumbers, out int numbers) && numbers > 0 && numbers <= utente1.PlayLists.Count)
@@ -391,8 +391,8 @@ Console.ForegroundColor = ConsoleColor.White;
                                 }
                                 if (inputNumber1 == "add" || inputNumber1 == "ADD")
                                 {
-                                    database.ShowMeSongs(); Console.ForegroundColor = ConsoleColor.Green; 
-                                    Console.WriteLine("Enter the number you want to add to your playlist!");Console.ForegroundColor = ConsoleColor.White;
+                                    database.ShowMeSongs(); Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("Enter the number you want to add to your playlist!"); Console.ForegroundColor = ConsoleColor.White;
                                     if (int.TryParse(Console.ReadLine(), out int songIndex) && songIndex > 0 && songIndex <= database.Songs.Count)
                                     {
                                         utente1.AddSongToPlaylist(database.Songs[songIndex - 1], utente1.PlayLists[numbers - 1]);
@@ -401,8 +401,8 @@ Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     else
                                     {
-                                        Console.ForegroundColor = ConsoleColor.Green; 
-                                        Console.WriteLine("Invalid input. Please enter a valid number for the song.");Console.ForegroundColor = ConsoleColor.White;
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("Invalid input. Please enter a valid number for the song."); Console.ForegroundColor = ConsoleColor.White;
                                     }
                                 }
                                 else
@@ -413,8 +413,8 @@ Console.ForegroundColor = ConsoleColor.White;
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Green; 
-                                Console.WriteLine("Invalid input. Please enter a valid number.");Console.ForegroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Invalid input. Please enter a valid number."); Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                     }

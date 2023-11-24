@@ -60,9 +60,11 @@ namespace Spotify.Entities
         {
             if (_playList != null)
             {
+                int i = 0;
                 foreach (PlayList play in _playList)
                 {
-                    Console.WriteLine(play.Name);
+                    i++;
+                    Console.WriteLine(i+"-"+play.Name);
                 }
             }
             else
