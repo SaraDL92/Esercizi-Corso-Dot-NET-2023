@@ -15,7 +15,9 @@ namespace Spotify.Entities
         List<Song> _favSongs;
         bool _isArtist;
         List<Radio> _favRadio;
+        
         Setting setting;
+        bool isPremium = false;
         
         
 
@@ -90,5 +92,7 @@ namespace Spotify.Entities
         public string UserName { get => _userName; set => _userName = value; }
         public string Password { get => _password; set => _password = value; }
         internal List<PlayList> PlayList { get => _playList; set => _playList = value; }
+        internal Setting Setting { get => setting; set => setting = value; }
+        public bool IsPremium { get => isPremium; set => isPremium = value; }
     }
 }

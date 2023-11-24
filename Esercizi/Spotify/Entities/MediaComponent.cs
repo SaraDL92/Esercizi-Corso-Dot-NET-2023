@@ -37,7 +37,7 @@ namespace Spotify.Entities
             {
                 isPlaying = true;
                 isPaused = false;
-                isPausedByUser = false; // Nuova variabile per gestire la pausa causata dall'utente
+                isPausedByUser = false; 
                 currentSongIndex = startIndex;
 
                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
@@ -61,11 +61,14 @@ namespace Spotify.Entities
                         switch (key.KeyChar)
                         {
                             case 'q':
-                                Console.WriteLine("Hai premuto 'q'. Uscita dal ciclo.");
+                            case 'Q':
+                                Console.WriteLine("You pressed Q. SONG STOP!");
                                 isPlaying = false;
+                                currentSecond = 0;
                                 break;
                             case 'n':
-                                Console.WriteLine("Hai premuto 'n'. Passando alla canzone successiva.");
+                            case 'N':
+                                Console.WriteLine("You pressed N. NEXT SONG!");
                                 currentSecond = 0;
                                 currentSongIndex++;
                                 if (currentSongIndex >= playlist.Count)
@@ -76,7 +79,8 @@ namespace Spotify.Entities
                                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                                 break;
                             case 'b':
-                                Console.WriteLine("Hai premuto 'b'. Passando alla canzone precedente.");
+                            case 'B':
+                                Console.WriteLine("You pressed B. PREVIOUS SONG!");
                                 currentSecond = 0;
                                 currentSongIndex--;
                                 if (currentSongIndex < 0)
@@ -87,25 +91,27 @@ namespace Spotify.Entities
                                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                                 break;
                             case 'p':
-                                Console.WriteLine("Hai premuto 'p'. Mettendo in pausa il ciclo.");
+                            case 'P':
+                                Console.WriteLine("You pressed P. PAUSED SONG!");
                                 isPaused = true;
-                                isPausedByUser = true; // Segnala che la pausa è stata causata dall'utente
+                                isPausedByUser = true;
                                 break;
                             case 't':
-                                Console.WriteLine("Hai premuto 't'. Riprendendo il ciclo.");
+                            case 'T':
+                                Console.WriteLine("You pressed T. CONTINUE SONG!");
 
                                 isPaused = false;
                                 if (isPausedByUser)
                                 {
-                                    // Se la pausa è stata causata dall'utente, riprendiamo da dove eravamo rimasti
+                                   
                                     Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
-                                    isPausedByUser = false; // Ripristina il flag
+                                    isPausedByUser = false; 
                                 }
                                 break;
                         }
                     }
 
-                    pauseEvent.Wait(); // Attendiamo l'evento di pausa
+                    pauseEvent.Wait(); 
                 }
 
                 isPlaying = false;
@@ -121,7 +127,7 @@ namespace Spotify.Entities
 
         public static void WaitForSecond()
         {
-            Thread.Sleep(1000); // Implementa la tua logica per aspettare un secondo
+            Thread.Sleep(1000); 
         }
 
 
