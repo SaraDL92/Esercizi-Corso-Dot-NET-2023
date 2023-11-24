@@ -25,7 +25,7 @@ namespace SpotifyClone
             bool artist = false;
             bool islogged = false;
 
-            //REGISTER AND LOGIN
+           
             while (utente1.IsLogged==false)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
