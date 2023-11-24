@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spotify.Entities
 {
-    internal class MediaComponent
+    internal class MediaComponent:IMedia
     {
         private List<Song> playlist;
         private static bool isPlaying = false;
@@ -46,8 +46,8 @@ namespace Spotify.Entities
                 {
                     if (!isPaused)
                     {
-                        currentSecond++;
-                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                        currentSecond++; Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next"); Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title} - " +
                             $"Seconds scrolling bar: {currentSecond} s");
                     }
@@ -62,13 +62,13 @@ namespace Spotify.Entities
                         {
                             case 'q':
                             case 'Q':
-                                Console.WriteLine("You pressed Q. SONG STOP!");
+                                Console.ForegroundColor = ConsoleColor.Green;  Console.WriteLine("You pressed Q. SONG STOP!");Console.ForegroundColor = ConsoleColor.White;
                                 isPlaying = false;
                                 currentSecond = 0;
                                 break;
                             case 'n':
                             case 'N':
-                                Console.WriteLine("You pressed N. NEXT SONG!");
+                                Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed N. NEXT SONG!"); Console.ForegroundColor = ConsoleColor.White;
                                 currentSecond = 0;
                                 currentSongIndex++;
                                 if (currentSongIndex >= playlist.Count)
@@ -80,7 +80,7 @@ namespace Spotify.Entities
                                 break;
                             case 'b':
                             case 'B':
-                                Console.WriteLine("You pressed B. PREVIOUS SONG!");
+                                Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed B. PREVIOUS SONG!"); Console.ForegroundColor = ConsoleColor.White;
                                 currentSecond = 0;
                                 currentSongIndex--;
                                 if (currentSongIndex < 0)
@@ -92,13 +92,13 @@ namespace Spotify.Entities
                                 break;
                             case 'p':
                             case 'P':
-                                Console.WriteLine("You pressed P. PAUSED SONG!");
+                                Console.ForegroundColor = ConsoleColor.Green;  Console.WriteLine("You pressed P. PAUSED SONG!");Console.ForegroundColor = ConsoleColor.White;
                                 isPaused = true;
                                 isPausedByUser = true;
                                 break;
                             case 't':
                             case 'T':
-                                Console.WriteLine("You pressed T. CONTINUE SONG!");
+                                Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed T. CONTINUE SONG!");Console.ForegroundColor = ConsoleColor.White; 
 
                                 isPaused = false;
                                 if (isPausedByUser)

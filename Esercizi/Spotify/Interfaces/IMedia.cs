@@ -9,13 +9,7 @@ namespace Spotify.Interfaces
 {
     internal interface IMedia
     {
-        public void Play(Song song);
-        public void Play(List<Song>song);
-        
-        public void pause(Song song);
-        public void stop(Song song);
-        public void next();
-        public void previous(Song song);
+        public void Play(List<Song> playlist, int startIndex);
 
 
     }
