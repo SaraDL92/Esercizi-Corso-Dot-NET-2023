@@ -17,7 +17,7 @@ namespace SpotifyClone.Services
             utente1 = user;
         }
 
-        public void ManageProfile(User user1, Database database, Artist convertedArtist)
+        public void ManageProfile(User user1, Database database, Artist convertedArtist,Writers writer)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("You are in PROFILE now");
@@ -71,7 +71,7 @@ namespace SpotifyClone.Services
 
 
                     bool esciDaMediaService;
-                    mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService);
+                    mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService,writer);
 
                     if (!esciDaMediaService)
                     {
@@ -79,7 +79,7 @@ namespace SpotifyClone.Services
                         UserProfileManager profileManager = new UserProfileManager(utente1);
 
 
-                        profileManager.ManageProfile(utente1, database, convertedArtist);
+                        profileManager.ManageProfile(utente1, database, convertedArtist,writer);
                     }
                 }
                 else if (mainMenuChoice.ToUpper() == "P")
@@ -87,7 +87,7 @@ namespace SpotifyClone.Services
                     UserProfileManager profileManager = new UserProfileManager(utente1);
 
 
-                    profileManager.ManageProfile(utente1, database, convertedArtist);
+                    profileManager.ManageProfile(utente1, database, convertedArtist,writer);
                 }
 
             }

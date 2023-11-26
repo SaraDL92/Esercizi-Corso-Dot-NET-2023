@@ -10,10 +10,12 @@ namespace SpotifyClone
     internal class Program
     {
         static void Main(string[] args)
-        {Database database1 = new Database();
-         Database database =  database1.InitializeDatabase();
-         MediaComponent mediaplayer = new MediaComponent();
-            WritePlaylistToFile(database.Songs);
+        {
+            Database database1 = new Database();
+            Database database = database1.InitializeDatabase();
+            MediaComponent mediaplayer = new MediaComponent();
+            Writers writers = new Writers();
+            writers.WritePlaylistToFile(database.Songs);
             UserService userService = new UserService(database);
 
             User utente1 = new User("", "", "");
@@ -26,8 +28,8 @@ namespace SpotifyClone
             bool artist = false;
             bool islogged = false;
 
-           
-            while (utente1.IsLogged==false)
+
+            while (utente1.IsLogged == false)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Enter R for Register or L for Login:");
@@ -42,7 +44,7 @@ namespace SpotifyClone
                 {
                     userService.LoginUser(utente1);
                     islogged = true;
-                   utente1.IsLogged = true;
+                    utente1.IsLogged = true;
                 }
                 else
                 {
@@ -50,54 +52,33 @@ namespace SpotifyClone
                     Console.WriteLine("Invalid input. Retry!");
                     Console.ForegroundColor = ConsoleColor.White;
                     islogged = false;
-                    utente1.IsLogged=false;
+                    utente1.IsLogged = false;
                 }
             }
 
             bool esciDaMediaService = false;
 
-           
+
             MediaService mediaService = new MediaService(database, new MediaComponent());
 
-          
-            mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService);
+
+            mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService,writers);
 
             if (!esciDaMediaService)
             {
                 UserProfileManager profileManager = new UserProfileManager(utente1);
 
-              
-                profileManager.ManageProfile(utente1,database,convertedArtist);
-            }
-          
 
-        }
+                profileManager.ManageProfile(utente1, database, convertedArtist, writers);
+            }
+            writers.WriteTopRatedSongsToFile(database.Songs,5);
+                
+
+        } 
 
         static Artist ConvertToArtist(User user, string artistname, string bio)
         {
             return new Artist(user.Name, user.Surname, user.Birthday, artistname, "NuovaInfoArtista");
         }
-        static void WritePlaylistToFile(List<Song> playlist)
-        {
-            string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
-            string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify.csv";
-
-            using (StreamWriter tempWriter = new StreamWriter(tempFilePath))
-            {
-                int i = 0;
-
-                tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
-                foreach (Song a in playlist)
-                {
-                    i = i + 1;
-                    tempWriter.WriteLine($"{a.Id1}, {a.Rating}, {a.Title}, {a.Albums[0].Title}, {a.Artist.ArtistName}, {a.Genre}, {a.Playlists[0].Name}, {a.Playlists[0].Id}");
-                }
-            }
-
-            // Copia il contenuto del file temporaneo nel file principale
-            File.Copy(tempFilePath, filePath, true);
-            File.Delete(tempFilePath);  // Elimina il file temporaneo
-        }
-
     }
 }

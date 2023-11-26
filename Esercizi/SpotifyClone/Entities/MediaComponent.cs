@@ -1,4 +1,5 @@
 ﻿using SpotifyClone.Interfaces;
+using SpotifyClone.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +31,7 @@ namespace SpotifyClone.Entities
 
         private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
 
-        public void Play(List<Song> playlist, int startIndex)
+        public void Play(List<Song> playlist, int startIndex,Writers writer)
         {
             if (startIndex >= 0 && startIndex < playlist.Count)
             {
@@ -41,7 +42,8 @@ namespace SpotifyClone.Entities
 
                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                 if (isPlaying)
-                {
+                {   
+                    writer.WriteTopRatedSongsToFile(playlist, 5);
                     playlist[currentSongIndex].Rating++;
                     Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
                 }
@@ -85,7 +87,7 @@ namespace SpotifyClone.Entities
                                     if (isPlaying)
                                     {
                                         playlist[currentSongIndex].Rating++;
-                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
+                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]); writer.WriteTopRatedSongsToFile(playlist, 5);
                                     }
                                     Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                                 }
@@ -108,7 +110,7 @@ namespace SpotifyClone.Entities
                                     if (isPlaying)
                                     {
                                         playlist[currentSongIndex].Rating++;
-                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
+                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]); writer.WriteTopRatedSongsToFile(playlist, 5);
                                     }
                                     Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                                 }
@@ -156,24 +158,24 @@ namespace SpotifyClone.Entities
 {
     string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
 
-    // Leggi tutte le righe dal file
+   
     string[] lines = File.ReadAllLines(filePath);
 
-    // Cerca la riga corrispondente alla canzone nel file
-    for (int i = 1; i < lines.Length; i++) // Parti da 1 per evitare di leggere l'intestazione
+   
+    for (int i = 1; i < lines.Length; i++) 
     {
         string[] values = lines[i].Split(',');
 
         if (values.Length > 1 && values[0] == song.Id1.ToString())
         {
-            // Sovrascrivi il rating nella riga corrispondente
+           
             values[1] = song.Rating.ToString();
             lines[i] = string.Join(",", values);
             break;
         }
     }
 
-    // Scrivi tutte le righe, inclusa quella aggiornata, nel file
+   
     File.WriteAllLines(filePath, lines);
 }
 

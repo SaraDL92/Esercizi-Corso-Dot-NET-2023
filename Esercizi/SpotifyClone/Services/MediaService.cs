@@ -25,7 +25,7 @@ namespace SpotifyClone.Services
                 mediaplayer = player;
             }
 
-            public void ManageMusic(User user1,Artist artist, Database database, out bool esci)
+            public void ManageMusic(User user1,Artist artist, Database database, out bool esci,Writers writer)
             {
                 esci = false;
 
@@ -46,19 +46,19 @@ namespace SpotifyClone.Services
 
                         if (input.Equals("a", StringComparison.OrdinalIgnoreCase))
                         {
-                            ManageArtists(database);
+                            ManageArtists(database,writer);
                         }
                         else if (input == "al" || input == "AL")
                         {
-                            ManageAlbums();
+                            ManageAlbums(writer);
                         }
                         else if (input.Equals("S", StringComparison.OrdinalIgnoreCase))
                         {
-                            ManageSongs();
+                            ManageSongs(writer);
                         }
                         else if (input == "PL" || input == "pl")
                         {
-                            ManagePlaylists(user1);
+                            ManagePlaylists(user1, writer);
                         }
                         else if (input == "C" || input == "c")
                         {
@@ -69,13 +69,13 @@ namespace SpotifyClone.Services
                     {
                         esci = true; 
                         UserProfileManager profileManager = new UserProfileManager(user1);
-                        profileManager.ManageProfile(user1,database,artist); 
+                        profileManager.ManageProfile(user1,database,artist,writer); 
                     }
                 }
             } 
             
 
-            private void ManageArtists(Database database)
+            private void ManageArtists(Database database,Writers writer)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of artists:");
@@ -109,7 +109,7 @@ namespace SpotifyClone.Services
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                             Console.ForegroundColor = ConsoleColor.White;
-                            mediaplayer.Play(selectedArtist.Albums[number1 - 1].TrackList, 0);
+                            mediaplayer.Play(selectedArtist.Albums[number1 - 1].TrackList, 0, writer);
                         }
                     }
                     else
@@ -128,7 +128,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageAlbums()
+            private void ManageAlbums(Writers writer)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of albums:");
@@ -154,7 +154,7 @@ namespace SpotifyClone.Services
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                         Console.ForegroundColor = ConsoleColor.White;
-                        mediaplayer.Play(database.Albums[number - 1].TrackList, number1 - 1);
+                        mediaplayer.Play(database.Albums[number - 1].TrackList, number1 - 1,writer);
                     }
                     else
                     {
@@ -172,7 +172,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageSongs()
+            private void ManageSongs(Writers writer)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -190,7 +190,7 @@ namespace SpotifyClone.Services
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                     Console.ForegroundColor = ConsoleColor.White;
-                    mediaplayer.Play(database.Songs, number - 1);
+                    mediaplayer.Play(database.Songs, number - 1,writer);
                 }
                 else
                 {
@@ -201,7 +201,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManagePlaylists(User utente1)
+            private void ManagePlaylists(User utente1,Writers writer)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the general list of playlists:");
@@ -227,7 +227,7 @@ namespace SpotifyClone.Services
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                         Console.ForegroundColor = ConsoleColor.White;
-                        mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1);
+                        mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1, writer);
                     }
                     else
                     {
@@ -298,7 +298,7 @@ namespace SpotifyClone.Services
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                             Console.ForegroundColor = ConsoleColor.White;
-                            mediaplayer.Play(utente1.PlayLists[numbers - 1].Songs, number1 - 1);
+                            mediaplayer.Play(utente1.PlayLists[numbers - 1].Songs, number1 - 1,writer);
                         }
 
                         if (inputNumber1 == "add" || inputNumber1 == "ADD")
