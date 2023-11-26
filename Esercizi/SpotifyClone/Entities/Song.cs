@@ -8,6 +8,10 @@ namespace SpotifyClone.Entities
 {
     public class Song
     {
+        private static int personalrating = 0;
+        int rating = personalrating;
+        private static int _nextid = 1;
+        int _id;
         string _genre;
         string _title;
         int _duration;
@@ -15,12 +19,13 @@ namespace SpotifyClone.Entities
         Group _group;
         Artist _artist;
         Album _album;
-        List<Album> _albums;
-        List<Group> _groups;
-        List<Artist> _artists;
+        List<Album> _albums=new List<Album>();
+        List<Group> _groups=new List<Group>();
+        List<Artist> _artists=new List<Artist>();
+        List<PlayList> _playlists=new List<PlayList>();
 
-        public Song(string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, List<Artist> artists)
-        {
+        public Song( string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, List<Artist> artists)
+        {   _id=_nextid++;
             _genre = genre;
             _title = title;
             _duration = duration;
@@ -31,6 +36,7 @@ namespace SpotifyClone.Entities
         }
         public Song(string genre, string title, int duration, string releaseDate, List<Album> albums, Group group, List<Artist> artists)
         {
+            _id = _nextid++;
             _genre = genre;
             _title = title;
             _duration = duration;
@@ -41,6 +47,7 @@ namespace SpotifyClone.Entities
         }
         public Song(string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, Artist artist)
         {
+            _id = _nextid++;
             _genre = genre;
             _title = title;
             _duration = duration;
@@ -52,6 +59,7 @@ namespace SpotifyClone.Entities
         }
         public Song(string genre, string title, int duration, string releaseDate, Album album, Artist artist)
         {
+            _id = _nextid++;
             _genre = genre;
             _title = title;
             _duration = duration;
@@ -63,6 +71,7 @@ namespace SpotifyClone.Entities
         }
         public Song(string genre, string title, int duration, string releaseDate, Artist artist)
         {
+            _id = _nextid++;
             _genre = genre;
             _title = title;
             _duration = duration;
@@ -85,5 +94,10 @@ namespace SpotifyClone.Entities
         internal List<Artist> Artists { get => _artists; set => _artists = value; }
         internal Group Group { get => _group; set => _group = value; }
         internal Artist Artist { get => _artist; set => _artist = value; }
+       
+        public int Id1 { get => _id; set => _id = value; }
+        public List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
+        public int Rating { get => rating; set => rating = value; }
+        public static int Personalrating { get => personalrating; set => personalrating = value; }
     }
 }

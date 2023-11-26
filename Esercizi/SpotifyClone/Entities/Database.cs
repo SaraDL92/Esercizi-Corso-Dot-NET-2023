@@ -174,6 +174,10 @@ namespace SpotifyClone.Entities
             Song healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
             Song fakelove = new("Punk", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
             Song iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);
+            PlayList ottantas = new("90s songs", healtheworld);
+            PlayList punk = new("punk rock time", fakelove);
+            PlayList balladrock = new("Rock in love", iloveyou);
+
             User user2 = new User("Selene", "Rubius", "12-05-1990");
             PlayList playlist1 = new PlayList(user2, "heartstone");
             Dangerous.TrackList.Add(healtheworld);
@@ -182,7 +186,12 @@ namespace SpotifyClone.Entities
             MichaelJackson.Albums.Add(Dangerous);
             MachineGunKelly.Albums.Add(Mainstream);
             Yungblud.Albums.Add(Century);
-
+            healtheworld.Albums.Add(Dangerous);
+            fakelove.Albums.Add(Mainstream);
+            iloveyou.Albums.Add(Century);
+            healtheworld.Playlists.Add(ottantas);
+            fakelove.Playlists.Add(punk);
+            iloveyou.Playlists.Add(balladrock);
             database.Playlists.Add(playlist1);
             playlist1.Songs.Add(healtheworld);
             playlist1.Songs.Add(fakelove);

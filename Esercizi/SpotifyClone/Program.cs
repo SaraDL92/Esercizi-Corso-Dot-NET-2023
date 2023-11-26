@@ -2,6 +2,8 @@
 using SpotifyClone.Services;
 using SpotifyClone.Services.Spotify.Services;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace SpotifyClone
 {
@@ -9,10 +11,9 @@ namespace SpotifyClone
     {
         static void Main(string[] args)
         {Database database1 = new Database();
-            Database database =  database1.InitializeDatabase();
-           
-            MediaComponent mediaplayer = new MediaComponent();
-         
+         Database database =  database1.InitializeDatabase();
+         MediaComponent mediaplayer = new MediaComponent();
+            WritePlaylistToFile(database.Songs);
             UserService userService = new UserService(database);
 
             User utente1 = new User("", "", "");
@@ -68,6 +69,7 @@ namespace SpotifyClone
               
                 profileManager.ManageProfile(utente1,database,convertedArtist);
             }
+          
 
         }
 
@@ -75,5 +77,27 @@ namespace SpotifyClone
         {
             return new Artist(user.Name, user.Surname, user.Birthday, artistname, "NuovaInfoArtista");
         }
+        static void WritePlaylistToFile(List<Song> playlist)
+        {
+            string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
+            string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify.csv";
+
+            using (StreamWriter tempWriter = new StreamWriter(tempFilePath))
+            {
+                int i = 0;
+
+                tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
+                foreach (Song a in playlist)
+                {
+                    i = i + 1;
+                    tempWriter.WriteLine($"{a.Id1}, {a.Rating}, {a.Title}, {a.Albums[0].Title}, {a.Artist.ArtistName}, {a.Genre}, {a.Playlists[0].Name}, {a.Playlists[0].Id}");
+                }
+            }
+
+            // Copia il contenuto del file temporaneo nel file principale
+            File.Copy(tempFilePath, filePath, true);
+            File.Delete(tempFilePath);  // Elimina il file temporaneo
+        }
+
     }
 }

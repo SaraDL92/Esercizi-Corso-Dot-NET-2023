@@ -1,6 +1,7 @@
 ﻿using SpotifyClone.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyClone.Entities
 {
-    public class MediaComponent 
+    public class MediaComponent
     {
         private List<Song> playlist;
         private static bool isPlaying = false;
@@ -26,7 +27,7 @@ namespace SpotifyClone.Entities
         public static int CurrentSongIndex { get => currentSongIndex; set => currentSongIndex = value; }
         public static int CurrentSecond { get => currentSecond; set => currentSecond = value; }
 
-       
+
         private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
 
         public void Play(List<Song> playlist, int startIndex)
@@ -39,16 +40,23 @@ namespace SpotifyClone.Entities
                 currentSongIndex = startIndex;
 
                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                if (isPlaying)
+                {
+                    playlist[currentSongIndex].Rating++;
+                    Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
+                }
 
                 while (isPlaying && currentSecond < playlist[currentSongIndex].Duration)
                 {
                     if (!isPaused)
                     {
+
                         currentSecond++; Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next"); Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title} - " +
                             $"Seconds scrolling bar: {currentSecond} s");
                     }
+
 
                     WaitForSecond();
 
@@ -66,28 +74,50 @@ namespace SpotifyClone.Entities
                                 break;
                             case 'n':
                             case 'N':
-                                Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed N. NEXT SONG!"); Console.ForegroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("You pressed N. NEXT SONG!");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 currentSecond = 0;
-                                currentSongIndex++;
-                                if (currentSongIndex >= playlist.Count)
-                                {
-                                    currentSongIndex = 0;
-                                }
 
-                                Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                if (currentSongIndex < playlist.Count - 1)
+                                {
+                                    currentSongIndex++;
+                                    if (isPlaying)
+                                    {
+                                        playlist[currentSongIndex].Rating++;
+                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
+                                    }
+                                    Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("This is the last song. You cannot press N for the next song.");
+                                }
                                 break;
+
                             case 'b':
                             case 'B':
-                                Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed B. PREVIOUS SONG!"); Console.ForegroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("You pressed B. PREVIOUS SONG!");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 currentSecond = 0;
-                                currentSongIndex--;
-                                if (currentSongIndex < 0)
-                                {
-                                    currentSongIndex = playlist.Count - 1;
-                                }
 
-                                Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                if (currentSongIndex > 0)
+                                {
+                                    currentSongIndex--;
+                                    if (isPlaying)
+                                    {
+                                        playlist[currentSongIndex].Rating++;
+                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
+                                    }
+                                    Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("This is the first song. You cannot press B for the previous song.");
+                                }
                                 break;
+
                             case 'p':
                             case 'P':
                                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed P. PAUSED SONG!"); Console.ForegroundColor = ConsoleColor.White;
@@ -108,9 +138,9 @@ namespace SpotifyClone.Entities
                                 break;
                         }
                     }
-
                     pauseEvent.Wait();
                 }
+
 
                 isPlaying = false;
                 isPaused = false;
@@ -120,7 +150,36 @@ namespace SpotifyClone.Entities
             {
                 Console.WriteLine("Invalid start index. Please provide a valid index.");
             }
+            WriteRatingToFile(playlist[currentSongIndex]);
         }
+      public void WriteRatingToFile(Song song)
+{
+    string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
+
+    // Leggi tutte le righe dal file
+    string[] lines = File.ReadAllLines(filePath);
+
+    // Cerca la riga corrispondente alla canzone nel file
+    for (int i = 1; i < lines.Length; i++) // Parti da 1 per evitare di leggere l'intestazione
+    {
+        string[] values = lines[i].Split(',');
+
+        if (values.Length > 1 && values[0] == song.Id1.ToString())
+        {
+            // Sovrascrivi il rating nella riga corrispondente
+            values[1] = song.Rating.ToString();
+            lines[i] = string.Join(",", values);
+            break;
+        }
+    }
+
+    // Scrivi tutte le righe, inclusa quella aggiornata, nel file
+    File.WriteAllLines(filePath, lines);
+}
+
+       
+       
+
 
 
         public static void WaitForSecond()
@@ -130,6 +189,10 @@ namespace SpotifyClone.Entities
 
 
     }
-
 }
+    
+
+       
+
+
 

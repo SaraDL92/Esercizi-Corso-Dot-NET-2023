@@ -26,6 +26,7 @@ namespace SpotifyClone.Entities
                 _group = group;
                 _liveVersion = liveVersion;
                 _trackList = new List<Song>();
+            
             }
 
             public string Title { get => _title; set => _title = value; }
