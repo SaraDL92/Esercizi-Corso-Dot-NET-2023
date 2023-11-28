@@ -46,15 +46,15 @@ namespace SpotifyClone.Services
 
                         if (input.Equals("a", StringComparison.OrdinalIgnoreCase))
                         {
-                            ManageArtists(database,writer);
+                            ManageArtists(database,writer,user1);
                         }
                         else if (input == "al" || input == "AL")
                         {
-                            ManageAlbums(writer);
+                            ManageAlbums(writer,user1);
                         }
                         else if (input.Equals("S", StringComparison.OrdinalIgnoreCase))
                         {
-                            ManageSongs(writer);
+                            ManageSongs(writer, user1);
                         }
                         else if (input == "PL" || input == "pl")
                         {
@@ -75,7 +75,7 @@ namespace SpotifyClone.Services
             } 
             
 
-            private void ManageArtists(Database database,Writers writer)
+            private void ManageArtists(Database database,Writers writer, User user)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of artists:");
@@ -109,7 +109,7 @@ namespace SpotifyClone.Services
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                             Console.ForegroundColor = ConsoleColor.White;
-                            mediaplayer.Play(selectedArtist.Albums[number1 - 1].TrackList, 0, writer);
+                            mediaplayer.Play(selectedArtist.Albums[number1 - 1].TrackList, 0, writer,user);
                         }
                     }
                     else
@@ -128,7 +128,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageAlbums(Writers writer)
+            private void ManageAlbums(Writers writer,User user)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of albums:");
@@ -142,25 +142,64 @@ namespace SpotifyClone.Services
 
                 if (int.TryParse(inputNumber, out int number) && number > 0 && number <= database.Albums.Count)
                 {
-                   database.ShowMeOneAlbum(database.Albums[number - 1]);
+                    database.ShowMeOneAlbum(database.Albums[number - 1]);
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("If you want to play a song, select the number linked to it, for esc enter a letter:");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    string inputNumber1 = Console.ReadLine();
-
-                    if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Albums[number - 1].TrackList.Count)
+                    if (user.IsFree && user.SessionDuration.TotalSeconds > 360000)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("You are a free user and you have reached the limit of 100 hours of listening, you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
                         Console.ForegroundColor = ConsoleColor.White;
-                        mediaplayer.Play(database.Albums[number - 1].TrackList, number1 - 1,writer);
+                        string input = Console.ReadLine();
+                        if (input == "play" || input == "PLAY")
+                        {
+                            Random random = new Random();
+
+
+                            int numeroCasuale = random.Next(0, database.Albums[number-1].TrackList.Count);
+
+                            mediaplayer.Play(database.Albums[number - 1].TrackList, numeroCasuale, writer, user);
+
+                        }
+
+                    }
+                    else if (user.IsPremium && user.SessionDuration.TotalSeconds > 3600000)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("You are a premium user and you have reached the limit of 1000 hours of listening,  you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        string input = Console.ReadLine();
+                        if (input == "play" || input == "PLAY")
+                        {
+                            Random random = new Random();
+
+
+                            int numeroCasuale = random.Next(0, database.Albums[number - 1].TrackList.Count);
+
+                            mediaplayer.Play(database.Albums[number - 1].TrackList, numeroCasuale, writer, user);
+                        }
+
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Invalid input. Please enter a valid number.");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("If you want to play a song, select the number linked to it, for esc enter a letter:");
                         Console.ForegroundColor = ConsoleColor.White;
+                        string inputNumber1 = Console.ReadLine();
+
+                        if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Albums[number - 1].TrackList.Count)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            mediaplayer.Play(database.Albums[number - 1].TrackList, number1 - 1, writer, user);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Invalid input. Please enter a valid number.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                 }
                 else
@@ -172,14 +211,49 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageSongs(Writers writer)
+            private void ManageSongs(Writers writer,User user)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of songs:");
                 Console.ForegroundColor = ConsoleColor.White;
                 database.ShowMeSongs();
+                if (user.IsFree && user.SessionDuration.TotalSeconds > 360000)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("You are a free user and you have reached the limit of 100 hours of listening, you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    string input= Console.ReadLine();
+                    if (input =="play"||input=="PLAY")
+                    {
+                        Random random = new Random();
 
+                       
+                        int numeroCasuale = random.Next(0,database.Songs.Count);
+
+                        mediaplayer.Play(database.Songs,numeroCasuale, writer, user);
+                        
+                    }
+                   
+                }
+               else if (user.IsPremium && user.SessionDuration.TotalSeconds > 3600000)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("You are a premium user and you have reached the limit of 1000 hours of listening,  you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    string input = Console.ReadLine();
+                    if (input == "play" || input == "PLAY")
+                    {
+                        Random random = new Random();
+
+
+                        int numeroCasuale = random.Next(0, database.Songs.Count);
+
+                        mediaplayer.Play(database.Songs, numeroCasuale, writer, user);
+                    }
+                   
+                }
+                else  { 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("If you want to play a song, enter the number linked to it, for esc enter a letter");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -190,7 +264,7 @@ namespace SpotifyClone.Services
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                     Console.ForegroundColor = ConsoleColor.White;
-                    mediaplayer.Play(database.Songs, number - 1,writer);
+                    mediaplayer.Play(database.Songs, number - 1,writer,user);
                 }
                 else
                 {
@@ -198,7 +272,7 @@ namespace SpotifyClone.Services
                     Console.WriteLine("Invalid input. Please enter a valid number.");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-            }
+            }}
 
 
             private void ManagePlaylists(User utente1,Writers writer)
@@ -217,23 +291,64 @@ namespace SpotifyClone.Services
                 {
                     database.ShowMeOnePlaylist(database.Playlists[number - 1]);
 
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("If you want to play a song, select the number linked to it,for esc enter a letter:");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    string inputNumber1 = Console.ReadLine();
 
-                    if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Playlists[number - 1].Songs.Count)
+                    if (utente1.IsFree && utente1.SessionDuration.TotalSeconds > 360000)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("You are a free user and you have reached the limit of 100 hours of listening, you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
                         Console.ForegroundColor = ConsoleColor.White;
-                        mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1, writer);
+                        string input1 = Console.ReadLine();
+                        if (input1 == "play" || input1 == "PLAY")
+                        {
+                            Random random = new Random();
+
+
+                            int numeroCasuale = random.Next(0, database.Playlists[number - 1].Songs.Count);
+
+                            mediaplayer.Play(database.Playlists[number - 1].Songs, numeroCasuale, writer, utente1);
+
+                        }
+
+                    }
+                    else if (utente1.IsPremium && utente1.SessionDuration.TotalSeconds > 3600000)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("You are a premium user and you have reached the limit of 1000 hours of listening,  you can no longer choose the songs to play, enter PLAY to play a random song or something else to esc:");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        string input1 = Console.ReadLine();
+                        if (input1 == "play" || input1 == "PLAY")
+                        {
+                            Random random = new Random();
+
+
+
+                            int numeroCasuale = random.Next(0, database.Playlists[number - 1].Songs.Count);
+
+                            mediaplayer.Play(database.Playlists[number - 1].Songs, numeroCasuale, writer, utente1);
+                        }
+
                     }
                     else
                     {
+
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Invalid input. Please enter a valid number.");
+                        Console.WriteLine("If you want to play a song, select the number linked to it,for esc enter a letter:");
                         Console.ForegroundColor = ConsoleColor.White;
+                        string inputNumber1 = Console.ReadLine();
+
+                        if (int.TryParse(inputNumber1, out int number1) && number1 > 0 && number1 <= database.Playlists[number - 1].Songs.Count)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1, writer, utente1);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Invalid input. Please enter a valid number.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                 }
                 else
@@ -298,7 +413,7 @@ namespace SpotifyClone.Services
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                             Console.ForegroundColor = ConsoleColor.White;
-                            mediaplayer.Play(utente1.PlayLists[numbers - 1].Songs, number1 - 1,writer);
+                            mediaplayer.Play(utente1.PlayLists[numbers - 1].Songs, number1 - 1,writer,utente1);
                         }
 
                         if (inputNumber1 == "add" || inputNumber1 == "ADD")

@@ -17,7 +17,7 @@ namespace SpotifyClone.Services
             utente1 = user;
         }
 
-        public void ManageProfile(User user1, Database database, Artist convertedArtist,Writers writer)
+        public void ManageProfile(User user1, Database database, Artist convertedArtist, Writers writer)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("You are in PROFILE now");
@@ -71,7 +71,7 @@ namespace SpotifyClone.Services
 
 
                     bool esciDaMediaService;
-                    mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService,writer);
+                    mediaService.ManageMusic(utente1, convertedArtist, database, out esciDaMediaService, writer);
 
                     if (!esciDaMediaService)
                     {
@@ -79,7 +79,7 @@ namespace SpotifyClone.Services
                         UserProfileManager profileManager = new UserProfileManager(utente1);
 
 
-                        profileManager.ManageProfile(utente1, database, convertedArtist,writer);
+                        profileManager.ManageProfile(utente1, database, convertedArtist, writer);
                     }
                 }
                 else if (mainMenuChoice.ToUpper() == "P")
@@ -87,31 +87,35 @@ namespace SpotifyClone.Services
                     UserProfileManager profileManager = new UserProfileManager(utente1);
 
 
-                    profileManager.ManageProfile(utente1, database, convertedArtist,writer);
+                    profileManager.ManageProfile(utente1, database, convertedArtist, writer);
                 }
 
             }
         }
 
-            private void ManageSubscription()
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
+        private void ManageSubscription()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
 
-                if (utente1.IsPremium)
-                {
-                    Console.WriteLine("YOU ARE A PREMIUM USER");
-                }
-                else
-                {
-                    Console.WriteLine("YOU ARE A BASIC USER");
-                }
+            if (utente1.IsPremium)
+            {
+                Console.WriteLine("YOU ARE A PREMIUM USER");
+            }
+            if (utente1.IsFree == true)
+            {
+                Console.WriteLine("YOU ARE A FREE USER");
+            }
+            else
+            {
+                Console.WriteLine("YOU ARE A GOLD USER");
+            }
 
                 bool cha = true;
 
                 while (cha)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Choose your subscription: for Premium enter PR, for Normal User enter N, to esc push another letter");
+                    Console.WriteLine("Choose your subscription: for Premium enter PR, for Free User enter F, for Gold enter G, to esc push another letter");
                     Console.ForegroundColor = ConsoleColor.White;
                     string input2 = Console.ReadLine();
 
@@ -119,15 +123,28 @@ namespace SpotifyClone.Services
                     {
                         case "PR":
                             utente1.IsPremium = true;
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine("You are premium now!");
+                            utente1.IsFree = false;
+                            utente1.IsGold = false;
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("You are PREMIUM user now!You can listen you fav music for 1000 hours.");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
 
-                        case "N":
+                        case "F":
                             utente1.IsPremium = false;
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine("You are a basic user now!");
+                            utente1.IsFree = true;
+                            utente1.IsGold = false;
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("You are a FREE user now! You can listen you fav music for 100 hours.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                        case "G":
+                            utente1.IsGold = true;
+                            utente1.IsPremium = false;
+                            utente1.IsFree = false;
+                            utente1.IsPremium = false;
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("You are a  GOLD user now!You can listen you fav music for an illimitate time.");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
 
@@ -139,4 +156,4 @@ namespace SpotifyClone.Services
             }
         }
 
-    } 
+    }

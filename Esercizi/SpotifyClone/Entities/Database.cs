@@ -8,11 +8,11 @@ namespace SpotifyClone.Entities
 {
     public class Database
     {
-        List<Album> _albums=new List<Album>();
-        List<Artist> _artists=new List<Artist>();
-        List<Song> _songs=new List<Song>();
-        List<User> _users=new List<User>();
-        List<PlayList> _playlists=new List<PlayList>();
+        List<Album> _albums = new List<Album>();
+        List<Artist> _artists = new List<Artist>();
+        List<Song> _songs = new List<Song>();
+        List<User> _users = new List<User>();
+        List<PlayList> _playlists = new List<PlayList>();
         bool islogged = false;
 
         public Database()
@@ -209,38 +209,38 @@ namespace SpotifyClone.Entities
             return database;
         }
 
-        
-    
-    public void Register(User utente)
+
+
+        public void Register(User utente)
         {
 
             Users.Add(utente);
 
         }
-        public void Login(string username, string psw,User user)
+        public void Login(string username, string psw, User user)
         {
             if (Users != null)
             {
-                bool userFound = false;
+                User foundUser = Users.FirstOrDefault(u => u.UserName == username && u.Password == psw);
 
-                foreach (User u in Users)
+                if (foundUser != null)
                 {
-                    if (u.UserName == username && u.Password == psw)
-                    {user.IsLogged = true;
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Welcome to spotify" + " " + username);
+                    user.IsLogged = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Welcome to Spotify " + username);
 
-                        userFound = true;
-                        islogged = true;
-                        break;
-                    }
+                    islogged = true;
+                    
+
                 }
-
-                if (!userFound)
+                else
                 {
-                    Console.WriteLine("You don't have a registered user!");
+                    Console.WriteLine("Invalid username or password. Please try again.");
                     islogged = false;
                     user.IsLogged = false;
+
+                   
+                 
                 }
             }
             else
@@ -248,8 +248,15 @@ namespace SpotifyClone.Entities
                 Console.WriteLine("Nessun utente nella lista");
                 islogged = false;
                 user.IsLogged = false;
+
+               
+              
             }
+
+          
         }
+
 
     }
 }
+    

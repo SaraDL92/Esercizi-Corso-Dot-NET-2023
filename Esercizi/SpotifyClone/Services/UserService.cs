@@ -1,6 +1,7 @@
 ﻿using SpotifyClone.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,11 @@ namespace SpotifyClone.Services
             Console.ForegroundColor = ConsoleColor.White;
             string password = Console.ReadLine();
 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Insert your language:");
+            Console.ForegroundColor = ConsoleColor.White;
+            string language = Console.ReadLine();
+
             List<PlayList> playlist = new List<PlayList>();
 
             while (true)
@@ -53,7 +59,7 @@ namespace SpotifyClone.Services
                 Console.ForegroundColor = ConsoleColor.White;
                 string isartist = Console.ReadLine();
 
-                
+
                 if (isartist == "y" || isartist == "Y")
                 {
                     _isArtist = true;
@@ -80,7 +86,8 @@ namespace SpotifyClone.Services
             utente1.UserName = username;
             utente1.Password = password;
             utente1.IsArtist = _isArtist;
-           
+            utente1.Language = language;
+
             database.Register(utente1);
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -99,12 +106,39 @@ namespace SpotifyClone.Services
             Console.ForegroundColor = ConsoleColor.White;
             string password = Console.ReadLine();
 
-            database.Login(username, password,user);
+            database.Login(username, password, user);
 
-            if (database.Islogged)
+            if (user.IsLogged)
             {
+                
+              
+                Console.ForegroundColor = ConsoleColor.White;
+                ReadOnlyCollection<TimeZoneInfo> TimeZoneList = TimeZoneInfo.GetSystemTimeZones();
+                int i = 0;
+                foreach (TimeZoneInfo t in TimeZoneList)
+                {
+                    i++;
+                    Console.WriteLine($"{i}- Id: {t.Id}, Nome: {t.DisplayName}");
+                }
+
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Welcome back, {username}!");
+                Console.WriteLine("Enter the number of the region you are logging in from:");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                if (int.TryParse(Console.ReadLine(), out int country) && country >= 1 && country <= TimeZoneList.Count)
+                {
+                    Console.WriteLine($"You selected {TimeZoneList[country - 1].Id}");
+                    var zona = TimeZoneInfo.FindSystemTimeZoneById(TimeZoneList[country - 1].Id);
+                    var time = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, zona);
+                    user.LocalDateTime = time;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"This is your local date and time: {user.LocalDateTime}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input for the region. Please try again.");
+                }
             }
             else
             {

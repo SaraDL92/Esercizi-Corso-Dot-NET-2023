@@ -16,9 +16,18 @@ namespace SpotifyClone.Entities
         List<Radio> _favRadio;
 
         Setting setting=new Setting();
+        bool _isFree = true;
         bool isPremium = false;
-        bool _isLogged = false;
+        bool _isGold;
 
+        bool _isLogged = false;
+        string language;
+        DateTime _localDateTime;
+        DateTime _startTimeSong=DateTime.Now;
+        DateTime _endTimeSong=DateTime.Now;
+        
+      
+        TimeSpan _sessionDuration;
 
 
         public User(string Name, string Surname, string Birthday, string username, string password, bool isArtist) : base(Name, Surname, Birthday)
@@ -48,6 +57,13 @@ namespace SpotifyClone.Entities
         internal Setting Setting { get => setting; set => setting = value; }
         public bool IsPremium { get => isPremium; set => isPremium = value; }
         public bool IsLogged { get => _isLogged; set => _isLogged = value; }
+        public string Language { get => language; set => language = value; }
+        public DateTime LocalDateTime { get => _localDateTime; set => _localDateTime = value; }
+        public DateTime StartTimeSong { get => _startTimeSong; set => _startTimeSong = value; }
+        public DateTime EndTimeSong { get => _endTimeSong; set => _endTimeSong = value; }
+        public TimeSpan SessionDuration { get => _sessionDuration; set => _sessionDuration = value; }
+        public bool IsFree { get => _isFree; set => _isFree = value; }
+        public bool IsGold { get => _isGold; set => _isGold = value; }
 
         public void AddPlaylist(PlayList playlist)
         {

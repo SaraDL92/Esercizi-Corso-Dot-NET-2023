@@ -31,6 +31,44 @@ namespace SpotifyClone.Services
             File.Copy(tempFilePath, filePath, true);
             File.Delete(tempFilePath);  
         }
+        public void WriteListeningTimeToFile(User user)
+        {
+            string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
+
+            // Creare una nuova riga per il tempo di ascolto
+            string newLine = $"duration of the music listening session: {user.SessionDuration.TotalSeconds} seconds";
+
+            // Leggere tutte le righe esistenti
+            string[] lines = File.ReadAllLines(filePath);
+
+            // Trovare l'indice della riga relativa alla durata, se esiste
+            int durationIndex = -1;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].StartsWith("duration of the music listening session:"))
+                {
+                    durationIndex = i;
+                    break;
+                }
+            }
+
+            // Se la riga relativa alla durata esiste, sostituiscila
+            // Altrimenti, aggiungila alla fine del file
+            if (durationIndex != -1)
+            {
+                lines[durationIndex] = newLine;
+            }
+            else
+            {
+                List<string> linesList = lines.ToList();
+                linesList.Add(newLine);
+                lines = linesList.ToArray();
+            }
+
+            // Scrivere il nuovo contenuto nel file
+            File.WriteAllLines(filePath, lines);
+        }
+
 
         public void WriteTopRatedSongsToFile(List<Song> playlist, int topCount)
         {

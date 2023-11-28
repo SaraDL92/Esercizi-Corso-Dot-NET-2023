@@ -28,33 +28,32 @@ namespace SpotifyClone
             bool artist = false;
             bool islogged = false;
 
-
-            while (utente1.IsLogged == false)
+            while (!utente1.IsLogged)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Enter R for Register or L for Login:");
                 Console.ForegroundColor = originalColor;
                 string input1 = Console.ReadLine();
 
-                if (input1 == "r" || input1 == "R")
+                switch (input1.ToLower())
                 {
-                    userService.RegisterUser(utente1);
-                }
-                else if (input1 == "l" || input1 == "L")
-                {
-                    userService.LoginUser(utente1);
-                    islogged = true;
-                    utente1.IsLogged = true;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Invalid input. Retry!");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    islogged = false;
-                    utente1.IsLogged = false;
+                    case "r":
+                        userService.RegisterUser(utente1);
+                        break;
+                    case "l":
+                        userService.LoginUser(utente1);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Invalid input. Retry!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
                 }
             }
+
+           
+
 
             bool esciDaMediaService = false;
 

@@ -18,7 +18,9 @@ namespace SpotifyClone.Entities
         private static int currentSongIndex = 0;
         private static int currentSecond = 0;
         bool isPausedByUser;
-
+        DateTime pausedstart;
+        DateTime pausedend;
+        TimeSpan calcolopausa;
         internal List<Song> Playlist { get => playlist; set => playlist = value; }
 
         public MediaComponent() { }
@@ -31,7 +33,7 @@ namespace SpotifyClone.Entities
 
         private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
 
-        public void Play(List<Song> playlist, int startIndex,Writers writer)
+        public void Play(List<Song> playlist, int startIndex,Writers writer,User user)
         {
             if (startIndex >= 0 && startIndex < playlist.Count)
             {
@@ -39,10 +41,13 @@ namespace SpotifyClone.Entities
                 isPaused = false;
                 isPausedByUser = false;
                 currentSongIndex = startIndex;
+                DateTime datainizio = DateTime.Now;
 
                 Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
                 if (isPlaying)
-                {   
+                {
+                    
+                    Console.WriteLine(datainizio);
                     writer.WriteTopRatedSongsToFile(playlist, 5);
                     playlist[currentSongIndex].Rating++;
                     Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
@@ -70,12 +75,50 @@ namespace SpotifyClone.Entities
                         {
                             case 'q':
                             case 'Q':
+                                DateTime datafine = DateTime.Now;
+                                TimeSpan sessionDuration = datafine - datainizio;
+                                user.SessionDuration = user.SessionDuration+sessionDuration;
+                                user.SessionDuration = user.SessionDuration - calcolopausa;
+                                calcolopausa = TimeSpan.Zero;
+
+                                try
+                                {
+                                    Console.WriteLine($"StartTimeSong: {user.StartTimeSong}");
+                                    Console.WriteLine($"EndTimeSong: {user.EndTimeSong}");
+
+                                   
+
+                                   writer.WriteListeningTimeToFile(user);
+                                    Console.WriteLine("Your Music Listening Time:" + " " + user.SessionDuration + " " + "seconds");
+                                }
+                                catch (NullReferenceException ex)
+                                {
+                                    Console.WriteLine($"An error occurred: {ex.Message}");
+                                }
+
+
                                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed Q. SONG STOP!"); Console.ForegroundColor = ConsoleColor.White;
+                              
                                 isPlaying = false;
                                 currentSecond = 0;
                                 break;
                             case 'n':
                             case 'N':
+                                if (user.IsFree && user.SessionDuration.TotalSeconds > 360000)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("You are a free user and you have reached the limit of 100 hours of listening, you can no longer skip songs.");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    break;
+                                }
+                                if (user.IsPremium && user.SessionDuration.TotalSeconds > 3600000)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("You are a premium user and you have reached the limit of 1000 hours of listening, you can no longer skip songs.");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    break;
+                                }
+                                else { 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("You pressed N. NEXT SONG!");
                                 Console.ForegroundColor = ConsoleColor.White;
@@ -94,40 +137,63 @@ namespace SpotifyClone.Entities
                                 else
                                 {
                                     Console.WriteLine("This is the last song. You cannot press N for the next song.");
-                                }
+                                }}
                                 break;
 
                             case 'b':
                             case 'B':
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("You pressed B. PREVIOUS SONG!");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                currentSecond = 0;
-
-                                if (currentSongIndex > 0)
+                                if (user.IsFree && user.SessionDuration.TotalSeconds > 360000)
                                 {
-                                    currentSongIndex--;
-                                    if (isPlaying)
-                                    {
-                                        playlist[currentSongIndex].Rating++;
-                                        Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]); writer.WriteTopRatedSongsToFile(playlist, 5);
-                                    }
-                                    Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("You are a free user and you have reached the limit of 100 hours of listening, you can no longer skip songs.");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    break;
+                                }
+                                if (user.IsPremium && user.SessionDuration.TotalSeconds > 3600000)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("You are a premium user and you have reached the limit of 1000 hours of listening, you can no longer skip songs.");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    break;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("This is the first song. You cannot press B for the previous song.");
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("You pressed B. PREVIOUS SONG!");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    currentSecond = 0;
+
+                                    if (currentSongIndex > 0)
+                                    {
+                                        currentSongIndex--;
+                                        if (isPlaying)
+                                        {
+                                            playlist[currentSongIndex].Rating++;
+                                            Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]); writer.WriteTopRatedSongsToFile(playlist, 5);
+                                        }
+                                        Console.WriteLine($"Playing the song {playlist[currentSongIndex].Title}");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("This is the first song. You cannot press B for the previous song.");
+                                    }
                                 }
                                 break;
-
+                               
                             case 'p':
                             case 'P':
+                                pausedstart = DateTime.Now;
                                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed P. PAUSED SONG!"); Console.ForegroundColor = ConsoleColor.White;
                                 isPaused = true;
                                 isPausedByUser = true;
                                 break;
                             case 't':
                             case 'T':
+                              pausedend= DateTime.Now;
+                              TimeSpan calcolotempopausa = pausedend - pausedstart ;
+                                calcolopausa = calcolopausa + calcolotempopausa;
+                               
+
                                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("You pressed T. CONTINUE SONG!"); Console.ForegroundColor = ConsoleColor.White;
 
                                 isPaused = false;
