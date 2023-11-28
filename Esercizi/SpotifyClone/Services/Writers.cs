@@ -35,13 +35,13 @@ namespace SpotifyClone.Services
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
 
-            // Creare una nuova riga per il tempo di ascolto
+           
             string newLine = $"duration of the music listening session: {user.SessionDuration.TotalSeconds} seconds";
 
-            // Leggere tutte le righe esistenti
+           
             string[] lines = File.ReadAllLines(filePath);
 
-            // Trovare l'indice della riga relativa alla durata, se esiste
+           
             int durationIndex = -1;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -52,8 +52,7 @@ namespace SpotifyClone.Services
                 }
             }
 
-            // Se la riga relativa alla durata esiste, sostituiscila
-            // Altrimenti, aggiungila alla fine del file
+           
             if (durationIndex != -1)
             {
                 lines[durationIndex] = newLine;
@@ -65,7 +64,7 @@ namespace SpotifyClone.Services
                 lines = linesList.ToArray();
             }
 
-            // Scrivere il nuovo contenuto nel file
+           
             File.WriteAllLines(filePath, lines);
         }
 
