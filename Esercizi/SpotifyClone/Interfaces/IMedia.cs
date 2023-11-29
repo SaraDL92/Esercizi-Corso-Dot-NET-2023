@@ -9,7 +9,7 @@ namespace SpotifyClone.Interfaces
 {
     internal interface IMedia
     {
-        public void Play(List<Song> playlist, int startIndex);
+        public void Play(List<Media> playlist, int startIndex);
 
 
     }

@@ -11,18 +11,26 @@ namespace Proxy
     {
         private static Proxy _instance;
         private static Random rnd=new Random();
-        private static byte first=(byte)rnd.Next(256);
-        private static byte second = (byte)rnd.Next(256);
-        private static byte third = (byte)rnd.Next(256);
-        private static byte fourth = (byte)rnd.Next(256);
-        private static byte first1 = (byte)rnd.Next(256);
-        private static byte second1 = (byte)rnd.Next(256);
-        private static byte third1 = (byte)rnd.Next(256);
-        private static byte fourth1 = (byte)rnd.Next(256);
+        private static byte first;
+        private static byte second;
+        private static byte third;
+        private static byte fourth;
+        private static byte first1;
+        private static byte second1;
+        private static byte third1;
+        private static byte fourth1;
 
 
-        private Proxy() {
-           
+        private Proxy()
+        {
+            first = (byte)rnd.Next(256); 
+            second = (byte)rnd.Next(256); 
+            third = (byte)rnd.Next(256); 
+            fourth = (byte)rnd.Next(256); 
+            first1 = (byte)rnd.Next(256); 
+            second1 = (byte)rnd.Next(256);
+            third1 = (byte)rnd.Next(256); 
+            fourth1 = (byte)rnd.Next(256);
         }
         public void randomnumb()
         {

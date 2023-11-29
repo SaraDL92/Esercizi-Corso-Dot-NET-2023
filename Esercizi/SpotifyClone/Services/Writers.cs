@@ -10,7 +10,7 @@ namespace SpotifyClone.Services
 {
     public class Writers
     {
-        public void WritePlaylistToFile(List<Song> playlist)
+        public void WritePlaylistToFile(List<Media> playlist)
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
             string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify.csv";
@@ -20,7 +20,7 @@ namespace SpotifyClone.Services
                 int i = 0;
 
                 tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
-                foreach (Song a in playlist)
+                foreach (Media a in playlist)
                 {
                     i = i + 1;
                     tempWriter.WriteLine($"{a.Id1}, {a.Rating}, {a.Title}, {a.Albums[0].Title}, {a.Artist.ArtistName}, {a.Genre}, {a.Playlists[0].Name}, {a.Playlists[0].Id}");
@@ -69,7 +69,7 @@ namespace SpotifyClone.Services
         }
 
 
-        public void WriteTopRatedSongsToFile(List<Song> playlist, int topCount)
+        public void WriteTopRatedSongsToFile(List<Media> playlist, int topCount)
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\Top5Songs.csv";
             string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify1.csv";
@@ -84,10 +84,11 @@ namespace SpotifyClone.Services
                 tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
 
                 
-                foreach (Song song in playlist.Take(topCount))
+                foreach (Media song in playlist.Take(topCount))
                 {
                     i++;
-                    tempWriter.WriteLine($"{song.Id1}, {song.Rating}, {song.Title}, {song.Albums[0].Title}, {song.Artist.ArtistName}, {song.Genre}, {song.Playlists[0].Name}, {song.Playlists[0].Id}");
+                    if (song.IsVideo == false) { 
+                    tempWriter.WriteLine($"{song.Id1}, {song.Rating}, {song.Title}, {song.Albums[0].Title}, {song.Artist.ArtistName}, {song.Genre}, {song.Playlists[0].Name}, {song.Playlists[0].Id}");}
 
                     if (i >= topCount)
                         break;

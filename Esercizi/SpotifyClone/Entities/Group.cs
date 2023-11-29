@@ -10,11 +10,11 @@ namespace SpotifyClone.Entities
     {
         string _name;
         List<Artist> _members;
-        List<Song> _songs;
+        List<Media> _songs;
         List<Album> _albums;
         string _bio;
 
-        public Group(string name, List<Artist> members, List<Song> songs, List<Album> albums, string bio)
+        public Group(string name, List<Artist> members, List<Media> songs, List<Album> albums, string bio)
         {
             _name = name;
             _members = members;
@@ -26,7 +26,7 @@ namespace SpotifyClone.Entities
         public string Name { get => _name; set => _name = value; }
         public string Bio { get => _bio; set => _bio = value; }
         internal List<Artist> Members { get => _members; set => _members = value; }
-        internal List<Song> Songs { get => _songs; set => _songs = value; }
+        internal List<Media> Songs { get => _songs; set => _songs = value; }
         internal List<Album> Albums { get => _albums; set => _albums = value; }
 
     }

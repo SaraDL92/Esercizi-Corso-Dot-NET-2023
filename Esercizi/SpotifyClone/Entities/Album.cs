@@ -15,7 +15,7 @@ namespace SpotifyClone.Entities
             Artist _artist;
             Group _group;
             bool _liveVersion;
-            List<Song> _trackList;
+            List<Media> _trackList;
 
             public Album(string title, string releaseDate, string numbOfTracks, Artist artist, Group group, bool liveVersion)
             {
@@ -25,7 +25,7 @@ namespace SpotifyClone.Entities
                 _artist = artist;
                 _group = group;
                 _liveVersion = liveVersion;
-                _trackList = new List<Song>();
+                _trackList = new List<Media>();
             
             }
 
@@ -35,7 +35,7 @@ namespace SpotifyClone.Entities
             public bool LiveVersion { get => _liveVersion; set => _liveVersion = value; }
             internal Artist Artist { get => _artist; set => _artist = value; }
             internal Group Group { get => _group; set => _group = value; }
-            internal List<Song> TrackList { get => _trackList; set => _trackList = value; }
+            internal List<Media> TrackList { get => _trackList; set => _trackList = value; }
         }
     }
 

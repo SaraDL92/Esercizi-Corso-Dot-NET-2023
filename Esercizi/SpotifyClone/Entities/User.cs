@@ -11,7 +11,7 @@ namespace SpotifyClone.Entities
         List<PlayList> _playList = new List<PlayList>();
         string _userName;
         string _password;
-        List<Song> _favSongs;
+        List<Media> _favSongs;
         bool _isArtist;
         List<Radio> _favRadio;
 
@@ -38,7 +38,7 @@ namespace SpotifyClone.Entities
 
             _userName = username;
             _password = password;
-            _favSongs = new List<Song>();
+            _favSongs = new List<Media>();
             _isArtist = isArtist;
             _favRadio = new List<Radio>();
 
@@ -46,7 +46,7 @@ namespace SpotifyClone.Entities
         }
         public User(string Name, string Surname, string Birthday) : base(Name, Surname, Birthday) { }
         public List<PlayList> PlayLists { get { return _playList; } set { _playList = value; } }
-        public List<Song> FavSongs { get { return _favSongs; } set { _favSongs = value; } }
+        public List<Media> FavSongs { get { return _favSongs; } set { _favSongs = value; } }
 
         public List<Radio> FavRadio { get { return _favRadio; } set { _favRadio = value; } }
 
@@ -79,7 +79,7 @@ namespace SpotifyClone.Entities
                 Console.WriteLine("Error!");
             }
         }
-        public void AddSongToPlaylist(Song song, PlayList playlist1)
+        public void AddSongToPlaylist(Media song, PlayList playlist1)
         {
             if (PlayList != null) { playlist1.AddSong(song); } else { Console.WriteLine("Error!"); }
 
@@ -103,8 +103,8 @@ namespace SpotifyClone.Entities
         public void ShowMeOnePlaylist(PlayList playlist)
         {
             int i = 0;
-            List<Song> songs = playlist.Songs;
-            foreach (Song s in songs)
+            List<Media> songs = playlist.Songs;
+            foreach (Media s in songs)
             {
                 i++;
                 Console.WriteLine(i + "" + s.Title);

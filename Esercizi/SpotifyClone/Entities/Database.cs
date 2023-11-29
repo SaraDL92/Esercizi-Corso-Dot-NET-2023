@@ -10,7 +10,8 @@ namespace SpotifyClone.Entities
     {
         List<Album> _albums = new List<Album>();
         List<Artist> _artists = new List<Artist>();
-        List<Song> _songs = new List<Song>();
+        List<Media> _songs = new List<Media>();
+        List <Media>_movies=new List <Media>();
         List<User> _users = new List<User>();
         List<PlayList> _playlists = new List<PlayList>();
         bool islogged = false;
@@ -19,17 +20,19 @@ namespace SpotifyClone.Entities
         {
             _users = new List<User>();
             _artists = new List<Artist>();
-            _songs = new List<Song>();
+            _songs = new List<Media>();
             _albums = new List<Album>();
             _playlists = new List<PlayList>();
         }
 
         internal List<Album> Albums { get => _albums; set => _albums = value; }
         internal List<Artist> Artists { get => _artists; set => _artists = value; }
-        internal List<Song> Songs { get => _songs; set => _songs = value; }
+        internal List<Media> Songs { get => _songs; set => _songs = value; }
         internal List<User> Users { get => _users; set => _users = value; }
         public bool Islogged { get => islogged; set => islogged = value; }
         internal List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
+        public List<Media> Movies { get => _movies; set => _movies = value; }
+
         public void ShowMeUsers()
         {
             foreach (User user in Users) { Console.WriteLine(user.UserName + " " + user.Password); }
@@ -70,8 +73,8 @@ namespace SpotifyClone.Entities
         public void ShowMeOneAlbum(Album album)
         {
             int i = 0;
-            List<Song> songs = album.TrackList;
-            foreach (Song s in songs)
+            List<Media> songs = album.TrackList;
+            foreach (Media s in songs)
             {
                 i++;
                 Console.WriteLine(i + "" + s.Title);
@@ -91,8 +94,8 @@ namespace SpotifyClone.Entities
         public void ShowMeOnePlaylist(PlayList playlist)
         {
             int i = 0;
-            List<Song> songs = playlist.Songs;
-            foreach (Song s in songs)
+            List<Media> songs = playlist.Songs;
+            foreach (Media s in songs)
             {
                 i++;
                 Console.WriteLine(i + "" + s.Title);
@@ -106,11 +109,28 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Songs != null)
             {
-                foreach (Song song in Songs)
+                foreach (Media song in Songs)
                 {
 
                     i++;
                     Console.WriteLine(i + "-" + song.Title);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of artists"); }
+        }
+        public void ShowMeMovies()
+        {
+            int i = 0;
+            if (Movies != null)
+            {
+                foreach (Media movie in Movies)
+                {
+
+                    i++;
+                    Console.WriteLine(i + "-" + movie.Title);
 
                 }
 
@@ -155,7 +175,7 @@ namespace SpotifyClone.Entities
             else { Console.WriteLine("No one in list"); }
 
         }
-        public void AddSongsToDB(Song song)
+        public void AddSongsToDB(Media song)
         {
             if (Songs != null) { Songs.Add(song); }
             else { Console.WriteLine("No one in list"); }
@@ -171,9 +191,19 @@ namespace SpotifyClone.Entities
             Album Dangerous = new("Dangerous", "1991", "12", MichaelJackson, null, false);
             Album Century = new("21st Century Liability", "2018", "10", Yungblud, null, false);
             Album Mainstream = new("Mainstream Sellout", "2022", "15", MachineGunKelly, null, false);
-            Song healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
-            Song fakelove = new("Punk", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
-            Song iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);
+            Media healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
+            Media fakelove = new("Punk", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
+            Director JamesCameron = new("James Cameron");
+            Director JacoVanDormael = new("Jaco Van Dormael");
+            Director Melies = new("Georges Méliès");
+            Media Titanic = new(JamesCameron, "Titanic", 7200, "1997", "Dramatic");
+            Media MrNobody = new(JacoVanDormael , "Mr Nobody", 7200, "2009", "Sci-fi");
+            Media Levoy = new(Melies, "Le voyage dans la lune", 840, "1902", "Sci-fi");
+            database.Movies.Add(Titanic);
+            database.Movies.Add(MrNobody);
+            database.Movies.Add(Levoy);
+
+            Media iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);
             PlayList ottantas = new("90s songs", healtheworld);
             PlayList punk = new("punk rock time", fakelove);
             PlayList balladrock = new("Rock in love", iloveyou);

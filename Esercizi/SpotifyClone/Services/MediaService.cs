@@ -32,9 +32,27 @@ namespace SpotifyClone.Services
                 while (!esci)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Enter M for Music and P for Profile:");
+                    Console.WriteLine("Enter M for Music, V for Videos and P for Profile:");
                     Console.ForegroundColor = ConsoleColor.White;
                     string inputText = Console.ReadLine();
+
+                    if (inputText == "v" || inputText == "V")
+                    {
+                        database.ShowMeMovies();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("Enter the number to play the movie:"); 
+                        Console.ForegroundColor = ConsoleColor.White;
+                        string input= Console.ReadLine();
+                        if (int.TryParse(input, out int number) && number > 0 && number <= database.Movies.Count) {
+                            mediaplayer.Play(database.Movies, number - 1, writer, user1);
+                            
+                            }
+                        else {
+                            Console.WriteLine("invalid input!");
+                               };
+                       
+
+                    }
 
                     if (inputText == "m" || inputText == "M")
                     {
@@ -502,7 +520,7 @@ namespace SpotifyClone.Services
 
                         convertedArtist.CreateNewSong(genre, title, duration, releaseDate);
 
-                        foreach (Song s in convertedArtist.Songs)
+                        foreach (Media s in convertedArtist.Songs)
                         {
                             database.Songs.Add(s);
                         }

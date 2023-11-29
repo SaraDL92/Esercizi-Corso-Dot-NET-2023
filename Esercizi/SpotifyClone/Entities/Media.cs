@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyClone.Entities
 {
-    public class Song
+    public class Media
     {
         private static int personalrating = 0;
         int rating = personalrating;
@@ -23,8 +23,20 @@ namespace SpotifyClone.Entities
         List<Group> _groups=new List<Group>();
         List<Artist> _artists=new List<Artist>();
         List<PlayList> _playlists=new List<PlayList>();
+        List<Director> _directors = new List<Director>();
+        Director _director;
+        bool isVideo;
+        public Media (Director director, string title, int duration,string releaseDate,string genre)
+        {
+            _director=director;
+            _title = title;
+            _duration = duration;
+            _releaseDate = releaseDate;
+            isVideo = true;
 
-        public Song( string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, List<Artist> artists)
+        }
+
+        public Media( string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, List<Artist> artists,bool isVideo)
         {   _id=_nextid++;
             _genre = genre;
             _title = title;
@@ -33,8 +45,9 @@ namespace SpotifyClone.Entities
             _albums = albums;
             _groups = groups;
             _artists = artists;
+            isVideo = false;
         }
-        public Song(string genre, string title, int duration, string releaseDate, List<Album> albums, Group group, List<Artist> artists)
+        public Media(string genre, string title, int duration, string releaseDate, List<Album> albums, Group group, List<Artist> artists)
         {
             _id = _nextid++;
             _genre = genre;
@@ -43,9 +56,9 @@ namespace SpotifyClone.Entities
             _releaseDate = releaseDate;
             _albums = albums;
             _group = group;
-            _artists = artists;
+            _artists = artists; isVideo = false;
         }
-        public Song(string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, Artist artist)
+        public Media(string genre, string title, int duration, string releaseDate, List<Album> albums, List<Group> groups, Artist artist)
         {
             _id = _nextid++;
             _genre = genre;
@@ -54,10 +67,10 @@ namespace SpotifyClone.Entities
             _releaseDate = releaseDate;
             _albums = albums;
             _groups = groups;
-            _artist = artist;
+            _artist = artist; isVideo = false;
 
         }
-        public Song(string genre, string title, int duration, string releaseDate, Album album, Artist artist)
+        public Media(string genre, string title, int duration, string releaseDate, Album album, Artist artist)
         {
             _id = _nextid++;
             _genre = genre;
@@ -66,10 +79,10 @@ namespace SpotifyClone.Entities
             _releaseDate = releaseDate;
             _album = album;
 
-            _artist = artist;
+            _artist = artist; isVideo = false;
 
         }
-        public Song(string genre, string title, int duration, string releaseDate, Artist artist)
+        public Media(string genre, string title, int duration, string releaseDate, Artist artist)
         {
             _id = _nextid++;
             _genre = genre;
@@ -78,7 +91,7 @@ namespace SpotifyClone.Entities
             _releaseDate = releaseDate;
 
 
-            _artist = artist;
+            _artist = artist; isVideo = false;
 
         }
         public override string ToString()
@@ -99,5 +112,8 @@ namespace SpotifyClone.Entities
         public List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
         public int Rating { get => rating; set => rating = value; }
         public static int Personalrating { get => personalrating; set => personalrating = value; }
+        internal List<Director> Directors { get => _directors; set => _directors = value; }
+        internal Director Director { get => _director; set => _director = value; }
+        public bool IsVideo { get => isVideo; set => isVideo = value; }
     }
 }

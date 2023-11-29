@@ -10,7 +10,7 @@ namespace SpotifyClone.Entities
     {
          string _artistName;
             List<Album> _albums;
-            List<Song> _songs = new List<Song>();
+            List<Media> _songs = new List<Media>();
             string _bio;
             List<Group> _groups;
 
@@ -25,7 +25,7 @@ namespace SpotifyClone.Entities
             }
         public void CreateNewSong(string genre, string title, int duration, string releaseDate)
         {
-            Song song = new(genre, title, duration, releaseDate, this);
+            Media song = new(genre, title, duration, releaseDate, this);
 
             Songs.Add(song);
         }
@@ -37,7 +37,7 @@ namespace SpotifyClone.Entities
                 if (Songs == null) { throw new InvalidOperationException($"The Artist {this.ArtistName} has no songs! "); }
                 Console.WriteLine($"This is the song list of the artist {this.ArtistName}: ");
                 int i = 1;
-                foreach (Song song in Songs) { Console.WriteLine(i++ + "-" + song.Title); }
+                foreach (Media song in Songs) { Console.WriteLine(i++ + "-" + song.Title); }
 
 
             }
@@ -56,7 +56,7 @@ namespace SpotifyClone.Entities
             public string Bio { get => _bio; set => _bio = value; }
 
             internal List<Album> Albums { get => _albums; set => _albums = value; }
-            internal List<Song> Songs { get => _songs; set => _songs = value; }
+            internal List<Media> Songs { get => _songs; set => _songs = value; }
             internal List<Group> Group1 { get => _groups; set => _groups = value; }
 
         }
