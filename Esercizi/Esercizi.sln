@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternationalPublicManageme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSystem", "FileSystem\FileSystem.csproj", "{165F02B1-3360-456B-98FF-0035B3A351D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyClone", "SpotifyClone\SpotifyClone.csproj", "{20FA7B0B-DA8E-4E49-9B4E-8290B9170024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyLibrary", "SpotifyClone\SpotifyLibrary.csproj", "{20FA7B0B-DA8E-4E49-9B4E-8290B9170024}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "Proxy\Proxy.csproj", "{DA818F02-8B35-4650-95E8-65F72128500E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proxy", "Proxy\Proxy.csproj", "{DA818F02-8B35-4650-95E8-65F72128500E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyService", "Spotify Service\SpotifyService.csproj", "{AE0D3DD7-8F2F-41BB-A89F-7F9C5B8C181A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{DA818F02-8B35-4650-95E8-65F72128500E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA818F02-8B35-4650-95E8-65F72128500E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA818F02-8B35-4650-95E8-65F72128500E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0D3DD7-8F2F-41BB-A89F-7F9C5B8C181A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0D3DD7-8F2F-41BB-A89F-7F9C5B8C181A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0D3DD7-8F2F-41BB-A89F-7F9C5B8C181A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0D3DD7-8F2F-41BB-A89F-7F9C5B8C181A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,6 +14,8 @@ namespace SpotifyClone.Entities
         List <Media>_movies=new List <Media>();
         List<User> _users = new List<User>();
         List<PlayList> _playlists = new List<PlayList>();
+        List <Radio> _radiolist = new List<Radio>();
+       
         bool islogged = false;
 
         public Database()
@@ -25,14 +27,31 @@ namespace SpotifyClone.Entities
             _playlists = new List<PlayList>();
         }
 
-        internal List<Album> Albums { get => _albums; set => _albums = value; }
-        internal List<Artist> Artists { get => _artists; set => _artists = value; }
-        internal List<Media> Songs { get => _songs; set => _songs = value; }
-        internal List<User> Users { get => _users; set => _users = value; }
+        public List<Album> Albums { get => _albums; set => _albums = value; }
+       public List<Artist> Artists { get => _artists; set => _artists = value; }
+       public List<Media> Songs { get => _songs; set => _songs = value; }
+       public List<User> Users { get => _users; set => _users = value; }
         public bool Islogged { get => islogged; set => islogged = value; }
-        internal List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
+        public List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
         public List<Media> Movies { get => _movies; set => _movies = value; }
+        public List<Radio> Radiolist { get => _radiolist; set => _radiolist = value; }
 
+        public void ShowMeRadio()
+        {
+            if (Radiolist != null)
+            {
+                int i = 0;
+                foreach (Radio radio in Radiolist)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + radio.SongList);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of artists"); }
+        }
         public void ShowMeUsers()
         {
             foreach (User user in Users) { Console.WriteLine(user.UserName + " " + user.Password); }
@@ -63,6 +82,92 @@ namespace SpotifyClone.Entities
                 {
                     i++;
                     Console.WriteLine(i + "-" + album.Title);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of albums"); }
+        }
+
+        public void ShowMeTop5Albums()
+        {var AlbumSorted=Albums.OrderByDescending(a=>a.CalculateRating()).Take(5);
+            int i = 0;
+            if (Albums != null)
+            {
+                foreach (Album album in AlbumSorted)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + album.Title+" "+ "rating:"+" "+album.Rating);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of albums"); }
+        }
+        public void ShowMeTop5Radios()
+        {
+            var RadioSorted = Radiolist.OrderByDescending(a => a.Rating).Take(5);
+            int i = 0;
+            if (Radiolist != null)
+            {
+                foreach( Radio r in RadioSorted)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + r.Name + " " + "rating:" + " " +r.Rating);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of radios"); }
+        }
+        public void ShowMeTop5Playlists()
+        {
+            var PlaylistSorted = Playlists.OrderByDescending(a => a.Rating).Take(5);
+            int i = 0;
+            if (Playlists != null)
+            {
+                foreach (PlayList s in PlaylistSorted)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + s.Name + " " + "rating:" + " " + s.Rating);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of playlists"); }
+        }
+        public void ShowMeTop5Songs()
+        {
+            var SongSorted = Songs.OrderByDescending(a => a.Rating).Take(5);
+            int i = 0;
+            if (Songs != null)
+            {
+                foreach (Media s in SongSorted)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + s.Title + " " + "rating:" + " " + s.Rating);
+
+                }
+
+
+            }
+            else { Console.WriteLine("No list of songs"); }
+        }
+
+        public void ShowMeTop5Artists()
+        {
+            var ArtistSorted = Artists.OrderByDescending(a => a.GenerateRating()).Take(5);
+            int i = 0;
+            if (Artists != null)
+            {
+                foreach (Artist a in ArtistSorted)
+                {
+                    i++;
+                    Console.WriteLine(i + "-" + a.ArtistName + " " + "rating:" + " " + a.Rating);
 
                 }
 
@@ -104,6 +209,17 @@ namespace SpotifyClone.Entities
 
 
         }
+        public void ShowMeOneTracklistRadio(Radio r)
+        {
+            int i = 0;
+           foreach(Media s in r.SongList)
+            {
+                i++;
+                Console.WriteLine(i+" "+s.Title.ToString());
+            }
+
+
+        }
         public void ShowMeSongs()
         {
             int i = 0;
@@ -119,7 +235,7 @@ namespace SpotifyClone.Entities
 
 
             }
-            else { Console.WriteLine("No list of artists"); }
+            else { Console.WriteLine("No list of songs"); }
         }
         public void ShowMeMovies()
         {
@@ -136,7 +252,7 @@ namespace SpotifyClone.Entities
 
 
             }
-            else { Console.WriteLine("No list of artists"); }
+            else { Console.WriteLine("No list of movies"); }
         }
 
         public void ShowMePlaylists()
@@ -153,7 +269,7 @@ namespace SpotifyClone.Entities
 
 
             }
-            else { Console.WriteLine("No list of artists"); }
+            else { Console.WriteLine("No list of playlists"); }
         }
 
 
@@ -181,6 +297,21 @@ namespace SpotifyClone.Entities
             else { Console.WriteLine("No one in list"); }
 
         }
+        public void ShowMeRadioList()
+        {
+            int i = 0;
+            foreach(Radio r in Radiolist)
+            {
+                i++;
+                Console.WriteLine(i+"-"+r.Name);
+            }
+        }
+        public void RadioByGenre(Radio radio, string genre)
+        {
+            var listSongs = Songs.Where(s => s.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).ToList();
+            radio.SongList.AddRange(listSongs);
+        }
+
         public Database InitializeDatabase()
         {
             Database database = new Database();
@@ -192,25 +323,54 @@ namespace SpotifyClone.Entities
             Album Century = new("21st Century Liability", "2018", "10", Yungblud, null, false);
             Album Mainstream = new("Mainstream Sellout", "2022", "15", MachineGunKelly, null, false);
             Media healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
-            Media fakelove = new("Punk", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
+            Media gonetoosoon = new("POP", "Gone too soon", 200, "1991", Dangerous, MichaelJackson);
+            Media fakelove = new("Rock", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
             Director JamesCameron = new("James Cameron");
             Director JacoVanDormael = new("Jaco Van Dormael");
             Director Melies = new("Georges Méliès");
             Media Titanic = new(JamesCameron, "Titanic", 7200, "1997", "Dramatic");
             Media MrNobody = new(JacoVanDormael , "Mr Nobody", 7200, "2009", "Sci-fi");
             Media Levoy = new(Melies, "Le voyage dans la lune", 840, "1902", "Sci-fi");
+            Dangerous.TrackList.Add(gonetoosoon);
+            
+
+
+            Radio radiopop = new("Radio Pop");
+            Radio radiorock = new("Radio Rock");
+            Radio radiohiphop = new("Radio Hip-Hop");
+            database.RadioByGenre(radiopop, "POP");
+            database.RadioByGenre(radiorock, "ROCK");
+            database.RadioByGenre(radiohiphop, "HIP-HOP");
+            
+           
+            database.Radiolist.Add(radiopop);
+            database.Radiolist.Add(radiorock);
+            database.Radiolist.Add(radiohiphop);
+            radiorock.SongList.Add(fakelove);
+          
+            radiopop.SongList.Add(gonetoosoon);
+            radiopop.SongList.Add(healtheworld);
+
+
+
+
+
             database.Movies.Add(Titanic);
             database.Movies.Add(MrNobody);
             database.Movies.Add(Levoy);
 
-            Media iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);
+            Media iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);  radiorock.SongList.Add(iloveyou);
             PlayList ottantas = new("90s songs", healtheworld);
             PlayList punk = new("punk rock time", fakelove);
             PlayList balladrock = new("Rock in love", iloveyou);
-
+            ottantas.AddSong(gonetoosoon);
+            gonetoosoon.Albums.Add(Dangerous);
+            gonetoosoon.Playlists.Add(ottantas);
+            database.Songs.Add(gonetoosoon);
             User user2 = new User("Selene", "Rubius", "12-05-1990");
             PlayList playlist1 = new PlayList(user2, "heartstone");
             Dangerous.TrackList.Add(healtheworld);
+            Dangerous.TrackList.Add(gonetoosoon);
             Century.TrackList.Add(iloveyou);
             Mainstream.TrackList.Add(fakelove);
             MichaelJackson.Albums.Add(Dangerous);

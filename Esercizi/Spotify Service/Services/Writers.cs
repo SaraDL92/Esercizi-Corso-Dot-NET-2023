@@ -27,21 +27,21 @@ namespace SpotifyClone.Services
                 }
             }
 
-           
+
             File.Copy(tempFilePath, filePath, true);
-            File.Delete(tempFilePath);  
+            File.Delete(tempFilePath);
         }
         public void WriteListeningTimeToFile(User user)
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
 
-           
+
             string newLine = $"duration of the music listening session: {user.SessionDuration.TotalSeconds} seconds";
 
-           
+
             string[] lines = File.ReadAllLines(filePath);
 
-           
+
             int durationIndex = -1;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -52,7 +52,7 @@ namespace SpotifyClone.Services
                 }
             }
 
-           
+
             if (durationIndex != -1)
             {
                 lines[durationIndex] = newLine;
@@ -64,7 +64,7 @@ namespace SpotifyClone.Services
                 lines = linesList.ToArray();
             }
 
-           
+
             File.WriteAllLines(filePath, lines);
         }
 
@@ -74,7 +74,7 @@ namespace SpotifyClone.Services
             string filePath = @"C:\\Users\\sarad\\Documents\\Top5Songs.csv";
             string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify1.csv";
 
-            
+
             playlist.Sort((a, b) => b.Rating.CompareTo(a.Rating));
 
             using (StreamWriter tempWriter = new StreamWriter(tempFilePath))
@@ -83,25 +83,26 @@ namespace SpotifyClone.Services
 
                 tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
 
-                
+
                 foreach (Media song in playlist.Take(topCount))
                 {
                     i++;
-                    if (song.IsVideo == false) { 
-                    tempWriter.WriteLine($"{song.Id1}, {song.Rating}, {song.Title}, {song.Albums[0].Title}, {song.Artist.ArtistName}, {song.Genre}, {song.Playlists[0].Name}, {song.Playlists[0].Id}");}
+                    if (song.IsVideo == false)
+                    {
+                        tempWriter.WriteLine($"{song.Id1}, {song.Rating}, {song.Title}, {song.Albums[0].Title}, {song.Artist.ArtistName}, {song.Genre}, {song.Playlists[0].Name}, {song.Playlists[0].Id}");
+                    }
 
                     if (i >= topCount)
                         break;
                 }
             }
 
-           
+
             File.Copy(tempFilePath, filePath, true);
-            File.Delete(tempFilePath);  
+            File.Delete(tempFilePath);
         }
 
 
 
     }
 }
-

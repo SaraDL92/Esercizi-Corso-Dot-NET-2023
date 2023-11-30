@@ -26,7 +26,7 @@ namespace SpotifyClone.Services
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Enter THEME for set profile theme, E for set Equalizer, P for your Subscription, D for dispositives, push another letter to esc");
+                Console.WriteLine("Enter THEME for set profile theme, E for set Equalizer, P for your Subscription, D for dispositives, DT for watch your playback session time, push another letter to esc");
                 Console.ForegroundColor = ConsoleColor.White;
 
                 string input = Console.ReadLine();
@@ -47,6 +47,14 @@ namespace SpotifyClone.Services
 
                     case "D":
                         user1.Setting.SetDispositives();
+                        break;
+
+                    case "DT":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You've spent this time playing media:");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(user1.SessionDuration);
+                        Console.ForegroundColor=ConsoleColor.White;
                         break;
 
                     default:

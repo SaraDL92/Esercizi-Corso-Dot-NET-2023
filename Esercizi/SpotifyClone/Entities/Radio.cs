@@ -9,19 +9,23 @@ namespace SpotifyClone.Entities
    public class Radio
     {
         string _name;
-        List<Media> _list;
-        List<Album> _albums;
+        List<Media> _songlist=new List<Media>();
 
-        public Radio(string name, List<Media> list, List<Album> albums)
+        int _rating;
+        public Radio(string name)
         {
             _name = name;
-            _list = list;
-            _albums = albums;
+           
+           
         }
+        
+
+
+      
 
         public string Name { get => _name; set => _name = value; }
-        internal List<Media> List { get => _list; set => _list = value; }
-        internal List<Album> Albums { get => _albums; set => _albums = value; }
+        public List<Media> SongList { get => _songlist; set => _songlist = value; }
+        public int Rating { get => _rating; set => _rating = value; }
     }
 }
 

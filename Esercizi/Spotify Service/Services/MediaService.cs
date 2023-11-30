@@ -57,7 +57,7 @@ namespace SpotifyClone.Services
                     if (inputText == "m" || inputText == "M")
                     {
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.WriteLine("Enter A for Artists, AL for Albums, S for Songs, PL for Playlists, C for Create (available only because you are an artist):");
+                        Console.WriteLine("Enter A for Artists, AL for Albums, S for Songs, PL for Playlists, R for radio, TOP for TOP 5, C for Create (available only because you are an artist):");
                         Console.ForegroundColor = ConsoleColor.White;
 
                         string input = Console.ReadLine();
@@ -78,6 +78,14 @@ namespace SpotifyClone.Services
                         {
                             ManagePlaylists(user1, writer);
                         }
+                        else if (input == "R" || input == "r")
+                        {
+                            ManageRadio(database,user1,writer);
+                        }
+                        else if (input=="TOP"||input=="top")
+                        {
+                            ManageTop5();
+                        }
                         else if (input == "C" || input == "c")
                         {
                             CreateContent(artist);
@@ -91,8 +99,67 @@ namespace SpotifyClone.Services
                     }
                 }
             } 
-            
+            private void ManageTop5()
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Enter the number to see the top 5 ranking, if you want to esc enter something else :");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("1. ALBUM");
+                Console.WriteLine("2. SONGS");
+                Console.WriteLine("3. ARTISTS");
+                Console.WriteLine("4. PLAYLISTS");
+                Console.WriteLine("5. RADIOS");
+                Console.ForegroundColor = ConsoleColor.White;
+                string input=Console.ReadLine();
+                if (input == "1")
+                {
+                    database.ShowMeTop5Albums();
 
+                }
+                if(input== "2")
+                {
+                    database.ShowMeTop5Songs();
+                }
+                if(input == "3")
+                {
+                    database.ShowMeTop5Artists();
+                }
+                if (input == "4")
+                {
+                    database.ShowMeTop5Playlists();
+                }
+                if (input == "5")
+                {
+                    database.ShowMeTop5Radios();
+                }
+            }
+            private void ManageRadio(Database database,User user,Writers writer)
+            {   Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine("This is the list of radios, enter the number linked to the radio you want to play or something else to esc:");
+                Console.ForegroundColor = ConsoleColor.White;
+                database.ShowMeRadioList();
+                string input= Console.ReadLine();
+                if(int.TryParse(input, out int numb)&& numb < database.Radiolist.Count && numb>0)
+                {
+                    database.ShowMeOneTracklistRadio(database.Radiolist[numb-1]);
+                    Console.ForegroundColor=ConsoleColor.Green;
+                    Console.WriteLine("Enter PLAY to play the Radio or something else to esc:");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    string inn=Console.ReadLine();
+                    if (inn == "play" || inn == "PLAY")
+                    {Random numran=new Random();
+                        database.Radiolist[numb - 1].Rating = database.Radiolist[numb - 1].Rating + 1;
+                        int numbah = numran.Next(0, database.Radiolist[numb - 1].SongList.Count);
+                        mediaplayer.Play(database.Radiolist[numb - 1].SongList, numbah,writer, user);
+
+                    }
+
+                }
+                else { Console.WriteLine("no list"); }
+
+
+
+            }
             private void ManageArtists(Database database,Writers writer, User user)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -322,6 +389,7 @@ namespace SpotifyClone.Services
 
 
                             int numeroCasuale = random.Next(0, database.Playlists[number - 1].Songs.Count);
+                            database.Playlists[number - 1].Rating = database.Playlists[number - 1].Rating + 1;
 
                             mediaplayer.Play(database.Playlists[number - 1].Songs, numeroCasuale, writer, utente1);
 
@@ -338,6 +406,7 @@ namespace SpotifyClone.Services
                         {
                             Random random = new Random();
 
+                            database.Playlists[number - 1].Rating = database.Playlists[number - 1].Rating + 1;
 
 
                             int numeroCasuale = random.Next(0, database.Playlists[number - 1].Songs.Count);
@@ -359,7 +428,8 @@ namespace SpotifyClone.Services
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Enter P pause, T continue, Q stop, B back, N next");
                             Console.ForegroundColor = ConsoleColor.White;
-                            mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1, writer, utente1);
+                            mediaplayer.Play(database.Playlists[number - 1].Songs, number1 - 1, writer, utente1); database.Playlists[number - 1].Rating = database.Playlists[number - 1].Rating + 1;
+
                         }
                         else
                         {

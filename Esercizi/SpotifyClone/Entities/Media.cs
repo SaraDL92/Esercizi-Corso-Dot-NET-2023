@@ -102,11 +102,11 @@ namespace SpotifyClone.Entities
         public string Title { get => _title; set => _title = value; }
         public int Duration { get => _duration; set => _duration = value; }
         public string ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
-        internal List<Album> Albums { get => _albums; set => _albums = value; }
-        internal List<Group> Groups { get => _groups; set => _groups = value; }
-        internal List<Artist> Artists { get => _artists; set => _artists = value; }
-        internal Group Group { get => _group; set => _group = value; }
-        internal Artist Artist { get => _artist; set => _artist = value; }
+      public List<Album> Albums { get => _albums; set => _albums = value; }
+        public List<Group> Groups { get => _groups; set => _groups = value; }
+        public List<Artist> Artists { get => _artists; set => _artists = value; }
+        public Group Group { get => _group; set => _group = value; }
+        public Artist Artist { get => _artist; set => _artist = value; }
        
         public int Id1 { get => _id; set => _id = value; }
         public List<PlayList> Playlists { get => _playlists; set => _playlists = value; }

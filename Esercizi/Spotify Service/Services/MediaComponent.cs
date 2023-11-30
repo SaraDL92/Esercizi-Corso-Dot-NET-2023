@@ -48,7 +48,7 @@ namespace SpotifyClone.Entities
                 {
                     
                     Console.WriteLine(datainizio);
-                    writer.WriteTopRatedSongsToFile(playlist, 5);
+                   writer.WriteTopRatedSongsToFile(playlist, 5);
                     playlist[currentSongIndex].Rating++;
                     Console.WriteLine($"Current rating: {playlist[currentSongIndex].Rating}"); WriteRatingToFile(playlist[currentSongIndex]);
                 }
@@ -223,7 +223,7 @@ namespace SpotifyClone.Entities
       public void WriteRatingToFile(Media song)
 {
     string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
-
+            if(File.Exists(filePath)) { 
    
     string[] lines = File.ReadAllLines(filePath);
 
@@ -242,7 +242,7 @@ namespace SpotifyClone.Entities
     }
 
    
-    File.WriteAllLines(filePath, lines);
+    File.WriteAllLines(filePath, lines);}
 }
 
        

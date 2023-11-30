@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\SpotifyClone.csproj",
-      "projectName": "SpotifyClone",
-      "projectPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\SpotifyClone.csproj",
+      "projectUniqueName": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\SpotifyLibrary.csproj",
+      "projectName": "SpotifyLibrary",
+      "projectPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\SpotifyLibrary.csproj",
       "packagesPath": "C:\\Users\\sarad\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\obj\\",
       "projectStyle": "PackageReference",

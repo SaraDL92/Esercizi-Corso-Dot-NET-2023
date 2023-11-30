@@ -16,7 +16,7 @@ namespace SpotifyClone.Entities
             Group _group;
             bool _liveVersion;
             List<Media> _trackList;
-
+        int _rating;
             public Album(string title, string releaseDate, string numbOfTracks, Artist artist, Group group, bool liveVersion)
             {
                 _title = title;
@@ -26,16 +26,26 @@ namespace SpotifyClone.Entities
                 _group = group;
                 _liveVersion = liveVersion;
                 _trackList = new List<Media>();
+               
             
             }
+        public int CalculateRating()
+        {
+            foreach (Media song in TrackList)
+            {
+               int rat= TrackList.Sum(x => x.Rating);
+                Rating =rat;
+            }return Rating;
+        }
 
             public string Title { get => _title; set => _title = value; }
             public string ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
             public string NumbOfTracks { get => _numbOfTracks; set => _numbOfTracks = value; }
             public bool LiveVersion { get => _liveVersion; set => _liveVersion = value; }
-            internal Artist Artist { get => _artist; set => _artist = value; }
-            internal Group Group { get => _group; set => _group = value; }
-            internal List<Media> TrackList { get => _trackList; set => _trackList = value; }
-        }
+           public Artist Artist { get => _artist; set => _artist = value; }
+           public Group Group { get => _group; set => _group = value; }
+           public List<Media> TrackList { get => _trackList; set => _trackList = value; }
+           public int Rating { get => _rating; set => _rating = value; }
+    }
     }
 

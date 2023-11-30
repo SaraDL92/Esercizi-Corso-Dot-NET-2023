@@ -1,0 +1,23 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.csproj.AssemblyReference.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Spotify Service.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.csproj.CopyComplete
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\refint\Spotify Service.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\Spotify Service.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\ref\Spotify Service.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\SpotifyLibrary.pdb

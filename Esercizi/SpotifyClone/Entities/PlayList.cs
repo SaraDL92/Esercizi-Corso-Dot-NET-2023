@@ -14,7 +14,7 @@ namespace SpotifyClone.Entities
         User _user;
         List<Media> _songs=new List<Media> ();
         string _name;
-
+        int _rating;
         public PlayList(User user, string name)
         {
             _id = _nextid++;
@@ -26,11 +26,14 @@ namespace SpotifyClone.Entities
         {   _id= _nextid++;
             _name = name;
             _songs.Add(song); }
+       
 
         public string Name { get => _name; set => _name = value; }
         public int Id { get => _id; set => _id = value; }
-        internal User User { get => _user; set => _user = value; }
-        internal List<Media> Songs { get => _songs; set => _songs = value; }
+        public User User { get => _user; set => _user = value; }
+        public List<Media> Songs { get => _songs; set => _songs = value; }
+        public int Rating { get => _rating; set => _rating = value; }
+
         public void AddSong(Media song)
         {
             _songs.Add(song);

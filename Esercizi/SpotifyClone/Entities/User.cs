@@ -54,7 +54,7 @@ namespace SpotifyClone.Entities
         public string UserName { get => _userName; set => _userName = value; }
         public string Password { get => _password; set => _password = value; }
         internal List<PlayList> PlayList { get => _playList; set => _playList = value; }
-        internal Setting Setting { get => setting; set => setting = value; }
+        public Setting Setting { get => setting; set => setting = value; }
         public bool IsPremium { get => isPremium; set => isPremium = value; }
         public bool IsLogged { get => _isLogged; set => _isLogged = value; }
         public string Language { get => language; set => language = value; }

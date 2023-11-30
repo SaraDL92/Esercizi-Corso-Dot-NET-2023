@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\SpotifyLibrary.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\refint\SpotifyLibrary.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\ref\SpotifyLibrary.dll
