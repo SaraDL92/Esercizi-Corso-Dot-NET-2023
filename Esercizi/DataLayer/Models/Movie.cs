@@ -9,6 +9,7 @@ namespace DataLayer.Models
     internal class Movie:Media
     {
         Director _director;
+        
 
         internal Director Director1 { get => _director; set => _director = value; }
     }

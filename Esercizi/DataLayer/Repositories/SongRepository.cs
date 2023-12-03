@@ -5,11 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataLayer.Repositories.Interfaces;
+
+using DataLayer.Dto;
+using System.Runtime.CompilerServices;
+
+
+[assembly: InternalsVisibleTo("ServiceLayer")]
 
 namespace DataLayer.Repositories
 {
-    internal class SongRepository : ISongRepository
+    internal class SongRepository 
     {
         private readonly SongDbContext _songDbContext;
 
@@ -18,23 +23,37 @@ namespace DataLayer.Repositories
             _songDbContext = dbcontext;
         }
 
-       public List<Song> GetAllSongs()
+       internal List<SongDTO> GetAllSongs()
         {
-            return _songDbContext.SongList.ToList();
+            List<SongDTO> listacanzoni = new();
+           List <Song>listacanzonii=_songDbContext.SongList.ToList();
+            foreach(Song song in listacanzonii)
+            {
+                SongDTO songDTO = new(song);
+                listacanzoni.Add(songDTO);
+            }
+            return listacanzoni;
         }
 
-        public Song GetSongById(int id)
-        {
-            return _songDbContext.SongList.FirstOrDefault(s => s.Id == id);
+        internal SongDTO GetSongById(int id)
+        {List <SongDTO> listacanzoni = new();
+            List<Song> songs= _songDbContext.SongList.ToList();
+            foreach(Song song in songs)
+            {
+                SongDTO songDTO = new(song);
+                listacanzoni.Add(songDTO);
+            }
+            return listacanzoni.FirstOrDefault(s => s.Id == id);
         }
 
-        public void AddSong(Song song)
+        internal void AddSong(Song song)
         {
+            
             _songDbContext.SongList.Add(song);
 
         }
 
-       public void DeleteSong(int id)
+       internal   void DeleteSong(int id)
         {
             var songtodelete = _songDbContext.SongList.FirstOrDefault(s => s.Id == id);
             if (songtodelete != null)

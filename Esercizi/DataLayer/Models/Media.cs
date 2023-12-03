@@ -20,14 +20,7 @@ namespace DataLayer.Models
        
         List<PlayList> _playlists = new List<PlayList>();
 
-        public Media(string title, string genre, int duration, int rating)
-            
-        {
-            _title = title;
-            _genre = genre;
-            _duration = duration;
-            _rating=rating;
-        }
+       
 
         internal static int Personalrating { get => personalrating; set => personalrating = value; }
         internal int Rating { get => _rating; set => _rating = value; }
