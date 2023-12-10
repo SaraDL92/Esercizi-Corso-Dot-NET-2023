@@ -50,7 +50,7 @@ namespace SpotifyClone.Services
             Console.ForegroundColor = ConsoleColor.White;
             string language = Console.ReadLine();
 
-            List<PlayList> playlist = new List<PlayList>();
+            List<PlayListDTO> playlist = new List<PlayListDTO>();
 
             while (true)
             {
@@ -79,7 +79,7 @@ namespace SpotifyClone.Services
 
             List<Radio> favradio = new List<Radio>();
 
-            User newUser = new User(name, surname, birthday, username, password, _isArtist);
+            UserDTO newUser = new UserDTO(name, surname, birthday, username, password, _isArtist);
             utente1.Name = name;
             utente1.Surname = surname;
             utente1.Birthday = birthday;
@@ -94,7 +94,7 @@ namespace SpotifyClone.Services
             Console.WriteLine($"Now you are registered {username}!");
         }
 
-        public void LoginUser(User user)
+        public void LoginUser(UserDTO user)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Insert username:");

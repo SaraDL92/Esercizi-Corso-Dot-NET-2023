@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "oR6mdZp8/ZTnywpOoxkEMs/EWbQqOs7zhfrbmziwIkFWVE/Xtoqg4aWNXdnhYTeWhHl0Vr0gNo0P3nfWi0gPaQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\servicelayer1\\servicelayer1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

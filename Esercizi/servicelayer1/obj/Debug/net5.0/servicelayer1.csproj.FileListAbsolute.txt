@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\bin\Debug\net5.0\servicelayer1.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\bin\Debug\net5.0\servicelayer1.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\bin\Debug\net5.0\servicelayer1.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\bin\Debug\net5.0\datalayer1.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\bin\Debug\net5.0\datalayer1.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.csproj.AssemblyReference.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.csproj.CopyComplete
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\refint\servicelayer1.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\servicelayer1.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\servicelayer1\obj\Debug\net5.0\ref\servicelayer1.dll

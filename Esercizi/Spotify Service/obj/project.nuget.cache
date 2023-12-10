@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ryF+LtPMUdYbkXx/AaGh+H6sgmKeexqucbeEHjYceX9Ciw5GvSeMOOL4IdmAQGw0aneLhwsft9nNPqpHR9ppWw==",
+  "dgSpecHash": "H/qOVOWRqa4JVRzkmeOMV4RmRncq5uHC8QwsatJ2xChnz7KWG7qwccFghS4RPAy71CCN4FMmaiX1aFhLRBGddQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\Spotify Service\\SpotifyService.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

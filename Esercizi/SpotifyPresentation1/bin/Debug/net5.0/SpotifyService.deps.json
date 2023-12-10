@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "SpotifyService/1.0.0": {
+        "dependencies": {
+          "SpotifyLibrary": "1.0.0"
+        },
+        "runtime": {
+          "SpotifyService.dll": {}
+        }
+      },
+      "SpotifyLibrary/1.0.0": {
+        "runtime": {
+          "SpotifyLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SpotifyService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SpotifyLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

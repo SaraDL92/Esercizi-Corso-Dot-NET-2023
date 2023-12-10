@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LW35MK7FrkwzAuDKpMkASdxng+9zu5/Y7hXhozh73g5jurzChEvwO1vasESSwSXLYkqRdYnmh1z6orujlvO60w==",
+  "dgSpecHash": "54QyX4eQdKHq1w9OdChJTY9jakQpCbuGt8HWFEK1svsP/Cnjpr6Svb7VfuxrWzozd8guo578qGtBAMWrD/YbnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\SpotifyClone\\SpotifyLibrary.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

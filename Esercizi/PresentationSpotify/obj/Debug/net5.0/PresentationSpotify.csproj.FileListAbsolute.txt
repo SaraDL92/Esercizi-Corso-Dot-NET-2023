@@ -1,0 +1,5 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\PresentationSpotify\obj\Debug\net5.0\PresentationSpotify.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\PresentationSpotify\obj\Debug\net5.0\PresentationSpotify.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\PresentationSpotify\obj\Debug\net5.0\PresentationSpotify.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\PresentationSpotify\obj\Debug\net5.0\PresentationSpotify.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\PresentationSpotify\obj\Debug\net5.0\PresentationSpotify.csproj.AssemblyReference.cache

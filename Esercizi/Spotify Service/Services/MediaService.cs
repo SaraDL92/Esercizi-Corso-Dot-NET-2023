@@ -11,21 +11,21 @@ namespace SpotifyClone.Services
     {
         public class MediaService
         {
-            private Database database;
+            private DatabaseDTO database;
            
             private MediaComponent mediaplayer;
 
-            public Database Database { get => database; set => database = value; }
+            public DatabaseDTO Database { get => database; set => database = value; }
           
             public MediaComponent Mediaplayer { get => mediaplayer; set => mediaplayer = value; }
 
-            public MediaService(Database db, MediaComponent player)
+            public MediaService(DatabaseDTO db, MediaComponent player)
             {
                 database = db;
                 mediaplayer = player;
             }
 
-            public void ManageMusic(User user1,Artist artist, Database database, out bool esci,Writers writer)
+            public void ManageMusic(UserDTO user1,ArtistDTO artist, DatabaseDTO database, out bool esci,Writers writer)
             {
                 esci = false;
 
@@ -160,7 +160,7 @@ namespace SpotifyClone.Services
 
 
             }
-            private void ManageArtists(Database database,Writers writer, User user)
+            private void ManageArtists(DatabaseDTO database,Writers writer, UserDTO user)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of artists:");
@@ -213,7 +213,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageAlbums(Writers writer,User user)
+            private void ManageAlbums(Writers writer,UserDTO user)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the list of albums:");
@@ -296,7 +296,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void ManageSongs(Writers writer,User user)
+            private void ManageSongs(Writers writer,UserDTO user)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -360,7 +360,7 @@ namespace SpotifyClone.Services
             }}
 
 
-            private void ManagePlaylists(User utente1,Writers writer)
+            private void ManagePlaylists(UserDTO utente1,Writers writer)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This is the general list of playlists:");
@@ -458,7 +458,7 @@ namespace SpotifyClone.Services
                     Console.WriteLine("Enter the NAME you want for your playlist!");
                     Console.ForegroundColor = ConsoleColor.White;
                     string inputt = Console.ReadLine();
-                    PlayList playlist = new PlayList(utente1, inputt);
+                    PlayListDTO playlist = new PlayListDTO(utente1, inputt);
                     database.AddPlaylistsToDB(playlist);
 
                     if (playlist != null)
@@ -543,7 +543,7 @@ namespace SpotifyClone.Services
             }
 
 
-            private void CreateContent(Artist convertedArtist)
+            private void CreateContent(ArtistDTO convertedArtist)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("So you are an artist, before going on, give me your artist name:");
@@ -590,7 +590,7 @@ namespace SpotifyClone.Services
 
                         convertedArtist.CreateNewSong(genre, title, duration, releaseDate);
 
-                        foreach (Media s in convertedArtist.Songs)
+                        foreach (MediaDTO s in convertedArtist.Songs)
                         {
                             database.Songs.Add(s);
                         }

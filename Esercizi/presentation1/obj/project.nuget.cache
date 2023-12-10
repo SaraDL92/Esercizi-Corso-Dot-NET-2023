@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "u58Z+a25d8bTrlhefxbz/E2qP+toCx9pqmbxRfKaIXRUeZyLMvQ750BvALptmFZoaXl0X2XuMXGCfrHjU8VC6A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\presentation1\\presentation1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "PresentationT/1.0.0": {
+        "dependencies": {
+          "ServiceLayerT": "1.0.0"
+        },
+        "runtime": {
+          "PresentationT.dll": {}
+        }
+      },
+      "DataLayerT/1.0.0": {
+        "runtime": {
+          "DataLayerT.dll": {}
+        }
+      },
+      "ServiceLayerT/1.0.0": {
+        "dependencies": {
+          "DataLayerT": "1.0.0"
+        },
+        "runtime": {
+          "ServiceLayerT.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PresentationT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataLayerT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServiceLayerT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
