@@ -1,5 +1,0 @@
-C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\ServiceLayerSpotify\obj\Debug\net5.0\ServiceLayerSpotify.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\ServiceLayerSpotify\obj\Debug\net5.0\ServiceLayerSpotify.AssemblyInfoInputs.cache
-C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\ServiceLayerSpotify\obj\Debug\net5.0\ServiceLayerSpotify.AssemblyInfo.cs
-C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\ServiceLayerSpotify\obj\Debug\net5.0\ServiceLayerSpotify.csproj.CoreCompileInputs.cache
-C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\ServiceLayerSpotify\obj\Debug\net5.0\ServiceLayerSpotify.csproj.AssemblyReference.cache
