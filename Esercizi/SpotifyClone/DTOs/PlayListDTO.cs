@@ -19,7 +19,7 @@ namespace SpotifyLibrary.DTOs
         public PlayListDTO()
         {
             Map(m => m.Id).Name("ID");
-            mA
+            Map(m => m.Name).Name("Title");
             Map(m => m.User.UserName).Name("USER");
 
         }

@@ -1,0 +1,9 @@
+{
+  "EmailSettings": {
+    "Host": "smtp.ethereal.email",
+    "Port": 587,
+    "Security": "STARTTLS",
+    "Username": "jaime.osinski@ethereal.email",
+    "Password": "geAXXzPmyJYF94aZFs"
+  }
+}
