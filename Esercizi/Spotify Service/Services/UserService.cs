@@ -1,4 +1,5 @@
 ﻿using SpotifyClone.Entities;
+using SpotifyLibrary.DB;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,15 +11,15 @@ namespace SpotifyClone.Services
 {
     public class UserService
     {
-        private Database database;
+        private DatabaseDTO database;
         bool _isArtist = false;
 
-        public UserService(Database database)
+        public UserService(DatabaseDTO database)
         {
             this.database = database;
         }
 
-        public void RegisterUser(User utente1)
+        public void RegisterUser(UserDTO utente1)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Insert name:");
@@ -50,7 +51,7 @@ namespace SpotifyClone.Services
             Console.ForegroundColor = ConsoleColor.White;
             string language = Console.ReadLine();
 
-            List<PlayListDTO> playlist = new List<PlayListDTO>();
+            List<PlayList> playlist = new List<PlayList>();
 
             while (true)
             {

@@ -1,40 +1,46 @@
-﻿using System;
+﻿using SpotifyClone.Entities;
+using SpotifyClone.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpotifyClone.Entities
+namespace SpotifyLibrary.DB
 {
     public class DatabaseDTO
     {
-        List<AlbumDTO> _albums = new List<AlbumDTO>();
-        List<ArtistDTO> _artists = new List<ArtistDTO>();
-        List<MediaDTO> _songs = new List<MediaDTO>();
-        List <MediaDTO>_movies=new List <MediaDTO>();
+        List<Album> _albums = new List<Album>();
+        List<Artist> _artists = new List<Artist>();
+        List<Media> _songs = new List<Media>();
+        List<Media> _movies = new List<Media>();
         List<UserDTO> _users = new List<UserDTO>();
-        List<PlayListDTO> _playlists = new List<PlayListDTO>();
-        List <Radio> _radiolist = new List<Radio>();
-       
+        List<PlayList> _playlists = new List<PlayList>();
+        List<Radio> _radiolist = new List<Radio>();
+
+
+
         bool islogged = false;
 
         public DatabaseDTO()
         {
             _users = new List<UserDTO>();
-            _artists = new List<ArtistDTO>();
-            _songs = new List<MediaDTO>();
-            _albums = new List<AlbumDTO>();
-            _playlists = new List<PlayListDTO>();
+            _artists = new List<Artist>();
+            _songs = new List<Media>();
+            _albums = new List<Album>();
+            _playlists = new List<PlayList>();
+
         }
 
-        public List<AlbumDTO> Albums { get => _albums; set => _albums = value; }
-       public List<ArtistDTO> Artists { get => _artists; set => _artists = value; }
-       public List<MediaDTO> Songs { get => _songs; set => _songs = value; }
-       public List<UserDTO> Users { get => _users; set => _users = value; }
+        public List<Album> Albums { get => _albums; set => _albums = value; }
+        public List<Artist> Artists { get => _artists; set => _artists = value; }
+        public List<Media> Songs { get => _songs; set => _songs = value; }
+        public List<UserDTO> Users { get => _users; set => _users = value; }
         public bool Islogged { get => islogged; set => islogged = value; }
-        public List<PlayListDTO> Playlists { get => _playlists; set => _playlists = value; }
-        public List<MediaDTO> Movies { get => _movies; set => _movies = value; }
+        public List<PlayList> Playlists { get => _playlists; set => _playlists = value; }
+        public List<Media> Movies { get => _movies; set => _movies = value; }
         public List<Radio> Radiolist { get => _radiolist; set => _radiolist = value; }
+
 
         public void ShowMeRadio()
         {
@@ -62,7 +68,7 @@ namespace SpotifyClone.Entities
             if (Artists != null)
             {
                 int i = 0;
-                foreach (ArtistDTO artist in Artists)
+                foreach (Artist artist in Artists)
                 {
                     i++;
                     Console.WriteLine(i + "-" + artist.ArtistName);
@@ -78,7 +84,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Albums != null)
             {
-                foreach (AlbumDTO album in Albums)
+                foreach (Album album in Albums)
                 {
                     i++;
                     Console.WriteLine(i + "-" + album.Title);
@@ -91,14 +97,15 @@ namespace SpotifyClone.Entities
         }
 
         public void ShowMeTop5Albums()
-        {var AlbumSorted=Albums.OrderByDescending(a=>a.CalculateRating()).Take(5);
+        {
+            var AlbumSorted = Albums.OrderByDescending(a => a.CalculateRating()).Take(5);
             int i = 0;
             if (Albums != null)
             {
-                foreach (AlbumDTO album in AlbumSorted)
+                foreach (Album album in AlbumSorted)
                 {
                     i++;
-                    Console.WriteLine(i + "-" + album.Title+" "+ "rating:"+" "+album.Rating);
+                    Console.WriteLine(i + "-" + album.Title + " " + "rating:" + " " + album.Rating);
 
                 }
 
@@ -112,10 +119,10 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Radiolist != null)
             {
-                foreach( Radio r in RadioSorted)
+                foreach (Radio r in RadioSorted)
                 {
                     i++;
-                    Console.WriteLine(i + "-" + r.Name + " " + "rating:" + " " +r.Rating);
+                    Console.WriteLine(i + "-" + r.Name + " " + "rating:" + " " + r.Rating);
 
                 }
 
@@ -129,7 +136,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Playlists != null)
             {
-                foreach (PlayListDTO s in PlaylistSorted)
+                foreach (PlayList s in PlaylistSorted)
                 {
                     i++;
                     Console.WriteLine(i + "-" + s.Name + " " + "rating:" + " " + s.Rating);
@@ -146,7 +153,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Songs != null)
             {
-                foreach (MediaDTO s in SongSorted)
+                foreach (Media s in SongSorted)
                 {
                     i++;
                     Console.WriteLine(i + "-" + s.Title + " " + "rating:" + " " + s.Rating);
@@ -164,7 +171,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Artists != null)
             {
-                foreach (ArtistDTO a in ArtistSorted)
+                foreach (Artist a in ArtistSorted)
                 {
                     i++;
                     Console.WriteLine(i + "-" + a.ArtistName + " " + "rating:" + " " + a.Rating);
@@ -175,11 +182,11 @@ namespace SpotifyClone.Entities
             }
             else { Console.WriteLine("No list of artists"); }
         }
-        public void ShowMeOneAlbum(AlbumDTO album)
+        public void ShowMeOneAlbum(Album album)
         {
             int i = 0;
-            List<MediaDTO> songs = album.TrackList;
-            foreach (MediaDTO s in songs)
+            List<Media> songs = album.TrackList;
+            foreach (Media s in songs)
             {
                 i++;
                 Console.WriteLine(i + "" + s.Title);
@@ -188,19 +195,19 @@ namespace SpotifyClone.Entities
 
 
         }
-        public void ShowMeOneArtist(ArtistDTO artist)
+        public void ShowMeOneArtist(Artist artist)
         {
-            Console.WriteLine("Albums by " + artist.Name + ":");
+            Console.WriteLine("Albums by " + artist.ArtistName + ":");
             for (int i = 0; i < artist.Albums.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {artist.Albums[i].Title}");
             }
         }
-        public void ShowMeOnePlaylist(PlayListDTO playlist)
+        public void ShowMeOnePlaylist(PlayList playlist)
         {
             int i = 0;
-            List<MediaDTO> songs = playlist.Songs;
-            foreach (MediaDTO s in songs)
+            List<Media> songs = playlist.Songs;
+            foreach (Media s in songs)
             {
                 i++;
                 Console.WriteLine(i + "" + s.Title);
@@ -212,10 +219,10 @@ namespace SpotifyClone.Entities
         public void ShowMeOneTracklistRadio(Radio r)
         {
             int i = 0;
-           foreach(MediaDTO s in r.SongList)
+            foreach (Media s in r.SongList)
             {
                 i++;
-                Console.WriteLine(i+" "+s.Title.ToString());
+                Console.WriteLine(i + " " + s.Title.ToString());
             }
 
 
@@ -225,7 +232,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Songs != null)
             {
-                foreach (MediaDTO song in Songs)
+                foreach (Media song in Songs)
                 {
 
                     i++;
@@ -242,7 +249,7 @@ namespace SpotifyClone.Entities
             int i = 0;
             if (Movies != null)
             {
-                foreach (MediaDTO movie in Movies)
+                foreach (Media movie in Movies)
                 {
 
                     i++;
@@ -260,7 +267,7 @@ namespace SpotifyClone.Entities
             if (Playlists != null)
             {
                 int i = 0;
-                foreach (PlayListDTO playlist in Playlists)
+                foreach (PlayList playlist in Playlists)
                 {
                     i++;
                     Console.WriteLine(i + " " + playlist.Name);
@@ -273,25 +280,32 @@ namespace SpotifyClone.Entities
         }
 
 
-        public void AddArtistToDB(ArtistDTO artist)
+        public void AddArtistToDB(Artist artist)
         {
             if (Artists != null) { Artists.Add(artist); }
             else { Console.WriteLine("No one in list"); }
 
         }
-        public void AddPlaylistsToDB(PlayListDTO playlist)
+        public void AddUserToDB(UserDTO user)
+        {
+            if (Users != null) { Users.Add(user); }
+            else { Console.WriteLine("No one in list"); }
+
+        }
+        public void AddPlaylistsToDB(PlayList playlist)
         {
             if (Playlists != null) { Playlists.Add(playlist); }
             else { Console.WriteLine("No one playlist in Spotify!"); }
 
         }
-        public void AddAlbumToDB(AlbumDTO album)
+        public void AddAlbumToDB(Album album)
         {
             if (Albums != null) { Albums.Add(album); }
             else { Console.WriteLine("No one in list"); }
 
+
         }
-        public void AddSongsToDB(MediaDTO song)
+        public void AddSongsToDB(Media song)
         {
             if (Songs != null) { Songs.Add(song); }
             else { Console.WriteLine("No one in list"); }
@@ -300,10 +314,10 @@ namespace SpotifyClone.Entities
         public void ShowMeRadioList()
         {
             int i = 0;
-            foreach(Radio r in Radiolist)
+            foreach (Radio r in Radiolist)
             {
                 i++;
-                Console.WriteLine(i+"-"+r.Name);
+                Console.WriteLine(i + "-" + r.Name);
             }
         }
         public void RadioByGenre(Radio radio, string genre)
@@ -316,23 +330,23 @@ namespace SpotifyClone.Entities
         {
             DatabaseDTO database = new DatabaseDTO();
 
-            ArtistDTO MichaelJackson = new("Michael", "Jackson", "29-08-1958", "Michael Jackson", "The greatest star of all times!");
-            ArtistDTO MachineGunKelly = new("Colson", "Baker", "22-04-1990", "Machine Gun Kelly", "Colson Baker (born April 22, 1990), known professionally as Machine Gun Kelly (MGK), is an American rapper, singer, songwriter, musician, and actor.");
-            ArtistDTO Yungblud = new("Dominic", "Richard", "05-08-1997", "Yungblud", "Yungblud, pseudonym of Dominic Richard Harrison, is a British singer-songwriter.");
-            AlbumDTO Dangerous = new("Dangerous", "1991", "12", MichaelJackson, null, false);
-            AlbumDTO Century = new("21st Century Liability", "2018", "10", Yungblud, null, false);
-            AlbumDTO Mainstream = new("Mainstream Sellout", "2022", "15", MachineGunKelly, null, false);
-            MediaDTO healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
-            MediaDTO gonetoosoon = new("POP", "Gone too soon", 200, "1991", Dangerous, MichaelJackson);
-            MediaDTO fakelove = new("Rock", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
-            Director JamesCameron = new("James Cameron");
-            Director JacoVanDormael = new("Jaco Van Dormael");
-            Director Melies = new("Georges Méliès");
-            MediaDTO Titanic = new(JamesCameron, "Titanic", 7200, "1997", "Dramatic");
-            MediaDTO MrNobody = new(JacoVanDormael , "Mr Nobody", 7200, "2009", "Sci-fi");
-            MediaDTO Levoy = new(Melies, "Le voyage dans la lune", 840, "1902", "Sci-fi");
+            Artist MichaelJackson = new("Michael", "Jackson", "29-08-1958", "Michael Jackson", "The greatest star of all times!");
+            Artist MachineGunKelly = new("Colson", "Baker", "22-04-1990", "Machine Gun Kelly", "Colson Baker (born April 22, 1990), known professionally as Machine Gun Kelly (MGK), is an American rapper, singer, songwriter, musician, and actor.");
+            Artist Yungblud = new("Dominic", "Richard", "05-08-1997", "Yungblud", "Yungblud, pseudonym of Dominic Richard Harrison, is a British singer-songwriter.");
+            Album Dangerous = new("Dangerous", "1991", "12", MichaelJackson, null, false);
+            Album Century = new("21st Century Liability", "2018", "10", Yungblud, null, false);
+            Album Mainstream = new("Mainstream Sellout", "2022", "15", MachineGunKelly, null, false);
+            Media healtheworld = new("POP", "Heal The World", 100, "1991", Dangerous, MichaelJackson);
+            Media gonetoosoon = new("POP", "Gone too soon", 200, "1991", Dangerous, MichaelJackson);
+            Media fakelove = new("Rock", "Fake love don't last", 120, "2022", Mainstream, MachineGunKelly);
+            DirectorDTO JamesCameron = new("James Cameron");
+            DirectorDTO JacoVanDormael = new("Jaco Van Dormael");
+            DirectorDTO Melies = new("Georges Méliès");
+            Media Titanic = new(JamesCameron, "Titanic", 7200, "1997", "Dramatic");
+            Media MrNobody = new(JacoVanDormael, "Mr Nobody", 7200, "2009", "Sci-fi");
+            Media Levoy = new(Melies, "Le voyage dans la lune", 840, "1902", "Sci-fi");
             Dangerous.TrackList.Add(gonetoosoon);
-            
+
 
 
             Radio radiopop = new("Radio Pop");
@@ -341,13 +355,13 @@ namespace SpotifyClone.Entities
             database.RadioByGenre(radiopop, "POP");
             database.RadioByGenre(radiorock, "ROCK");
             database.RadioByGenre(radiohiphop, "HIP-HOP");
-            
-           
+
+
             database.Radiolist.Add(radiopop);
             database.Radiolist.Add(radiorock);
             database.Radiolist.Add(radiohiphop);
             radiorock.SongList.Add(fakelove);
-          
+
             radiopop.SongList.Add(gonetoosoon);
             radiopop.SongList.Add(healtheworld);
 
@@ -359,16 +373,16 @@ namespace SpotifyClone.Entities
             database.Movies.Add(MrNobody);
             database.Movies.Add(Levoy);
 
-            MediaDTO iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud);  radiorock.SongList.Add(iloveyou);
-            PlayListDTO ottantas = new("90s songs", healtheworld);
-            PlayListDTO punk = new("punk rock time", fakelove);
-            PlayListDTO balladrock = new("Rock in love", iloveyou);
+            Media iloveyou = new("Ballad Rock", "I Love You, Will You Marry Me", 150, "2018", Century, Yungblud); radiorock.SongList.Add(iloveyou);
+            PlayList ottantas = new("90s songs", healtheworld);
+            PlayList punk = new("punk rock time", fakelove);
+            PlayList balladrock = new("Rock in love", iloveyou);
             ottantas.AddSong(gonetoosoon);
             gonetoosoon.Albums.Add(Dangerous);
             gonetoosoon.Playlists.Add(ottantas);
             database.Songs.Add(gonetoosoon);
-            UserDTO user2 = new UserDTO("Selene", "Rubius", "12-05-1990");
-            PlayListDTO playlist1 = new PlayListDTO(user2, "heartstone");
+            UserDTO user2 = new UserDTO("Selene", "Rubius", "Selene92", "italian", "11-09-1992");
+            PlayList playlist1 = new PlayList(user2, "heartstone");
             Dangerous.TrackList.Add(healtheworld);
             Dangerous.TrackList.Add(gonetoosoon);
             Century.TrackList.Add(iloveyou);
@@ -395,6 +409,8 @@ namespace SpotifyClone.Entities
             database.AddSongsToDB(healtheworld);
             database.AddSongsToDB(fakelove);
             database.AddSongsToDB(iloveyou);
+            database.AddUserToDB(user2);
+
 
             return database;
         }
@@ -420,7 +436,7 @@ namespace SpotifyClone.Entities
                     Console.WriteLine("Welcome to Spotify " + username);
 
                     islogged = true;
-                    
+
 
                 }
                 else
@@ -429,8 +445,8 @@ namespace SpotifyClone.Entities
                     islogged = false;
                     user.IsLogged = false;
 
-                   
-                 
+
+
                 }
             }
             else
@@ -439,14 +455,14 @@ namespace SpotifyClone.Entities
                 islogged = false;
                 user.IsLogged = false;
 
-               
-              
+
+
             }
 
-          
+
         }
 
 
     }
 }
-    
+

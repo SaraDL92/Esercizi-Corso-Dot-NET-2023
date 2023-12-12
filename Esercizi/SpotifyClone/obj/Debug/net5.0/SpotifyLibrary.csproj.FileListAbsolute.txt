@@ -13,3 +13,10 @@ C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClon
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.pdb
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.genruntimeconfig.cache
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\ref\SpotifyLibrary.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.csproj.AssemblyReference.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\CsvHelper.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\obj\Debug\net5.0\SpotifyLibrary.csproj.CopyComplete
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\ServiceStack.Text.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\SpotifyClone\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

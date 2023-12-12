@@ -1,5 +1,6 @@
 ﻿using SpotifyClone.Entities;
 using SpotifyClone.Services.Spotify.Services;
+using SpotifyLibrary.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace SpotifyClone.Services
             utente1 = user;
         }
 
-        public void ManageProfile(UserDTO user1, DatabaseDTO database, ArtistDTO convertedArtist, Writers writer)
+        public void ManageProfile(UserDTO user1, DatabaseDTO database, Artist convertedArtist, WriteOnDBservice writer)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("You are in PROFILE now");

@@ -9,7 +9,7 @@ namespace SpotifyClone.Entities
    public class Radio
     {
         string _name;
-        List<MediaDTO> _songlist=new List<MediaDTO>();
+        List<Media> _songlist=new List<Media>();
 
         int _rating;
         public Radio(string name)
@@ -18,13 +18,16 @@ namespace SpotifyClone.Entities
            
            
         }
-        
 
 
-      
+        public override string ToString()
+        {
+            return $"Title:{Name}";
+        }
+
 
         public string Name { get => _name; set => _name = value; }
-        public List<MediaDTO> SongList { get => _songlist; set => _songlist = value; }
+        public List<Media> SongList { get => _songlist; set => _songlist = value; }
         public int Rating { get => _rating; set => _rating = value; }
     }
 }

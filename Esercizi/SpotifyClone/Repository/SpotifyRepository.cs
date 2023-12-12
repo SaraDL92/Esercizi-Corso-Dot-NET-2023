@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Formats.Asn1;
 using System.Globalization;
 using System.IO;
@@ -7,6 +6,8 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using SpotifyClone.Entities;
 using System.Linq;
+using System;
+using ServiceStack.Text;
 
 namespace SpotifyClone.Repositories
 {
@@ -19,32 +20,26 @@ namespace SpotifyClone.Repositories
             this.filePath = filePath;
         }
 
-        public List<AlbumDTO> ReadAlbumsFromCsv()
+      
+        public List<string> ReadCsvLines()
         {
             try
             {
-                using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
-                {
-                    return csv.GetRecords<AlbumDTO>().ToList();
-                }
+                return File.ReadAllLines(filePath).ToList();
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error reading CSV file: {ex.Message}");
-                return new List<AlbumDTO>();
+                return new List<string>();
             }
         }
 
-        public void WriteAlbumsToCsv(List<AlbumDTO> albums)
+        public void WriteToCsv(List<string> lines)
         {
             try
             {
-                using (var writer = new StreamWriter(filePath))
-                using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
-                {
-                    csv.WriteRecords(albums);
-                }
+                File.WriteAllLines(filePath, lines);
             }
             catch (Exception ex)
             {
@@ -52,39 +47,12 @@ namespace SpotifyClone.Repositories
             }
         }
 
-        public List<ArtistDTO> ReadArtistsFromCsv()
-        {
-            try
-            {
-                using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
-                {
-                    return csv.GetRecords<ArtistDTO>().ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading CSV file: {ex.Message}");
-                return new List<ArtistDTO>();
-            }
-        }
 
-        public void WriteArtistsToCsv(List<ArtistDTO> artists)
-        {
-            try
-            {
-                using (var writer = new StreamWriter(filePath))
-                using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
-                {
-                    csv.WriteRecords(artists);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error writing to CSV file: {ex.Message}");
-            }
-        }
+      
 
-       
     }
+
+
+
+
 }

@@ -12,7 +12,7 @@ namespace SpotifyClone.Entities
 {
     public class MediaComponent
     {
-        private List<MediaDTO> playlist;
+        private List<Media> playlist;
         private static bool isPlaying = false;
         private static bool isPaused = false;
         private static int currentSongIndex = 0;
@@ -21,7 +21,7 @@ namespace SpotifyClone.Entities
         DateTime pausedstart;
         DateTime pausedend;
         TimeSpan calcolopausa;
-        internal List<MediaDTO> Playlist { get => playlist; set => playlist = value; }
+        internal List<Media> Playlist { get => playlist; set => playlist = value; }
 
         public MediaComponent() { }
 
@@ -33,7 +33,7 @@ namespace SpotifyClone.Entities
 
         private static ManualResetEventSlim pauseEvent = new ManualResetEventSlim(true);
 
-        public void Play(List<MediaDTO> playlist, int startIndex,Writers writer,UserDTO user)
+        public void Play(List<Media> playlist, int startIndex,WriteOnDBservice writer,UserDTO user)
         {
             if (startIndex >= 0 && startIndex < playlist.Count)
             {
@@ -220,7 +220,7 @@ namespace SpotifyClone.Entities
             }
             WriteRatingToFile(playlist[currentSongIndex]);
         }
-      public void WriteRatingToFile(MediaDTO song)
+      public void WriteRatingToFile(Media song)
 {
     string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
             if(File.Exists(filePath)) { 

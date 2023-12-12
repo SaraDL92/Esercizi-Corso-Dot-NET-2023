@@ -1,36 +1,72 @@
-﻿using SpotifyClone.Entities;
+﻿using CsvHelper;
+using SpotifyClone.Entities;
+using SpotifyLibrary.ModelsFolder;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SpotifyLibrary.DTOs;
+
 namespace SpotifyClone.Services
 {
-    public class Writers
+    public class WriteOnDBservice
     {
-        public void WritePlaylistToFile(List<MediaDTO> playlist)
+        public void WriteAlbumsOnCsvFile(List<Album> albums, string filePath)
         {
-            string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
-            string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify.csv";
+            using (var writer = new StreamWriter(filePath))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.Context.RegisterClassMap<AlbumDTO>();
+                csvWriter.WriteRecords(albums);
+            }
+        }
+
+        public void WriteArtistsOnCsvFile(List<Artist> artists, string filePath)
+        {
+            using (var writer = new StreamWriter(filePath))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.Context.RegisterClassMap<ArtistDTO>();
+                csvWriter.WriteRecords(artists);
+            }
+        }
+        public void WriteSongsOnCsvFile(List<Media> songs, string filePath)
+        {
+            using (var writer = new StreamWriter(filePath))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.Context.RegisterClassMap<SongDTO>();
+                csvWriter.WriteRecords(songs);
+            }
+        }
+
+        public void WriteMoviesOnCsvFile(List<Media> movies, string filePath)
+        {
+            using (var writer = new StreamWriter(filePath))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.Context.RegisterClassMap<MovieDTO>();
+                csvWriter.WriteRecords(movies);
+            }
+        }
+        public void WritePlaylistToFilee<T>(List<T> playlist, string filepath, string filepathtemp)
+        {
+            string tempFilePath = filepathtemp;
 
             using (StreamWriter tempWriter = new StreamWriter(tempFilePath))
+            using (CsvWriter csvWriter = new CsvWriter(tempWriter, CultureInfo.InvariantCulture))
             {
-                int i = 0;
-
-                tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
-                foreach (MediaDTO a in playlist)
-                {
-                    i = i + 1;
-                    tempWriter.WriteLine($"{a.Id1}, {a.Rating}, {a.Title}, {a.Albums[0].Title}, {a.Artist.ArtistName}, {a.Genre}, {a.Playlists[0].Name}, {a.Playlists[0].Id}");
-                }
+                csvWriter.WriteRecords(playlist);
             }
 
-
-            File.Copy(tempFilePath, filePath, true);
+            File.Copy(tempFilePath, filepath, true);
             File.Delete(tempFilePath);
         }
+
         public void WriteListeningTimeToFile(UserDTO user)
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\DataBaseSpotify.csv";
@@ -69,7 +105,7 @@ namespace SpotifyClone.Services
         }
 
 
-        public void WriteTopRatedSongsToFile(List<MediaDTO> playlist, int topCount)
+        public void WriteTopRatedSongsToFile(List<Media> playlist, int topCount)
         {
             string filePath = @"C:\\Users\\sarad\\Documents\\Top5Songs.csv";
             string tempFilePath = @"C:\\Users\\sarad\\Documents\\TempDataBaseSpotify1.csv";
@@ -84,7 +120,7 @@ namespace SpotifyClone.Services
                 tempWriter.WriteLine("ID, RATING, TITLE, ALBUM, ARTIST, GENRE, PLAYLIST, PLAYLIST ID");
 
 
-                foreach (MediaDTO song in playlist.Take(topCount))
+                foreach (Media song in playlist.Take(topCount))
                 {
                     i++;
                     if (song.IsVideo == false)

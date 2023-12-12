@@ -9,12 +9,12 @@ namespace SpotifyClone.Entities
     public class GroupDTO
     {
         string _name;
-        List<ArtistDTO> _members;
-        List<MediaDTO> _songs;
-        List<AlbumDTO> _albums;
+        List<Artist> _members;
+        List<Media> _songs;
+        List<Album> _albums;
         string _bio;
 
-        public GroupDTO(string name, List<ArtistDTO> members, List<MediaDTO> songs, List<AlbumDTO> albums, string bio)
+        public GroupDTO(string name, List<Artist> members, List<Media> songs, List<Album> albums, string bio)
         {
             _name = name;
             _members = members;
@@ -22,12 +22,12 @@ namespace SpotifyClone.Entities
             _albums = albums;
             _bio = bio;
         }
-
+        public GroupDTO() { }
         public string Name { get => _name; set => _name = value; }
         public string Bio { get => _bio; set => _bio = value; }
-        internal List<ArtistDTO> Members { get => _members; set => _members = value; }
-        internal List<MediaDTO> Songs { get => _songs; set => _songs = value; }
-        internal List<AlbumDTO> Albums { get => _albums; set => _albums = value; }
+        internal List<Artist> Members { get => _members; set => _members = value; }
+        internal List<Media> Songs { get => _songs; set => _songs = value; }
+        internal List<Album> Albums { get => _albums; set => _albums = value; }
 
     }
 }

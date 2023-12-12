@@ -21,3 +21,8 @@ C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Ser
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\SpotifyService.pdb
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\SpotifyService.genruntimeconfig.cache
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\obj\Debug\net5.0\ref\SpotifyService.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\CsvHelper.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\ServiceStack.Text.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify Service\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

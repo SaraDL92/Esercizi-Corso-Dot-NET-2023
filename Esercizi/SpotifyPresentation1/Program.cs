@@ -2,23 +2,58 @@
 using SpotifyClone.Entities;
 using SpotifyClone.Services;
 using SpotifyClone.Services.Spotify.Services;
-using System;
+using Spotify_Service.Services;
 using System.Collections.Generic;
 using System.IO;
+using SpotifyClone.Repositories;
+using SpotifyLibrary.DB;
+using System.Globalization;
+using SpotifyLibrary.ModelsFolder;
+using CsvHelper;
+using System.Linq;
+
 namespace SpotifyPresentation1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Database database1 = new Database();
-            Database database = database1.InitializeDatabase();
+            DatabaseDTO database1 = new DatabaseDTO();
+            DatabaseDTO database = database1.InitializeDatabase();
             MediaComponent mediaplayer = new MediaComponent();
-            Writers writers = new Writers();
-            writers.WritePlaylistToFile(database.Songs);
-            UserService userService = new UserService(database);
+            WriteOnDBservice writers = new WriteOnDBservice();
+            ReadFromDBservice reader = new ReadFromDBservice();
+           //writers.WritePlaylistToFile(database.Songs, @"C:\Users\sarad\Documents\DataBaseSpotifySongs.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempSongs.csv", "");
+            writers.WriteAlbumsOnCsvFile(database.Albums, @"C:\Users\sarad\Documents\DataBaseSpotifyAlbums.csv");
+            writers.WriteArtistsOnCsvFile(database.Artists, @"C:\Users\sarad\Documents\DataBaseSpotifyArtists.csv");
+            writers.WriteSongsOnCsvFile(database.Songs, @"C:\Users\sarad\Documents\DataBaseSpotifySongs.csv");
+            writers.WriteMoviesOnCsvFile(database.Movies, @"C:\Users\sarad\Documents\DataBaseSpotifyMovies.csv");
 
-            User utente1 = new User("", "", "");
+
+            //writers.WritePlaylistToFile(database.Artists, @"C:\Users\sarad\Documents\DataBaseSpotifyArtists.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempArtists.csv", "");
+            //writers.WritePlaylistToFile(database.Playlists, @"C:\Users\sarad\Documents\DataBaseSpotifyPlaylists.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempPlaylists.csv", "");
+            //writers.WritePlaylistToFile(database.Radiolist, @"C:\Users\sarad\Documents\DataBaseSpotifyRadios.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempRadios.csv", "");
+            //writers.WritePlaylistToFile(database.Movies, @"C:\Users\sarad\Documents\DataBaseSpotifyMovies.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempMovies.csv", "");
+            //writers.WritePlaylistToFile(database.Users, @"C:\Users\sarad\Documents\DataBaseSpotifyUsers.csv", @"C:\Users\sarad\Documents\DataBaseSpotifyTempUsers.csv", "");
+
+
+            UserService userService = new UserService(database);
+            SpotifyRepository spotifyRepository = new("C:\\Users\\sarad\\Documents\\DataBaseSpotifySongs.csv");
+            SpotifyService spotifyService = new(spotifyRepository);
+
+            List<Album> albums =reader.ReadAlbumsFromCsvFile("C:\\Users\\sarad\\Documents\\DataBaseSpotifyAlbums.csv");
+            List<Artist> artists = reader.ReadArtistsFromCsvFile("C:\\Users\\sarad\\Documents\\DataBaseSpotifyArtists.csv");
+            List<Media> songs = reader.ReadSongsFromCsvFile("C:\\Users\\sarad\\Documents\\DataBaseSpotifySongs.csv");
+            List<Media>movies = reader.ReadMoviesFromCsvFile("C:\\Users\\sarad\\Documents\\DataBaseSpotifyMovies.csv");
+            foreach (SpotifyClone.Entities.Album album in albums)
+            {
+                Console.WriteLine(album.Title);
+            }
+
+
+
+
+            UserDTO utente1 = new UserDTO("", "", "");
             Artist convertedArtist = ConvertToArtist(utente1, "", "");
 
             ConsoleColor originalColor = Console.ForegroundColor;
@@ -71,14 +106,19 @@ namespace SpotifyPresentation1
                 profileManager.ManageProfile(utente1, database, convertedArtist, writers);
             }
             writers.WriteTopRatedSongsToFile(database.Songs, 5);
-
+            
+           
 
         }
 
-        static Artist ConvertToArtist(User user, string artistname, string bio)
+        static Artist ConvertToArtist(UserDTO user, string artistname, string bio)
         {
             return new Artist(user.Name, user.Surname, user.Birthday, artistname, "NuovaInfoArtista");
         }
+      
+
+       
     }
-}
-    
+
+    }
+
