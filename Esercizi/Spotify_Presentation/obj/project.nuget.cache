@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "gPhmkieGDAzt+VS5m0s5wr0Kr6R+Ob4/aCYc+ZWlqkWmBcXoUIyTWhSgoEYQ2xN2bbTk1qa/yaRmH1RgKgUh8Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\Spotify_Presentation\\Spotify_Presentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "F0eYQoMOPflUFGoNjNCDBYY/MR11hE0HH5wts/v1XP8XayR36gQW7OJmP2dg7hqabyzUVz60nSJLi4Ru4YMc5w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sarad\\Documents\\GitHub\\Esercizi-Corso-Dot-NET-2023\\Esercizi\\Spotify_DataLayer\\Spotify_DataLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sarad\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\sarad\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

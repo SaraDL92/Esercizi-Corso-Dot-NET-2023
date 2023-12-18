@@ -55,9 +55,12 @@ namespace PresentationOrder_Mail
                 CustomerName = "Audrey Hepburn",
                 CustomerMail = "audreyhep@outlook.it"
             };
+
+           
+
             orderService.PlaceOrder(order);
             orderService.PlaceOrder(order2);
-
+           
 
 
 

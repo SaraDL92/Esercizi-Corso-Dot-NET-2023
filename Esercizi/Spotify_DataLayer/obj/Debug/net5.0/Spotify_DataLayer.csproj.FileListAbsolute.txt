@@ -1,0 +1,12 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\bin\Debug\net5.0\Spotify_DataLayer.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\bin\Debug\net5.0\Spotify_DataLayer.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\bin\Debug\net5.0\Spotify_DataLayer.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.csproj.AssemblyReference.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\refint\Spotify_DataLayer.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\Spotify_DataLayer.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_DataLayer\obj\Debug\net5.0\ref\Spotify_DataLayer.dll
