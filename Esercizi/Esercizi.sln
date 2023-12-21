@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify_DataLayer", "Spotif
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify_Service", "Spotify_Service\Spotify_Service.csproj", "{55076E97-59D9-4902-B317-3452A2529EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateExercise", "DelegateExercise\DelegateExercise.csproj", "{014B478F-4BA0-4FBC-91C4-2545897E30C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DelegateExercise", "DelegateExercise\DelegateExercise.csproj", "{014B478F-4BA0-4FBC-91C4-2545897E30C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventExercise", "EventExercise\EventExercise.csproj", "{A66E293F-CDDE-46EC-96B6-92D1825A2056}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{014B478F-4BA0-4FBC-91C4-2545897E30C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{014B478F-4BA0-4FBC-91C4-2545897E30C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{014B478F-4BA0-4FBC-91C4-2545897E30C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A66E293F-CDDE-46EC-96B6-92D1825A2056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66E293F-CDDE-46EC-96B6-92D1825A2056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66E293F-CDDE-46EC-96B6-92D1825A2056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66E293F-CDDE-46EC-96B6-92D1825A2056}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

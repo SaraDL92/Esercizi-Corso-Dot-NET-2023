@@ -1,0 +1,15 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\bin\Debug\net6.0\EventExercise.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\bin\Debug\net6.0\EventExercise.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\bin\Debug\net6.0\EventExercise.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\bin\Debug\net6.0\EventExercise.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\bin\Debug\net6.0\EventExercise.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.sourcelink.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\refint\EventExercise.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\EventExercise.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\EventExercise\obj\Debug\net6.0\ref\EventExercise.dll
