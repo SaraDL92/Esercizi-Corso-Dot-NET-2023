@@ -13,3 +13,4 @@ C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Ser
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Service\obj\Debug\net5.0\refint\Spotify_Service.dll
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Service\obj\Debug\net5.0\Spotify_Service.pdb
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Service\obj\Debug\net5.0\ref\Spotify_Service.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Service\obj\Debug\net5.0\Spotify_Service.sourcelink.json

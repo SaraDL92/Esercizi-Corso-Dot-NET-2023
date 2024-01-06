@@ -1,0 +1,16 @@
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.exe
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.deps.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.runtimeconfig.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.runtimeconfig.dev.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\bin\Debug\net5.0\AsyncBreakfast.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.AssemblyInfoInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.AssemblyInfo.cs
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.csproj.CoreCompileInputs.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.sourcelink.json
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\refint\AsyncBreakfast.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.pdb
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\AsyncBreakfast.genruntimeconfig.cache
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\AsyncBreakfast\obj\Debug\net5.0\ref\AsyncBreakfast.dll

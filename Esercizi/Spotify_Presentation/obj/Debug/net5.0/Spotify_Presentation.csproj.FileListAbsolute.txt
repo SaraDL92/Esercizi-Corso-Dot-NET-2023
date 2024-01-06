@@ -23,3 +23,4 @@ C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Pre
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Presentation\obj\Debug\net5.0\Spotify_Presentation.pdb
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Presentation\obj\Debug\net5.0\Spotify_Presentation.genruntimeconfig.cache
 C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Presentation\obj\Debug\net5.0\ref\Spotify_Presentation.dll
+C:\Users\sarad\Documents\GitHub\Esercizi-Corso-Dot-NET-2023\Esercizi\Spotify_Presentation\obj\Debug\net5.0\Spotify_Presentation.sourcelink.json
