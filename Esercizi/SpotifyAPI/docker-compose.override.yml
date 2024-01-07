@@ -1,9 +1,0 @@
-version: '3.4'
-
-services:
-  spotify.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "SpotifyConnectionString=Server=spotify;Database=Spotify; User id = sa ; password = Pa$$word;Trusted_Connection=False"
-    ports:
-      - "80"
